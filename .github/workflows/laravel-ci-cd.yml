@@ -36,6 +36,12 @@ jobs:
         env:
           DB_CONNECTION: sqlite               # pakai SQLite
           DB_DATABASE: database/database.sqlite
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      - name: Build Vite assets
+        run: npm run build
       
       - name: Run tests
         run: php artisan test
