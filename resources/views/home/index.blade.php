@@ -25,9 +25,10 @@
                         <a href="#beranda" class="nav-chip is-active">Beranda</a>
                         <a href="#tentang" class="nav-chip">Profil</a>
                         <a href="{{ url('/guru') }}" class="nav-chip">Guru & Karyawan</a>
-                        <a href="#profil" class="nav-chip">Prestasi</a>
-                        <a href="#filosofi" class="nav-chip">Ekstrakurikuler</a>
-                        <a href="#kontak" class="nav-chip">Kontak</a>
+                        <a href="{{ url('/prestasi') }}" class="nav-chip">Prestasi</a>
+                        <a href="{{ url('/ekstra') }}" class="nav-chip">Ekstrakurikuler</a>
+                        <a href="{{ url('/kritik-saran') }}" class="nav-chip">Kritik & Saran</a>
+                        <a href="{{ url('/kontak') }}" class="nav-chip">Kontak</a>
                     </nav>
                 </div>
 
@@ -54,9 +55,10 @@
                     <a href="#beranda" class="rounded-lg px-3 py-2 hover:bg-slate-100">Beranda</a>
                     <a href="#tentang" class="rounded-lg px-3 py-2 hover:bg-slate-100">Profil</a>
                     <a href="{{ url('/guru') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Guru & Karyawan</a>
-                    <a href="#profil" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
-                    <a href="#filosofi" class="rounded-lg px-3 py-2 hover:bg-slate-100">Ekstrakurikuler</a>
-                    <a href="#kontak" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kontak</a>
+                    <a href="{{ url('/prestasi') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
+                    <a href="{{ url('/ekstra') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Ekstrakurikuler</a>
+                    <a href="{{ url('/kritik-saran') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kritik & Saran</a>
+                    <a href="{{ url('/kontak') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kontak</a>
                     @if (Route::has('login'))
                         @auth
                             <a href="{{ url('/dashboard') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Dashboard</a>
@@ -80,7 +82,7 @@
                         </div>
                         <div id="heroFeatureBox" class="hero-feature-box reveal" style="--reveal-delay: 220ms">
                             <div id="heroCtaGroup" class="hero-cta-group flex flex-wrap gap-3">
-                                <a href="#kontak" class="hero-cta hero-cta-primary ripple-btn">Daftar SPMB</a>
+                                <a href="{{ url('/spmb') }}" class="hero-cta hero-cta-primary ripple-btn">Daftar SPMB</a>
                                 <a href="#tentang" class="hero-cta hero-cta-secondary ripple-btn">Lihat Profil Sekolah</a>
                             </div>
                             <div id="heroStats" class="hero-stats-grid mt-4 grid max-w-3xl grid-cols-3 gap-3">
