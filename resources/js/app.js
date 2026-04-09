@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const accessibilityState = {
 		fontScale: 100,
 		letterSpacing: 0,
-		lineHeight: 1.75,
+		lineHeight: 1.6,
 		invert: false,
 		grayscale: false,
 		underline: false,
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			Object.assign(accessibilityState, {
 				fontScale: 100,
 				letterSpacing: 0,
-				lineHeight: 1.75,
+				lineHeight: 1.6,
 				invert: false,
 				grayscale: false,
 				underline: false,
@@ -398,8 +398,92 @@ document.addEventListener('DOMContentLoaded', () => {
 	const heroFeatureBox = document.querySelector('#heroFeatureBox');
 	const heroStats = document.querySelector('#heroStats');
 	const heroCtaGroup = document.querySelector('#heroCtaGroup');
+	const cardElements = Array.from(document.querySelectorAll('.js-card'));
+	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+	const shouldReduceMotion = () => accessibilityState.reduceMotion || prefersReducedMotion.matches;
+
+	const animateCard = (card, index) => {
+		if (!(card instanceof HTMLElement)) {
+			return;
+		}
+
+		const isHeroCard = card.id === 'heroCard';
+
+		card.classList.add('card-animated');
+
+		if (shouldReduceMotion()) {
+			card.style.opacity = '1';
+			card.style.transform = 'none';
+			return;
+		}
+
+		card.animate(
+			[
+				{ transform: 'translateY(22px) scale(0.96)', opacity: 0 },
+				{ transform: 'translateY(0) scale(1)', opacity: 1 },
+			],
+			{
+				duration: 680,
+				delay: 70 + (index * 90),
+				fill: 'both',
+				easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+			}
+		);
+
+		if (isHeroCard || !window.matchMedia('(min-width: 1024px)').matches) {
+			return;
+		}
+
+		card.addEventListener('mousemove', (event) => {
+			if (shouldReduceMotion()) {
+				return;
+			}
+
+			const rect = card.getBoundingClientRect();
+			const x = event.clientX - rect.left;
+			const y = event.clientY - rect.top;
+			const rotateY = ((x / rect.width) - 0.5) * 6;
+			const rotateX = (0.5 - (y / rect.height)) * 6;
+			card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+		});
+
+		card.addEventListener('mouseleave', () => {
+			if (shouldReduceMotion()) {
+				return;
+			}
+
+			card.style.transform = 'none';
+		});
+	};
+
+	if (cardElements.length > 0) {
+		if (!('IntersectionObserver' in window) || shouldReduceMotion()) {
+			cardElements.forEach((card, index) => animateCard(card, index));
+		} else {
+			const cardObserver = new IntersectionObserver(
+				(entries, observer) => {
+					entries.forEach((entry) => {
+						if (!entry.isIntersecting) {
+							return;
+						}
+
+						const index = cardElements.indexOf(entry.target);
+						animateCard(entry.target, index >= 0 ? index : 0);
+						observer.unobserve(entry.target);
+					});
+				},
+				{ threshold: 0.18 }
+			);
+
+			cardElements.forEach((card) => cardObserver.observe(card));
+		}
+	}
 	if (heroCard && window.matchMedia('(min-width: 1024px)').matches) {
 		heroCard.addEventListener('mousemove', (event) => {
+			if (shouldReduceMotion()) {
+				return;
+			}
+
 			const rect = heroCard.getBoundingClientRect();
 			const x = event.clientX - rect.left;
 			const y = event.clientY - rect.top;
@@ -409,6 +493,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 
 		heroCard.addEventListener('mouseleave', () => {
+			if (shouldReduceMotion()) {
+				return;
+			}
+
 			heroCard.style.transform = 'perspective(920px) rotateX(0deg) rotateY(0deg)';
 		});
 	}
@@ -449,21 +537,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (heroStats instanceof HTMLElement) {
 		const statCards = heroStats.querySelectorAll('.stat-card-lg');
 		statCards.forEach((card, index) => {
-			card.animate(
-				[
-					{ transform: 'translateY(16px) scale(0.96)', opacity: 0 },
-					{ transform: 'translateY(0) scale(1)', opacity: 1 },
-				],
-				{
-					duration: 560,
-					delay: 180 + (index * 130),
-					fill: 'both',
-					easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
-				}
-			);
-
 			card.addEventListener('mousemove', (event) => {
-				if (!window.matchMedia('(min-width: 1024px)').matches) {
+				if (!window.matchMedia('(min-width: 1024px)').matches || shouldReduceMotion()) {
 					return;
 				}
 
@@ -476,7 +551,196 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 
 			card.addEventListener('mouseleave', () => {
+				if (shouldReduceMotion()) {
+					return;
+				}
+
 				card.style.transform = 'perspective(700px) rotateX(0deg) rotateY(0deg) translateY(0)';
+			});
+		});
+	}
+
+	const guruPage = document.querySelector('.guru-page');
+	if (guruPage instanceof HTMLElement) {
+		const guruCards = Array.from(guruPage.querySelectorAll('[data-guru-card][data-type]'));
+		const guruCounters = Array.from(guruPage.querySelectorAll('[data-counter-target]'));
+		const filterButtons = Array.from(guruPage.querySelectorAll('.guru-filter-btn'));
+		const guruFadeItems = Array.from(guruPage.querySelectorAll('[data-guru-fade]'));
+		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		if (guruFadeItems.length > 0) {
+			if (reduceMotion || !('IntersectionObserver' in window)) {
+				guruFadeItems.forEach((item) => item.classList.add('is-visible'));
+			} else {
+				const fadeObserver = new IntersectionObserver(
+					(entries, observer) => {
+						entries.forEach((entry) => {
+							if (!entry.isIntersecting) {
+								return;
+							}
+
+							const index = guruFadeItems.indexOf(entry.target);
+							window.setTimeout(() => {
+								entry.target.classList.add('is-visible');
+							}, 90 + (Math.max(index, 0) * 110));
+							observer.unobserve(entry.target);
+						});
+					},
+					{ threshold: 0.2 }
+				);
+
+				guruFadeItems.forEach((item) => fadeObserver.observe(item));
+			}
+		}
+
+		const animateGuruCounter = (element) => {
+			if (!(element instanceof HTMLElement)) {
+				return;
+			}
+
+			const target = Number(element.dataset.counterTarget || '0');
+			if (!Number.isFinite(target) || target < 0) {
+				return;
+			}
+
+			if (reduceMotion) {
+				element.textContent = target.toString();
+				return;
+			}
+
+			const start = performance.now();
+			const duration = 1200;
+
+			const frame = (time) => {
+				const progress = Math.min((time - start) / duration, 1);
+				const eased = 1 - Math.pow(1 - progress, 3);
+				element.textContent = Math.floor(target * eased).toString();
+
+				if (progress < 1) {
+					window.requestAnimationFrame(frame);
+				}
+			};
+
+			window.requestAnimationFrame(frame);
+		};
+
+		if (guruCounters.length > 0) {
+			if (!('IntersectionObserver' in window)) {
+				guruCounters.forEach((counter) => animateGuruCounter(counter));
+			} else {
+				const counterObserver = new IntersectionObserver(
+					(entries, observer) => {
+						entries.forEach((entry) => {
+							if (!entry.isIntersecting) {
+								return;
+							}
+							animateGuruCounter(entry.target);
+							observer.unobserve(entry.target);
+						});
+					},
+					{ threshold: 0.55 }
+				);
+
+				guruCounters.forEach((counter) => counterObserver.observe(counter));
+			}
+		}
+
+		if (guruCards.length > 0) {
+			const revealCard = (card, index) => {
+				if (!(card instanceof HTMLElement)) {
+					return;
+				}
+
+				if (reduceMotion) {
+					card.classList.add('is-visible');
+					return;
+				}
+
+				card.animate(
+					[
+						{ opacity: 0, transform: 'translateY(20px) scale(0.97)' },
+						{ opacity: 1, transform: 'translateY(0) scale(1)' },
+					],
+					{
+						duration: 540,
+						delay: 60 + (index * 75),
+						easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+						fill: 'both',
+					}
+				);
+
+				card.classList.add('is-visible');
+			};
+
+			if (!('IntersectionObserver' in window)) {
+				guruCards.forEach((card, index) => revealCard(card, index));
+			} else {
+				const cardObserver = new IntersectionObserver(
+					(entries, observer) => {
+						entries.forEach((entry) => {
+							if (!entry.isIntersecting) {
+								return;
+							}
+
+							const index = guruCards.indexOf(entry.target);
+							revealCard(entry.target, index >= 0 ? index : 0);
+							observer.unobserve(entry.target);
+						});
+					},
+					{ threshold: 0.15 }
+				);
+
+				guruCards.forEach((card) => cardObserver.observe(card));
+			}
+		}
+
+		const setFilter = (filterType) => {
+			guruCards.forEach((card) => {
+				const type = card.getAttribute('data-type');
+				const show = filterType === 'all' || type === filterType;
+
+				if (show) {
+					card.hidden = false;
+					if (!reduceMotion) {
+						card.animate(
+							[
+								{ opacity: 0, transform: 'translateY(10px) scale(0.98)' },
+								{ opacity: 1, transform: 'translateY(0) scale(1)' },
+							],
+							{ duration: 260, easing: 'ease-out', fill: 'both' }
+						);
+					}
+				} else {
+					if (reduceMotion) {
+						card.hidden = true;
+						return;
+					}
+
+					const animation = card.animate(
+						[
+							{ opacity: 1, transform: 'translateY(0) scale(1)' },
+							{ opacity: 0, transform: 'translateY(10px) scale(0.98)' },
+						],
+						{ duration: 220, easing: 'ease-in', fill: 'both' }
+					);
+
+					animation.onfinish = () => {
+						card.hidden = true;
+					};
+				}
+			});
+		};
+
+		filterButtons.forEach((button) => {
+			button.addEventListener('click', () => {
+				const filterType = button.getAttribute('data-filter-type') || 'all';
+
+				filterButtons.forEach((item) => {
+					item.classList.toggle('is-active', item === button);
+					item.setAttribute('aria-selected', item === button ? 'true' : 'false');
+				});
+
+				setFilter(filterType);
 			});
 		});
 	}
