@@ -50,13 +50,21 @@
         <header class="kontak-header sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
             <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
                 <div class="flex items-center gap-3">
-                    <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-indigo-900 text-xs font-bold tracking-[0.1em] text-white">SDN</div>
+                    <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--medium" />
                     <div>
                         <p class="text-lg font-semibold leading-tight text-slate-900">SDN Kragan</p>
                         <p class="text-sm text-slate-500">Kontak Sekolah</p>
                     </div>
                 </div>
-                <a href="{{ url('/') }}" class="kontak-back-link">Kembali ke Beranda</a>
+                <nav class="nav-list hidden items-center gap-2 lg:flex">
+                    <a href="{{ url('/') }}#beranda" class="nav-chip">Beranda</a>
+                    <a href="{{ url('/') }}#tentang" class="nav-chip">Profil</a>
+                    <a href="{{ url('/guru') }}" class="nav-chip">Guru & Karyawan</a>
+                    <a href="{{ url('/prestasi') }}" class="nav-chip">Prestasi</a>
+                    <a href="{{ url('/ekstra') }}" class="nav-chip">Ekstrakurikuler</a>
+                    <a href="{{ url('/kritik-saran') }}" class="nav-chip">Kritik & Saran</a>
+                    <a href="{{ url('/kontak') }}" class="nav-chip is-active">Kontak</a>
+                </nav>
             </div>
         </header>
 
@@ -193,7 +201,7 @@
             <section class="mx-auto max-w-7xl px-6 pb-14 lg:px-8 lg:pb-16">
                 <div class="kontak-cta-box" data-kontak-fade>
                     <div>
-                        <p class="kontak-info-kicker text-blue-100">Tetap Terhubung</p>
+                        <p class="kontak-info-kicker text-red-100">Tetap Terhubung</p>
                         <h3>Silakan hubungi sekolah jika membutuhkan informasi lebih lanjut</h3>
                         <p>Kami siap menerima pertanyaan, masukan, dan kebutuhan informasi terkait kegiatan sekolah maupun pendaftaran.</p>
                     </div>

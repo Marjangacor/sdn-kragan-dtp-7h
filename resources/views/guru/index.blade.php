@@ -81,13 +81,21 @@
         <header class="guru-header sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
             <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
                 <div class="flex items-center gap-3">
-                    <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-indigo-900 text-xs font-bold tracking-[0.1em] text-white">SDN</div>
+                    <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--medium" />
                     <div>
                         <p class="text-lg font-semibold leading-tight text-slate-900">SDN Kragan</p>
                         <p class="text-sm text-slate-500">Data Guru & Karyawan</p>
                     </div>
                 </div>
-                <a href="{{ url('/') }}" class="guru-back-link">Kembali ke Beranda</a>
+                <nav class="nav-list hidden items-center gap-2 lg:flex">
+                    <a href="{{ url('/') }}#beranda" class="nav-chip">Beranda</a>
+                    <a href="{{ url('/') }}#tentang" class="nav-chip">Profil</a>
+                    <a href="{{ url('/guru') }}" class="nav-chip is-active">Guru & Karyawan</a>
+                    <a href="{{ url('/prestasi') }}" class="nav-chip">Prestasi</a>
+                    <a href="{{ url('/ekstra') }}" class="nav-chip">Ekstrakurikuler</a>
+                    <a href="{{ url('/kritik-saran') }}" class="nav-chip">Kritik & Saran</a>
+                    <a href="{{ url('/kontak') }}" class="nav-chip">Kontak</a>
+                </nav>
             </div>
         </header>
 
@@ -96,9 +104,9 @@
                 <div class="guru-orb guru-orb-1" aria-hidden="true"></div>
                 <div class="guru-orb guru-orb-2" aria-hidden="true"></div>
                 <div class="relative mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-14">
-                    <p class="text-xs font-semibold uppercase tracking-[0.24em] text-blue-100">Profil SDM Sekolah</p>
+                    <p class="text-xs font-semibold uppercase tracking-[0.24em] text-red-100">Profil SDM Sekolah</p>
                     <h1 class="mt-3 max-w-4xl text-4xl font-bold leading-tight md:text-5xl">Guru dan Karyawan SDN Kragan</h1>
-                    <p class="mt-4 max-w-3xl text-base leading-relaxed text-blue-100">Berikut data tenaga pendidik dan kependidikan SDN Kragan lengkap dengan nama, bidang mapel atau tugas, serta foto profil.</p>
+                    <p class="mt-4 max-w-3xl text-base leading-relaxed text-red-100">Berikut data tenaga pendidik dan kependidikan SDN Kragan lengkap dengan nama, bidang mapel atau tugas, serta foto profil.</p>
 
                     <div class="mt-7 grid gap-4 md:grid-cols-3">
                         <article class="guru-summary-card" data-guru-card>
@@ -165,7 +173,7 @@
                             </div>
                             <div class="p-4">
                                 <h3 class="text-lg font-semibold leading-snug text-slate-900">{{ $member['name'] }}</h3>
-                                <p class="mt-2 text-sm font-medium text-blue-700">{{ $member['type'] === 'Guru' ? 'Mapel' : 'Bidang Tugas' }}: {{ $member['subject'] }}</p>
+                                <p class="mt-2 text-sm font-medium text-red-700">{{ $member['type'] === 'Guru' ? 'Mapel' : 'Bidang Tugas' }}: {{ $member['subject'] }}</p>
                             </div>
                         </article>
                     @endforeach
@@ -175,7 +183,7 @@
             <section class="mx-auto max-w-7xl px-6 pb-14 lg:px-8 lg:pb-16">
                 <div class="guru-cta-box" data-guru-fade>
                     <div>
-                        <p class="guru-info-kicker text-blue-100">Informasi Lanjutan</p>
+                        <p class="guru-info-kicker text-red-100">Informasi Lanjutan</p>
                         <h3>Ingin Mengenal Guru dan Karyawan Lebih Dekat?</h3>
                         <p>Silakan hubungi sekolah untuk jadwal konsultasi orang tua, kunjungan sekolah, atau diskusi kebutuhan belajar peserta didik.</p>
                     </div>
@@ -221,3 +229,4 @@
         <div id="readingGuide" class="reading-guide" aria-hidden="true"></div>
     </body>
 </html>
+

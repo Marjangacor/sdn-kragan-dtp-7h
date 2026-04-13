@@ -14,10 +14,10 @@
             <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
                 <div class="header-left flex items-center gap-12">
                     <div class="flex items-center gap-3">
-                        <div class="brand-badge flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-indigo-900 text-sm font-bold tracking-[0.12em] text-white">SDN</div>
+                        <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--small" />
                         <div>
                             <p class="brand-title text-[1.72rem] font-semibold leading-none text-slate-900">SDN Kragan</p>
-                            <p class="brand-subtitle mt-1 text-sm text-slate-500">School Website</p>
+                            <p class="brand-subtitle mt-1 text-sm text-slate-500">Kragan Gedangan Sidoarjo</p>
                         </div>
                     </div>
 
@@ -73,9 +73,14 @@
         <main class="overflow-hidden">
             <section id="beranda" class="hero-wrap relative text-white">
                 <div class="hero-noise"></div>
+                <div class="hero-orbs" aria-hidden="true">
+                    <span class="hero-orb hero-orb-a"></span>
+                    <span class="hero-orb hero-orb-b"></span>
+                    <span class="hero-orb hero-orb-c"></span>
+                </div>
                 <div class="hero-grid relative mx-auto grid max-w-7xl gap-8 px-6 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-14">
                     <div class="hero-copy space-y-5">
-                        <span class="hero-pill reveal">Selamat Datang di SDN Kragan</span>
+                        <span class="hero-pill reveal">Selamat Datang di SDN Kragan Gedangan</span>
                         <div class="space-y-5 reveal" style="--reveal-delay: 120ms">
                             <h1 class="hero-title">Mewujudkan Generasi Cerdas, Berkarakter, dan Berprestasi</h1>
                             <p class="hero-description">Memberikan pendidikan berkualitas dengan pendekatan holistik untuk mengembangkan potensi siswa secara akademis, karakter, dan kreativitas.</p>
@@ -104,7 +109,10 @@
 
                     <div class="reveal" style="--reveal-delay: 260ms">
                         <div id="heroCard" class="hero-image-card aspect-[16/10] js-card">
-                            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80" alt="Siswa SDN Kragan sedang belajar" class="h-full w-full object-cover" />
+                            <div class="hero-emblem-scene">
+                                <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo resmi SDN Kragan Gedangan Sidoarjo" class="hero-emblem js-logo-orbit school-logo-img school-logo-img--hero" />
+                                <p class="hero-emblem-text">Belajar, Berkarakter, Berprestasi</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -208,37 +216,34 @@
                         <div class="flex items-center justify-center reveal" style="--reveal-delay: 80ms">
                             <div class="rounded-3xl bg-white p-7 shadow-2xl shadow-slate-900/12 js-card">
                                 <div class="logo-box js-card">
-                                    <p class="text-5xl font-semibold">SDN</p>
-                                    <p class="text-sm tracking-[0.25em] text-blue-100">KRAGAN</p>
-                                    <div class="mt-4 flex justify-center gap-2">
-                                        <span class="h-2 w-2 rounded-full bg-orange-400"></span>
-                                        <span class="h-2 w-2 rounded-full bg-orange-300"></span>
-                                        <span class="h-2 w-2 rounded-full bg-orange-200"></span>
+                                    <div class="logo-box-emblem">
+                                        <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--large" />
                                     </div>
+                                    <p class="logo-box-title">SDN KRAGAN</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="space-y-3 reveal" style="--reveal-delay: 180ms">
-                            <article class="feature-card border-l-blue-600 js-card">
-                                <h3>Warna Biru Tua (Navy)</h3>
-                                <p>Melambangkan ketenangan, kebijaksanaan, dan stabilitas dalam proses pendidikan untuk masa depan siswa.</p>
+                            <article class="feature-card feature-card-red js-card">
+                                <h3>Merah Putih</h3>
+                                <p>Mencerminkan semangat kebangsaan, keberanian untuk belajar, dan karakter cinta tanah air pada setiap siswa.</p>
                             </article>
-                            <article class="feature-card border-l-orange-500 js-card">
-                                <h3>Warna Oranye</h3>
-                                <p>Simbol semangat, antusiasme, dan energi dalam kegiatan belajar yang aktif dan positif.</p>
+                            <article class="feature-card feature-card-green js-card">
+                                <h3>Lingkar Hijau</h3>
+                                <p>Melambangkan pertumbuhan, harmoni, dan lingkungan belajar yang sehat serta penuh kepedulian.</p>
                             </article>
-                            <article class="feature-card border-l-yellow-500 js-card">
+                            <article class="feature-card feature-card-gold js-card">
                                 <h3>Warna Kuning Emas</h3>
-                                <p>Melambangkan harapan dan pencapaian. Mencerminkan tekad sekolah untuk selalu berprestasi.</p>
+                                <p>Simbol cita-cita tinggi, prestasi, dan optimisme bahwa setiap anak mampu meraih masa depan terbaik.</p>
                             </article>
-                            <article class="feature-card border-l-sky-600 js-card">
-                                <h3>Bentuk Geometris</h3>
-                                <p>Representasi struktur yang terarah, keseimbangan, dan pembentukan karakter siswa yang kuat.</p>
+                            <article class="feature-card feature-card-neutral js-card">
+                                <h3>Figur Siswa</h3>
+                                <p>Menggambarkan keceriaan, kolaborasi, dan dunia belajar yang inklusif, ramah, serta menyenangkan.</p>
                             </article>
-                            <article class="rounded-2xl bg-gradient-to-r from-blue-700 to-orange-500 p-6 text-white shadow-lg shadow-slate-900/20 js-card">
+                            <article class="rounded-2xl bg-gradient-to-r from-red-700 to-rose-200 p-6 text-white shadow-lg shadow-slate-900/20 js-card">
                                 <h3 class="text-lg font-semibold">Makna Keseluruhan</h3>
-                                <p class="mt-2 text-sm leading-7 text-blue-50">Logo SDN Kragan menegaskan komitmen sekolah membentuk generasi cerdas, berkarakter, dan siap menyongsong masa depan.</p>
+                                <p class="mt-2 text-sm leading-7 text-red-50">Logo SDN Kragan menegaskan komitmen sekolah untuk membentuk generasi cerdas, berkarakter, cinta Indonesia, dan siap berprestasi.</p>
                             </article>
                         </div>
                     </div>
@@ -250,7 +255,7 @@
             <div class="mx-auto grid max-w-7xl gap-8 px-6 py-12 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
                 <div class="space-y-5 reveal js-card">
                     <div class="flex items-center gap-3">
-                        <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-xs font-bold text-blue-800">SDN</div>
+                        <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--footer" />
                         <div>
                             <p class="text-base font-semibold text-white">SDN Kragan</p>
                             <p class="text-xs text-blue-100/80">Sekolah Dasar Negeri</p>
@@ -319,3 +324,4 @@
         <div id="readingGuide" class="reading-guide" aria-hidden="true"></div>
     </body>
 </html>
+

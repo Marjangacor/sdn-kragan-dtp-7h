@@ -395,12 +395,45 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	const heroCard = document.querySelector('#heroCard');
+	const heroLogoOrbit = document.querySelector('.js-logo-orbit');
+	const heroOrbitBookLeft = document.querySelector('.hero-emblem-book-left');
+	const heroOrbitBookRight = document.querySelector('.hero-emblem-book-right');
 	const heroFeatureBox = document.querySelector('#heroFeatureBox');
 	const heroStats = document.querySelector('#heroStats');
 	const heroCtaGroup = document.querySelector('#heroCtaGroup');
 	const cardElements = Array.from(document.querySelectorAll('.js-card'));
 	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 	const shouldReduceMotion = () => accessibilityState.reduceMotion || prefersReducedMotion.matches;
+
+	if (
+		heroLogoOrbit instanceof HTMLElement &&
+		heroOrbitBookLeft instanceof HTMLElement &&
+		heroOrbitBookRight instanceof HTMLElement &&
+		!shouldReduceMotion()
+	) {
+		const orbitMotion = (time) => {
+			if (shouldReduceMotion()) {
+				heroOrbitBookLeft.style.transform = 'none';
+				heroOrbitBookRight.style.transform = 'none';
+				heroLogoOrbit.style.transform = 'none';
+				window.requestAnimationFrame(orbitMotion);
+				return;
+			}
+
+			const phase = time / 780;
+			const leftLift = Math.sin(phase) * 4;
+			const rightLift = Math.cos(phase + 0.8) * 4;
+			const leftRotate = Math.sin(phase) * 5;
+			const rightRotate = Math.cos(phase + 0.8) * -5;
+
+			heroOrbitBookLeft.style.transform = `translateY(${leftLift}px) rotate(${leftRotate}deg)`;
+			heroOrbitBookRight.style.transform = `translateY(${rightLift}px) rotate(${rightRotate}deg)`;
+
+			window.requestAnimationFrame(orbitMotion);
+		};
+
+		window.requestAnimationFrame(orbitMotion);
+	}
 
 	const animateCard = (card, index) => {
 		if (!(card instanceof HTMLElement)) {
@@ -490,6 +523,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			const rotateY = ((x / rect.width) - 0.5) * 8;
 			const rotateX = (0.5 - (y / rect.height)) * 8;
 			heroCard.style.transform = `perspective(920px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+			if (heroLogoOrbit instanceof HTMLElement) {
+				heroLogoOrbit.style.transform = `rotateX(${rotateX * 0.35}deg) rotateY(${rotateY * 0.35}deg)`;
+			}
 		});
 
 		heroCard.addEventListener('mouseleave', () => {
@@ -498,6 +535,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 
 			heroCard.style.transform = 'perspective(920px) rotateX(0deg) rotateY(0deg)';
+
+			if (heroLogoOrbit instanceof HTMLElement) {
+				heroLogoOrbit.style.transform = 'none';
+			}
 		});
 	}
 
