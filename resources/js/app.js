@@ -1506,4 +1506,97 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		}
 	}
+
+	const loginPage = document.querySelector('.login-page');
+	if (loginPage instanceof HTMLElement) {
+		const loginStage = loginPage.querySelector('[data-login-stage]');
+		const loginFloaters = Array.from(loginPage.querySelectorAll('[data-login-float]'));
+		const loginFieldWrappers = Array.from(loginPage.querySelectorAll('[data-login-field]'));
+		const loginPassword = loginPage.querySelector('#loginPassword');
+		const loginPasswordToggle = loginPage.querySelector('#loginPasswordToggle');
+		const loginPasswordLabel = loginPage.querySelector('[data-login-password-label]');
+		const loginForm = loginPage.querySelector('#loginForm');
+		const loginSubmit = loginPage.querySelector('#loginSubmit');
+		const loginReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		if (loginStage instanceof HTMLElement && !loginReducedMotion) {
+			loginStage.animate(
+				[
+					{ transform: 'translateY(18px) scale(0.98)', opacity: 0 },
+					{ transform: 'translateY(0) scale(1)', opacity: 1 },
+				],
+				{
+					duration: 620,
+					easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+					fill: 'both',
+				}
+			);
+		}
+
+		loginFieldWrappers.forEach((fieldWrapper) => {
+			const input = fieldWrapper.querySelector('input');
+			if (!(input instanceof HTMLInputElement)) {
+				return;
+			}
+
+			const syncFocusState = () => {
+				fieldWrapper.classList.toggle('is-focused', document.activeElement === input);
+			};
+
+			input.addEventListener('focus', syncFocusState);
+			input.addEventListener('blur', syncFocusState);
+			syncFocusState();
+		});
+
+		if (loginPassword instanceof HTMLInputElement && loginPasswordToggle instanceof HTMLButtonElement) {
+			const syncPasswordToggle = () => {
+				const isHidden = loginPassword.type === 'password';
+				loginPasswordToggle.setAttribute('aria-pressed', isHidden ? 'false' : 'true');
+
+				if (loginPasswordLabel instanceof HTMLElement) {
+					loginPasswordLabel.textContent = isHidden ? 'Tampilkan' : 'Sembunyikan';
+				}
+			};
+
+			loginPasswordToggle.addEventListener('click', () => {
+				loginPassword.type = loginPassword.type === 'password' ? 'text' : 'password';
+				syncPasswordToggle();
+				loginPassword.focus();
+			});
+
+			syncPasswordToggle();
+		}
+
+		if (loginFloaters.length > 0 && !loginReducedMotion) {
+			const floatLoginAccents = (time) => {
+				loginFloaters.forEach((item, index) => {
+					if (!(item instanceof HTMLElement)) {
+						return;
+					}
+
+					const depth = Number(item.dataset.loginFloat || index + 1);
+					const offsetX = Math.sin((time / 1100) + (depth * 0.72)) * 6;
+					const offsetY = Math.cos((time / 1450) + (depth * 0.88)) * 8;
+					item.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0)`;
+				});
+
+				window.requestAnimationFrame(floatLoginAccents);
+			};
+
+			window.requestAnimationFrame(floatLoginAccents);
+		}
+
+		if (loginForm instanceof HTMLFormElement && loginSubmit instanceof HTMLButtonElement) {
+			loginForm.addEventListener('submit', () => {
+				loginSubmit.classList.add('is-submitting');
+				loginSubmit.setAttribute('aria-busy', 'true');
+				loginSubmit.disabled = true;
+
+				const submitLabel = loginSubmit.querySelector('[data-login-submit-label]');
+				if (submitLabel instanceof HTMLElement) {
+					submitLabel.textContent = 'Memproses...';
+				}
+			});
+		}
+	}
 });

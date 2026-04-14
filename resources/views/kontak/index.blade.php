@@ -47,11 +47,11 @@
             ]);
         @endphp
 
-        <header class="kontak-header sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
-            <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
-                <div class="flex items-center gap-3">
+        <header class="kontak-header site-header app-navbar sticky top-0 z-40">
+            <div class="navbar-inner mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-8">
+                <div class="header-brand">
                     <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--medium" />
-                    <div>
+                    <div class="header-brand-copy">
                         <p class="text-lg font-semibold leading-tight text-slate-900">SDN Kragan</p>
                         <p class="text-sm text-slate-500">Kontak Sekolah</p>
                     </div>
@@ -65,6 +65,16 @@
                     <a href="{{ url('/kritik-saran') }}" class="nav-chip">Kritik & Saran</a>
                     <a href="{{ url('/kontak') }}" class="nav-chip is-active">Kontak</a>
                 </nav>
+
+                @if (Route::has('login'))
+                    <div class="header-actions">
+                        @auth
+                            <a href="{{ url('/dashboard') }}" class="top-login-btn">Dashboard</a>
+                        @else
+                            <a href="{{ route('login') }}" class="top-login-btn">Login</a>
+                        @endauth
+                    </div>
+                @endif
             </div>
         </header>
 

@@ -10,12 +10,12 @@
     </head>
     <body class="bg-slate-100 text-slate-900">
         <div class="school-page">
-        <header class="site-header sticky top-0 z-40 border-b border-slate-200 bg-white">
-            <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
-                <div class="header-left flex items-center gap-12">
-                    <div class="flex items-center gap-3">
+        <header class="site-header app-navbar sticky top-0 z-40">
+            <div class="navbar-inner mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-8">
+                <div class="header-left flex min-w-0 items-center gap-6 lg:gap-8">
+                    <div class="header-brand">
                         <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--small" />
-                        <div>
+                        <div class="header-brand-copy">
                             <p class="brand-title text-[1.72rem] font-semibold leading-none text-slate-900">SDN Kragan</p>
                             <p class="brand-subtitle mt-1 text-sm text-slate-500">Kragan Gedangan Sidoarjo</p>
                         </div>
@@ -32,17 +32,14 @@
                     </nav>
                 </div>
 
-                @if (Route::has('login'))
-                    <div class="hidden lg:flex lg:items-center">
+                <div class="header-actions flex items-center gap-2">
+                    @if (Route::has('login'))
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="top-login-btn">Dashboard</a>
+                            <a href="{{ url('/dashboard') }}" class="top-login-btn hidden lg:inline-flex lg:px-6">Dashboard</a>
                         @else
-                            <a href="{{ route('login') }}" class="top-login-btn">Login</a>
+                            <a href="{{ route('login') }}" class="top-login-btn hidden lg:inline-flex lg:px-6">Login</a>
                         @endauth
-                    </div>
-                @endif
-
-                <div class="flex items-center gap-2 lg:hidden">
+                    @endif
                     <button id="menuToggle" class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 lg:hidden" aria-label="Buka menu">
                         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-6 w-6 stroke-current">
                             <path d="M4 7H20M4 12H20M4 17H20" stroke-width="2" stroke-linecap="round" />
@@ -59,13 +56,6 @@
                     <a href="{{ url('/ekstra') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Ekstrakurikuler</a>
                     <a href="{{ url('/kritik-saran') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kritik & Saran</a>
                     <a href="{{ url('/kontak') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kontak</a>
-                    @if (Route::has('login'))
-                        @auth
-                            <a href="{{ url('/dashboard') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Dashboard</a>
-                        @else
-                            <a href="{{ route('login') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Login</a>
-                        @endauth
-                    @endif
                 </div>
             </div>
         </header>
