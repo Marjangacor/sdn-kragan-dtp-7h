@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Edit Guru | Admin SDN Kragan</title>
+        <link rel="preconnect" href="https://fonts.bunny.net" />
+        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
+    <body class="min-h-screen bg-slate-100 text-slate-900">
+        <main class="mx-auto max-w-3xl p-6">
+            <header class="mb-8 rounded-3xl bg-white p-6 shadow-lg">
+                <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                        <p class="text-sm uppercase tracking-[0.25em] text-orange-500">Admin Panel</p>
+                        <h1 class="mt-2 text-3xl font-semibold text-slate-900">Edit Data Guru</h1>
+                        <p class="mt-2 text-sm text-slate-600">Perbarui informasi guru atau karyawan.</p>
+                    </div>
+                    <a href="{{ route('admin.guru.index') }}" class="inline-flex items-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">Kembali</a>
+                </div>
+            </header>
+
+            <form action="{{ route('admin.guru.update', $teacher) }}" method="POST" class="space-y-6 rounded-3xl bg-white p-6 shadow-lg">
+                @csrf
+                @method('PUT')
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700">Nama</label>
+                    <input type="text" name="name" value="{{ old('name', $teacher->name) }}" required class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-400" />
+                    @error('name')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700">Tipe</label>
+                    <select name="type" required class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-400">
+                        <option value="Guru"{{ old('type', $teacher->type) === 'Guru' ? ' selected' : '' }}>Guru</option>
+                        <option value="Karyawan"{{ old('type', $teacher->type) === 'Karyawan' ? ' selected' : '' }}>Karyawan</option>
+                    </select>
+                    @error('type')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700">Mata Pelajaran / Bidang</label>
+                    <input type="text" name="subject" value="{{ old('subject', $teacher->subject) }}" required class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-400" />
+                    @error('subject')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700">Tautan Foto (opsional)</label>
+                    <input type="url" name="photo_url" value="{{ old('photo_url', $teacher->photo_url) }}" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-400" />
+                    @error('photo_url')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <button type="submit" class="rounded-xl bg-[#c20f1a] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-95">Perbarui</button>
+                    <a href="{{ route('admin.guru.index') }}" class="rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">Batal</a>
+                </div>
+            </form>
+        </main>
+    </body>
+</html>

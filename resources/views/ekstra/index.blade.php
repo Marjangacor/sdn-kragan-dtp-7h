@@ -10,78 +10,77 @@
     </head>
     <body class="ekstra-page school-page bg-slate-100 text-slate-900">
         @php
-            $activities = collect([
-                [
-                    'title' => 'Pramuka',
-                    'category' => 'Kepemimpinan',
-                    'desc' => 'Melatih disiplin, kerja sama, dan kemandirian melalui kegiatan lapangan yang menyenangkan.',
-                    'photo' => 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80',
-                ],
-                [
-                    'title' => 'Paduan Suara',
-                    'category' => 'Seni & Budaya',
-                    'desc' => 'Mengasah rasa percaya diri, kekompakan, dan kepekaan musikal siswa.',
-                    'photo' => 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=900&q=80',
-                ],
-                [
-                    'title' => 'Futsal',
-                    'category' => 'Olahraga',
-                    'desc' => 'Menumbuhkan sportivitas, kebugaran, dan semangat kerja tim dalam olahraga.',
-                    'photo' => 'https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=900&q=80',
-                ],
-                [
-                    'title' => 'Tari Tradisional',
-                    'category' => 'Seni & Budaya',
-                    'desc' => 'Mengenalkan kearifan lokal sekaligus melatih keanggunan gerak dan ekspresi.',
-                    'photo' => 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=80',
-                ],
-                [
-                    'title' => 'Sains Club',
-                    'category' => 'Akademik',
-                    'desc' => 'Eksperimen sederhana dan proyek sains untuk memupuk rasa ingin tahu siswa.',
-                    'photo' => 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=900&q=80',
-                ],
-                [
-                    'title' => 'Literasi & Menulis',
-                    'category' => 'Akademik',
-                    'desc' => 'Mendorong kebiasaan membaca, menulis, dan menyampaikan gagasan secara percaya diri.',
-                    'photo' => 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80',
-                ],
-            ]);
-
             $activityCount = $activities->count();
             $categoryCount = $activities->pluck('category')->unique()->count();
             $studentCount = 500;
         @endphp
 
         <header class="ekstra-header site-header app-navbar sticky top-0 z-40">
-            <div class="navbar-inner mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-8">
-                <div class="header-brand">
-                    <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--medium" />
-                    <div class="header-brand-copy">
-                        <p class="text-lg font-semibold leading-tight text-slate-900">SDN Kragan</p>
-                        <p class="text-sm text-slate-500">Ekstrakurikuler</p>
+            <div class="navbar-inner mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-4 lg:px-8">
+                <div class="header-left flex min-w-0 items-center gap-2 lg:gap-3">
+                    <div class="header-brand">
+                        <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--small" />
+                        <div class="header-brand-copy">
+                            <p class="brand-title text-[1.45rem] font-semibold leading-none text-slate-900">SDN Kragan</p>
+                            <p class="brand-subtitle mt-1 text-xs text-slate-500">Ekstrakurikuler</p>
+                        </div>
                     </div>
-                </div>
-                <nav class="nav-list hidden items-center gap-2 lg:flex">
-                    <a href="{{ url('/') }}#beranda" class="nav-chip">Beranda</a>
-                    <a href="{{ url('/') }}#tentang" class="nav-chip">Profil</a>
-                    <a href="{{ url('/guru') }}" class="nav-chip">Guru & Karyawan</a>
-                    <a href="{{ url('/prestasi') }}" class="nav-chip">Prestasi</a>
-                    <a href="{{ url('/ekstra') }}" class="nav-chip is-active">Ekstrakurikuler</a>
-                    <a href="{{ url('/kritik-saran') }}" class="nav-chip">Kritik & Saran</a>
-                    <a href="{{ url('/kontak') }}" class="nav-chip">Kontak</a>
-                </nav>
 
-                @if (Route::has('login'))
-                    <div class="header-actions">
+                    <nav class="nav-list hidden items-center gap-2 lg:flex">
+                        <a href="{{ url('/') }}#beranda" class="nav-chip">Beranda</a>
+                        <a href="{{ url('/') }}#tentang" class="nav-chip">Profil</a>
+                        <a href="{{ url('/guru') }}" class="nav-chip">Guru & Karyawan</a>
+                        <a href="{{ url('/prestasi') }}" class="nav-chip">Prestasi</a>
+                        <a href="{{ url('/ekstra') }}" class="nav-chip is-active">Ekstrakurikuler</a>
+                        <a href="{{ url('/kritik-saran') }}" class="nav-chip">Kritik & Saran</a>
+                        <a href="{{ url('/kontak') }}" class="nav-chip">Kontak</a>
+                    </nav>
+                </div>
+
+                <div class="header-actions flex items-center gap-2">
+                    @if (Route::has('login'))
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="top-login-btn">Dashboard</a>
+                            @if(auth()->user()->role === 'admin')
+                                <a href="{{ url('/dashboard') }}" class="top-login-btn hidden lg:inline-flex lg:px-6">Dashboard</a>
+                            @endif
+                            <form method="POST" action="{{ route('logout') }}" class="hidden lg:inline-flex">
+                                @csrf
+                                <button type="submit" class="top-login-btn lg:px-6">Logout</button>
+                            </form>
                         @else
-                            <a href="{{ route('login') }}" class="top-login-btn">Login</a>
+                            <a href="{{ route('login') }}" class="top-login-btn hidden lg:inline-flex lg:px-6">Login</a>
                         @endauth
-                    </div>
-                @endif
+                    @endif
+                    <button id="menuToggle" class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 lg:hidden" aria-label="Buka menu">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-6 w-6 stroke-current">
+                            <path d="M4 7H20M4 12H20M4 17H20" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-4 py-3 lg:hidden">
+                <div class="grid gap-2 text-sm font-medium text-slate-700">
+                    <a href="{{ url('/') }}#beranda" class="rounded-lg px-3 py-2 hover:bg-slate-100">Beranda</a>
+                    <a href="{{ url('/') }}#tentang" class="rounded-lg px-3 py-2 hover:bg-slate-100">Profil</a>
+                    <a href="{{ url('/guru') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Guru & Karyawan</a>
+                    <a href="{{ url('/prestasi') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
+                    <a href="{{ url('/ekstra') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Ekstrakurikuler</a>
+                    <a href="{{ url('/kritik-saran') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kritik & Saran</a>
+                    <a href="{{ url('/kontak') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kontak</a>
+                    @auth
+                        <hr class="my-2 border-slate-200" />
+                        @if(auth()->user()->role === 'admin')
+                            <a href="{{ url('/dashboard') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Dashboard</a>
+                        @endif
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="w-full rounded-lg px-3 py-2 text-left text-red-600 hover:bg-red-50 font-medium">Logout</button>
+                        </form>
+                    @else
+                        <hr class="my-2 border-slate-200" />
+                        <a href="{{ route('login') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Login</a>
+                    @endauth
+                </div>
             </div>
         </header>
 
@@ -160,7 +159,7 @@
                     @foreach ($activities as $activity)
                         <article class="ekstra-card js-card" data-ekstra-card data-category="{{ $activity['category'] }}">
                             <div class="ekstra-photo-wrap">
-                                <img src="{{ $activity['photo'] }}" alt="{{ $activity['title'] }}" class="ekstra-photo" loading="lazy" />
+                                <img src="{{ $activity['photo_url'] ?? 'https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=900&q=80' }}" alt="{{ $activity['title'] }}" class="ekstra-photo" loading="lazy" />
                                 <span class="ekstra-category-badge">{{ $activity['category'] }}</span>
                             </div>
                             <div class="p-4">

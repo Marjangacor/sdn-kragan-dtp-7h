@@ -11,8 +11,8 @@
     <body class="bg-slate-100 text-slate-900">
         <div class="school-page">
         <header class="site-header app-navbar sticky top-0 z-40">
-            <div class="navbar-inner mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-8">
-                <div class="header-left flex min-w-0 items-center gap-6 lg:gap-8">
+            <div class="navbar-inner mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-4 lg:px-8">
+                <div class="header-left flex min-w-0 items-center gap-2 lg:gap-3">
                     <div class="header-brand">
                         <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--small" />
                         <div class="header-brand-copy">
@@ -35,7 +35,13 @@
                 <div class="header-actions flex items-center gap-2">
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="top-login-btn hidden lg:inline-flex lg:px-6">Dashboard</a>
+                            @if(auth()->user()->role === 'admin')
+                                <a href="{{ url('/dashboard') }}" class="top-login-btn hidden lg:inline-flex lg:px-6">Dashboard</a>
+                            @endif
+                            <form method="POST" action="{{ route('logout') }}" class="hidden lg:inline-flex">
+                                @csrf
+                                <button type="submit" class="top-login-btn lg:px-6">Logout</button>
+                            </form>
                         @else
                             <a href="{{ route('login') }}" class="top-login-btn hidden lg:inline-flex lg:px-6">Login</a>
                         @endauth
@@ -56,6 +62,19 @@
                     <a href="{{ url('/ekstra') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Ekstrakurikuler</a>
                     <a href="{{ url('/kritik-saran') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kritik & Saran</a>
                     <a href="{{ url('/kontak') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kontak</a>
+                    @auth
+                        <hr class="my-2 border-slate-200" />
+                        @if(auth()->user()->role === 'admin')
+                            <a href="{{ url('/dashboard') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Dashboard</a>
+                        @endif
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="w-full rounded-lg px-3 py-2 text-left text-red-600 hover:bg-red-50 font-medium">Logout</button>
+                        </form>
+                    @else
+                        <hr class="my-2 border-slate-200" />
+                        <a href="{{ route('login') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Login</a>
+                    @endauth
                 </div>
             </div>
         </header>

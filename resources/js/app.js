@@ -969,6 +969,58 @@ document.addEventListener('DOMContentLoaded', () => {
 				setExtraFilter(filterType);
 			});
 		});
+
+		const ekstraCtaBoxes = Array.from(ekstraPage.querySelectorAll('.ekstra-cta-box'));
+		if (ekstraCtaBoxes.length > 0) {
+			const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+			const revealCtaBox = (box, index) => {
+				if (!(box instanceof HTMLElement)) {
+					return;
+				}
+
+				if (reduceMotion) {
+					box.classList.add('is-visible');
+					return;
+				}
+
+				box.animate(
+					[
+						{ opacity: 0, transform: 'translateY(24px) scale(0.96)' },
+						{ opacity: 1, transform: 'translateY(0) scale(1)' },
+					],
+					{
+						duration: 580,
+						delay: 100 + (index * 120),
+						easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+						fill: 'both',
+					}
+				);
+
+				box.classList.add('is-visible');
+			};
+
+			if (!('IntersectionObserver' in window)) {
+				ekstraCtaBoxes.forEach((box, index) => revealCtaBox(box, index));
+			} else {
+				const ctaBoxObserver = new IntersectionObserver(
+					(entries, observer) => {
+						entries.forEach((entry) => {
+							if (!entry.isIntersecting) {
+								return;
+							}
+
+							const index = ekstraCtaBoxes.indexOf(entry.target);
+							revealCtaBox(entry.target, index >= 0 ? index : 0);
+							observer.unobserve(entry.target);
+						});
+					},
+					{ threshold: 0.15 }
+				);
+
+				ekstraCtaBoxes.forEach((box) => ctaBoxObserver.observe(box));
+			}
+		}
 	}
 
 	const spmbPage = document.querySelector('.spmb-page');
@@ -1101,6 +1153,58 @@ document.addEventListener('DOMContentLoaded', () => {
 				);
 
 				spmbCards.forEach((card) => cardObserver.observe(card));
+			}
+		}
+
+		const spmbCtaBoxes = Array.from(spmbPage.querySelectorAll('.spmb-cta-box'));
+		if (spmbCtaBoxes.length > 0) {
+			const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+			const revealCtaBox = (box, index) => {
+				if (!(box instanceof HTMLElement)) {
+					return;
+				}
+
+				if (reduceMotion) {
+					box.classList.add('is-visible');
+					return;
+				}
+
+				box.animate(
+					[
+						{ opacity: 0, transform: 'translateY(24px) scale(0.96)' },
+						{ opacity: 1, transform: 'translateY(0) scale(1)' },
+					],
+					{
+						duration: 580,
+						delay: 100 + (index * 120),
+						easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+						fill: 'both',
+					}
+				);
+
+				box.classList.add('is-visible');
+			};
+
+			if (!('IntersectionObserver' in window)) {
+				spmbCtaBoxes.forEach((box, index) => revealCtaBox(box, index));
+			} else {
+				const ctaBoxObserver = new IntersectionObserver(
+					(entries, observer) => {
+						entries.forEach((entry) => {
+							if (!entry.isIntersecting) {
+								return;
+							}
+
+							const index = spmbCtaBoxes.indexOf(entry.target);
+							revealCtaBox(entry.target, index >= 0 ? index : 0);
+							observer.unobserve(entry.target);
+						});
+					},
+					{ threshold: 0.15 }
+				);
+
+				spmbCtaBoxes.forEach((box) => ctaBoxObserver.observe(box));
 			}
 		}
 	}
@@ -1237,6 +1341,58 @@ document.addEventListener('DOMContentLoaded', () => {
 				kritikCards.forEach((card) => cardObserver.observe(card));
 			}
 		}
+
+		const kritikCtaBoxes = Array.from(kritikPage.querySelectorAll('.kritik-cta-box'));
+		if (kritikCtaBoxes.length > 0) {
+			const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+			const revealCtaBox = (box, index) => {
+				if (!(box instanceof HTMLElement)) {
+					return;
+				}
+
+				if (reduceMotion) {
+					box.classList.add('is-visible');
+					return;
+				}
+
+				box.animate(
+					[
+						{ opacity: 0, transform: 'translateY(24px) scale(0.96)' },
+						{ opacity: 1, transform: 'translateY(0) scale(1)' },
+					],
+					{
+						duration: 580,
+						delay: 100 + (index * 120),
+						easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+						fill: 'both',
+					}
+				);
+
+				box.classList.add('is-visible');
+			};
+
+			if (!('IntersectionObserver' in window)) {
+				kritikCtaBoxes.forEach((box, index) => revealCtaBox(box, index));
+			} else {
+				const ctaBoxObserver = new IntersectionObserver(
+					(entries, observer) => {
+						entries.forEach((entry) => {
+							if (!entry.isIntersecting) {
+								return;
+							}
+
+							const index = kritikCtaBoxes.indexOf(entry.target);
+							revealCtaBox(entry.target, index >= 0 ? index : 0);
+							observer.unobserve(entry.target);
+						});
+					},
+					{ threshold: 0.15 }
+				);
+
+				kritikCtaBoxes.forEach((box) => ctaBoxObserver.observe(box));
+			}
+		}
 	}
 
 	const prestasiPage = document.querySelector('.prestasi-page');
@@ -1371,6 +1527,58 @@ document.addEventListener('DOMContentLoaded', () => {
 				prestasiCards.forEach((card) => cardObserver.observe(card));
 			}
 		}
+
+		const prestasiCtaBoxes = Array.from(prestasiPage.querySelectorAll('.prestasi-cta-box'));
+		if (prestasiCtaBoxes.length > 0) {
+			const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+			const revealCtaBox = (box, index) => {
+				if (!(box instanceof HTMLElement)) {
+					return;
+				}
+
+				if (reduceMotion) {
+					box.classList.add('is-visible');
+					return;
+				}
+
+				box.animate(
+					[
+						{ opacity: 0, transform: 'translateY(24px) scale(0.96)' },
+						{ opacity: 1, transform: 'translateY(0) scale(1)' },
+					],
+					{
+						duration: 580,
+						delay: 100 + (index * 120),
+						easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+						fill: 'both',
+					}
+				);
+
+				box.classList.add('is-visible');
+			};
+
+			if (!('IntersectionObserver' in window)) {
+				prestasiCtaBoxes.forEach((box, index) => revealCtaBox(box, index));
+			} else {
+				const ctaBoxObserver = new IntersectionObserver(
+					(entries, observer) => {
+						entries.forEach((entry) => {
+							if (!entry.isIntersecting) {
+								return;
+							}
+
+							const index = prestasiCtaBoxes.indexOf(entry.target);
+							revealCtaBox(entry.target, index >= 0 ? index : 0);
+							observer.unobserve(entry.target);
+						});
+					},
+					{ threshold: 0.15 }
+				);
+
+				prestasiCtaBoxes.forEach((box) => ctaBoxObserver.observe(box));
+			}
+		}
 	}
 
 	const kontakPage = document.querySelector('.kontak-page');
@@ -1503,6 +1711,58 @@ document.addEventListener('DOMContentLoaded', () => {
 				);
 
 				kontakCards.forEach((card) => cardObserver.observe(card));
+			}
+		}
+
+		const kontakCtaBoxes = Array.from(kontakPage.querySelectorAll('.kontak-cta-box'));
+		if (kontakCtaBoxes.length > 0) {
+			const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+			const revealCtaBox = (box, index) => {
+				if (!(box instanceof HTMLElement)) {
+					return;
+				}
+
+				if (reduceMotion) {
+					box.classList.add('is-visible');
+					return;
+				}
+
+				box.animate(
+					[
+						{ opacity: 0, transform: 'translateY(24px) scale(0.96)' },
+						{ opacity: 1, transform: 'translateY(0) scale(1)' },
+					],
+					{
+						duration: 580,
+						delay: 100 + (index * 120),
+						easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+						fill: 'both',
+					}
+				);
+
+				box.classList.add('is-visible');
+			};
+
+			if (!('IntersectionObserver' in window)) {
+				kontakCtaBoxes.forEach((box, index) => revealCtaBox(box, index));
+			} else {
+				const ctaBoxObserver = new IntersectionObserver(
+					(entries, observer) => {
+						entries.forEach((entry) => {
+							if (!entry.isIntersecting) {
+								return;
+							}
+
+							const index = kontakCtaBoxes.indexOf(entry.target);
+							revealCtaBox(entry.target, index >= 0 ? index : 0);
+							observer.unobserve(entry.target);
+						});
+					},
+					{ threshold: 0.15 }
+				);
+
+				kontakCtaBoxes.forEach((box) => ctaBoxObserver.observe(box));
 			}
 		}
 	}

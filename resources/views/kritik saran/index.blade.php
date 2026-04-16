@@ -69,9 +69,10 @@
         @endphp
 
         <header class="kritik-header site-header app-navbar sticky top-0 z-40">
-            <div class="navbar-inner mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-8">
-                <div class="header-brand">
-                    <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--medium" />
+            <div class="navbar-inner mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-4 lg:px-8">
+                <div class="header-left flex min-w-0 items-center gap-2 lg:gap-3">
+                    <div class="header-brand">
+                    <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--small" />
                     <div class="header-brand-copy">
                         <p class="text-lg font-semibold leading-tight text-slate-900">SDN Kragan</p>
                         <p class="text-sm text-slate-500">Kritik & Saran</p>
@@ -86,16 +87,44 @@
                     <a href="{{ url('/kritik-saran') }}" class="nav-chip is-active">Kritik & Saran</a>
                     <a href="{{ url('/kontak') }}" class="nav-chip">Kontak</a>
                 </nav>
+                </div>
 
-                @if (Route::has('login'))
-                    <div class="header-actions">
+                <div class="header-actions flex items-center gap-2">
+                    @if (Route::has('login'))
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="top-login-btn">Dashboard</a>
+                            @if(auth()->user()->role === 'admin')
+                                <a href="{{ url('/dashboard') }}" class="top-login-btn">Dashboard</a>
+                            @endif
                         @else
                             <a href="{{ route('login') }}" class="top-login-btn">Login</a>
                         @endauth
                     </div>
-                @endif
+                    @endif
+                </div>
+            </div>
+            <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-4 py-3 lg:hidden">
+                <div class="grid gap-2 text-sm font-medium text-slate-700">
+                    <a href="{{ url('/') }}#beranda" class="rounded-lg px-3 py-2 hover:bg-slate-100">Beranda</a>
+                    <a href="{{ url('/') }}#tentang" class="rounded-lg px-3 py-2 hover:bg-slate-100">Profil</a>
+                    <a href="{{ url('/guru') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Guru & Karyawan</a>
+                    <a href="{{ url('/prestasi') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
+                    <a href="{{ url('/ekstra') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Ekstrakurikuler</a>
+                    <a href="{{ url('/kritik-saran') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kritik & Saran</a>
+                    <a href="{{ url('/kontak') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kontak</a>
+                    @auth
+                        <hr class="my-2 border-slate-200" />
+                        @if(auth()->user()->role === 'admin')
+                            <a href="{{ url('/dashboard') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Dashboard</a>
+                        @endif
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="w-full rounded-lg px-3 py-2 text-left text-red-600 hover:bg-red-50 font-medium">Logout</button>
+                        </form>
+                    @else
+                        <hr class="my-2 border-slate-200" />
+                        <a href="{{ route('login') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Login</a>
+                    @endauth
+                </div>
             </div>
         </header>
 
@@ -184,24 +213,46 @@
                     <article class="kritik-form-card" data-kritik-fade>
                         <p class="kritik-info-kicker">Formulir Saran</p>
                         <h2>Berikan kritik dan saran Anda</h2>
-                        <form class="mt-5 space-y-4">
+                        @if(session('success'))
+                            <div class="mb-4 rounded-3xl bg-emerald-100 p-4 text-sm text-emerald-900">{{ session('success') }}</div>
+                        @endif
+                        <form method="POST" action="{{ route('feedback.store') }}" class="mt-5 space-y-4">
+                            @csrf
                             <div>
-                                <label class="kritik-label" for="nama">Nama</label>
-                                <input id="nama" type="text" class="kritik-input" placeholder="Nama orang tua / wali" />
+                                <label class="kritik-label" for="name">Nama</label>
+                                <input id="name" name="name" type="text" value="{{ old('name') }}" class="kritik-input" placeholder="Nama orang tua / wali" required />
+                                @error('name')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
                             </div>
                             <div>
-                                <label class="kritik-label" for="kategori">Kategori</label>
-                                <select id="kategori" class="kritik-input">
-                                    <option>Kritik</option>
-                                    <option>Saran</option>
-                                    <option>Apresiasi</option>
+                                <label class="kritik-label" for="email">Email</label>
+                                <input id="email" name="email" type="email" value="{{ old('email') }}" class="kritik-input" placeholder="Email Anda" required />
+                                @error('email')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
+                            </div>
+                            <div>
+                                <label class="kritik-label" for="category">Kategori</label>
+                                <select id="category" name="category" class="kritik-input" required>
+                                    <option value="pembelajaran" @selected(old('category') === 'pembelajaran')>Pembelajaran</option>
+                                    <option value="fasilitas" @selected(old('category') === 'fasilitas')>Fasilitas</option>
+                                    <option value="pelayanan_administrasi" @selected(old('category') === 'pelayanan_administrasi')>Pelayanan Administrasi</option>
+                                    <option value="lainnya" @selected(old('category') === 'lainnya')>Lainnya</option>
                                 </select>
+                                @error('category')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
                             </div>
                             <div>
-                                <label class="kritik-label" for="pesan">Pesan</label>
-                                <textarea id="pesan" class="kritik-textarea" rows="6" placeholder="Tulis kritik atau saran Anda di sini..."></textarea>
+                                <label class="kritik-label" for="type">Tipe</label>
+                                <select id="type" name="type" class="kritik-input" required>
+                                    <option value="saran" @selected(old('type') === 'saran')>Saran</option>
+                                    <option value="kritik" @selected(old('type') === 'kritik')>Kritik</option>
+                                    <option value="pujian" @selected(old('type') === 'pujian')>Apresiasi</option>
+                                </select>
+                                @error('type')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
                             </div>
-                            <button type="button" class="kritik-submit-btn">Kirim Pesan</button>
+                            <div>
+                                <label class="kritik-label" for="message">Pesan</label>
+                                <textarea id="message" name="message" class="kritik-textarea" rows="6" placeholder="Tulis kritik atau saran Anda di sini..." required>{{ old('message') }}</textarea>
+                                @error('message')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
+                            </div>
+                            <button type="submit" class="kritik-submit-btn">Kirim Pesan</button>
                         </form>
                     </article>
 
