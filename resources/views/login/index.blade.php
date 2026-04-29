@@ -21,22 +21,6 @@
                     @csrf
 
                     <div>
-                        <label for="role" class="mb-2 block text-sm font-semibold text-slate-700">Login sebagai</label>
-                        <select
-                            id="role"
-                            name="role"
-                            required
-                            class="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-[#c20f1a] focus:ring-2 focus:ring-[#c20f1a]/20"
-                        >
-                            <option value="user" @selected(old('role', 'user') === 'user')>User</option>
-                            <option value="admin" @selected(old('role') === 'admin')>Admin</option>
-                        </select>
-                        @error('role')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div>
                         <label for="email" class="mb-2 block text-sm font-semibold text-slate-700">Email</label>
                         <input
                             id="email"

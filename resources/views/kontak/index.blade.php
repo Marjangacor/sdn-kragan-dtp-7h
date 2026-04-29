@@ -18,7 +18,7 @@
                 ],
                 [
                     'title' => 'Telepon',
-                    'desc' => '(0298) 123-456',
+                    'desc' => '(+62)318913900',
                     'icon' => '✆',
                 ],
                 [
@@ -231,11 +231,11 @@
                             </div>
                             <div class="kontak-summary-item js-card">
                                 <strong>Telepon</strong>
-                                <span>(0298) 123-456</span>
+                                <span>(+62) 318913900</span>
                             </div>
                             <div class="kontak-summary-item js-card">
                                 <strong>Email</strong>
-                                <span>info@sdnkragan.sch.id</span>
+                                <span>@sdnkragan.sch.id</span>
                             </div>
                             <div class="kontak-summary-item js-card">
                                 <strong>Jam Layanan</strong>
@@ -249,7 +249,7 @@
             <section class="mx-auto max-w-7xl px-6 pb-14 lg:px-8 lg:pb-16">
                 <div class="kontak-cta-box" data-kontak-fade>
                     <div>
-                        <p class="kontak-info-kicker text-red-100">Tetap Terhubung</p>
+                        <p class="kontak-info-kicker">Tetap Terhubung</p>
                         <h3>Silakan hubungi sekolah jika membutuhkan informasi lebih lanjut</h3>
                         <p>Kami siap menerima pertanyaan, masukan, dan kebutuhan informasi terkait kegiatan sekolah maupun pendaftaran.</p>
                     </div>

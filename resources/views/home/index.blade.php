@@ -11,7 +11,7 @@
     <body class="bg-slate-100 text-slate-900">
         <div class="school-page">
         <header class="site-header app-navbar sticky top-0 z-40">
-            <div class="navbar-inner mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-4 lg:px-8">
+            <div class="navbar-inner mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-2 lg:px-8">
                 <div class="header-left flex min-w-0 items-center gap-2 lg:gap-3">
                     <div class="header-brand">
                         <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--small" />
@@ -117,11 +117,8 @@
                     </div>
 
                     <div class="reveal" style="--reveal-delay: 260ms">
-                        <div id="heroCard" class="hero-image-card aspect-[16/10] js-card">
-                            <div class="hero-emblem-scene">
-                                <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo resmi SDN Kragan Gedangan Sidoarjo" class="hero-emblem js-logo-orbit school-logo-img school-logo-img--hero" />
-                                <p class="hero-emblem-text">Belajar, Berkarakter, Berprestasi</p>
-                            </div>
+                        <div class="hero-emblem-scene aspect-[16/10]">
+                            <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo resmi SDN Kragan Gedangan Sidoarjo" class="hero-emblem js-logo-orbit school-logo-img school-logo-img--hero" />
                         </div>
                     </div>
                 </div>
@@ -133,12 +130,12 @@
                         <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="Kepala sekolah SDN Kragan" class="h-full w-full object-cover" />
                     </div>
                     <article class="rounded-3xl bg-white p-8 shadow-xl shadow-slate-900/8 reveal js-card" style="--reveal-delay: 140ms">
-                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-orange-500">Sambutan Kepala Sekolah</p>
+                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white-500">Sambutan Kepala Sekolah</p>
                         <h2 class="mt-3 text-3xl font-semibold leading-tight text-slate-900">Membangun Masa Depan Bangsa Dimulai dari Pendidikan</h2>
                         <p class="mt-5 text-sm leading-7 text-slate-600">Assalamualaikum warahmatullahi wabarakatuh. Puji syukur kita panjatkan kepada Tuhan Yang Maha Esa atas segala rahmat-Nya, sehingga SDN Kragan terus berkembang menjadi sekolah yang berkomitmen mencetak generasi unggul, berkarakter, dan kreatif.</p>
                         <p class="mt-4 text-sm leading-7 text-slate-600">Kami percaya bahwa setiap anak memiliki potensi luar biasa yang perlu didampingi dengan pendidikan yang tepat. Melalui metode pembelajaran inovatif dan lingkungan belajar yang sehat, kami berupaya memfasilitasi perkembangan peserta didik secara optimal.</p>
                         <div class="mt-6 text-sm text-slate-700">
-                            <p class="font-semibold">Drs. Ahmad Wijaya, M.Pd</p>
+                            <p class="font-semibold">Ariyani Purwaningsih, S.pd</p>
                             <p class="text-slate-500">Kepala Sekolah SDN Kragan</p>
                         </div>
                     </article>
@@ -148,22 +145,22 @@
             <section id="visi-misi" class="bg-stone-200/70 py-14 lg:py-18">
                 <div class="mx-auto max-w-7xl px-6 lg:px-8">
                     <div class="mx-auto max-w-2xl text-center reveal">
-                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-orange-500">Visi & Misi</p>
+                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white-500">Visi & Misi</p>
                         <h2 class="mt-3 text-3xl font-semibold text-slate-900">Arah dan Tujuan Kami</h2>
                     </div>
                     <div class="mt-8 grid gap-5 lg:grid-cols-2">
                         <article class="rounded-3xl bg-white p-8 shadow-xl shadow-slate-900/8 reveal js-card" style="--reveal-delay: 80ms">
-                            <div class="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue-700 text-white">
+                            <div class="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-red-700 text-white">
                                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-5 w-5 stroke-current">
                                     <path d="M6 5.5C6 4.67157 6.67157 4 7.5 4H18.5C19.3284 4 20 4.67157 20 5.5V18.5C20 19.3284 19.3284 20 18.5 20H7.5C6.67157 20 6 19.3284 6 18.5V5.5Z" stroke-width="1.8" />
                                     <path d="M9 8H17M9 12H17M9 16H14" stroke-width="1.8" stroke-linecap="round" />
                                 </svg>
                             </div>
                             <h3 class="text-xl font-semibold text-slate-900">Visi</h3>
-                            <p class="mt-4 text-sm leading-7 text-slate-600">Menjadi sekolah dasar unggulan yang menghasilkan lulusan cerdas, berkarakter Pancasila, berwawasan lingkungan, dan mampu bersaing di era global tanpa meninggalkan budaya bangsa.</p>
+                          <p class="mt-4 text-sm leading-7 text-slate-600">Menjadi sekolah dasar unggulan yang menghasilkan lulusan cerdas, berkarakter Pancasila, berwawasan lingkungan, dan mampu bersaing di era global tanpa meninggalkan budaya bangsa.</p>
                         </article>
                         <article class="rounded-3xl bg-white p-8 shadow-xl shadow-slate-900/8 reveal js-card" style="--reveal-delay: 180ms">
-                            <div class="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-orange-500 text-white">
+                            <div class="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-red-700 text-white">
                                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-5 w-5 stroke-current">
                                     <path d="M8 4H16V6C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6V4Z" stroke-width="1.8" />
                                     <path d="M8 6H6C4.89543 6 4 6.89543 4 8V9C4 10.6569 5.34315 12 7 12H8.5M16 6H18C19.1046 6 20 6.89543 20 8V9C20 10.6569 18.6569 12 17 12H15.5" stroke-width="1.8" stroke-linecap="round" />
@@ -172,11 +169,11 @@
                                 </svg>
                             </div>
                             <h3 class="text-xl font-semibold text-slate-900">Misi</h3>
-                            <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-600">
-                                <li class="flex gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-orange-500"></span><span>Menyelenggarakan pendidikan yang berpusat pada peserta didik.</span></li>
-                                <li class="flex gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-orange-500"></span><span>Membentuk karakter disiplin, religius, dan berbudaya.</span></li>
-                                <li class="flex gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-orange-500"></span><span>Mengembangkan potensi akademik dan non-akademik siswa.</span></li>
-                                <li class="flex gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-orange-500"></span><span>Membangun kemitraan aktif dengan orang tua dan masyarakat.</span></li>
+                            <ul class="space-y-3 text-slate-600 list-disc pl-5 marker:text-red-500">
+                                <li class="flex gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-red-700"></span><span>Menyelenggarakan pendidikan yang berpusat pada peserta didik.</span></li>
+                                <li class="flex gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-red-700"></span><span>Membentuk karakter disiplin, religius, dan berbudaya.</span></li>
+                                <li class="flex gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-red-700"></span><span>Mengembangkan potensi akademik dan non-akademik siswa.</span></li>
+                                <li class="flex gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-red-700"></span><span>Membangun kemitraan aktif dengan orang tua dan masyarakat.</span></li>
                             </ul>
                         </article>
                     </div>
@@ -186,7 +183,7 @@
             <section id="profil" class="bg-slate-100 py-14 lg:py-18">
                 <div class="mx-auto max-w-7xl px-6 lg:px-8">
                     <div class="mx-auto max-w-2xl text-center reveal">
-                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-orange-500">Tentang Kami</p>
+                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white-500">Tentang Kami</p>
                         <h2 class="mt-3 text-3xl font-semibold text-slate-900">Profil Singkat Sekolah</h2>
                     </div>
                     <div class="mt-8 grid gap-6 lg:grid-cols-[1fr_1fr]">
@@ -218,18 +215,20 @@
             <section id="filosofi" class="bg-stone-200/70 py-14 lg:py-18">
                 <div class="mx-auto max-w-7xl px-6 lg:px-8">
                     <div class="mx-auto max-w-2xl text-center reveal">
-                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-orange-500">Identitas Kami</p>
+                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white-500">Identitas Kami</p>
                         <h2 class="mt-3 text-3xl font-semibold text-slate-900">Filosofi Logo SDN Kragan</h2>
                     </div>
                     <div class="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                         <div class="flex items-center justify-center reveal" style="--reveal-delay: 80ms">
-                            <div class="rounded-3xl bg-white p-7 shadow-2xl shadow-slate-900/12 js-card">
-                                <div class="logo-box js-card">
-                                    <div class="logo-box-emblem">
+                            <div class="js-card">
                                         <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--large" />
-                                    </div>
-                                    <p class="logo-box-title">SDN KRAGAN</p>
-                                </div>
+             <style>
+                    .school-logo-img--large {  
+                    height: 350px;px;  
+                    width: auto;  
+                    background: transparent;  
+}
+</style>
                             </div>
                         </div>
 
@@ -275,7 +274,7 @@
                 <div class="grid gap-6 sm:grid-cols-2">
                     <div class="reveal js-card" style="--reveal-delay: 80ms">
                         <h3 class="text-sm font-semibold text-white">Tautan Cepat</h3>
-                        <ul class="mt-3 space-y-2 text-sm text-blue-100/80">
+                        <ul class="space-y-3 text-slate-600 list-disc pl-5 marker:text-white-600">
                             <li><a href="#tentang" class="hover:text-white">Profil Sekolah</a></li>
                             <li><a href="#visi-misi" class="hover:text-white">Visi & Misi</a></li>
                             <li><a href="#profil" class="hover:text-white">Prestasi</a></li>
