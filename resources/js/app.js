@@ -560,6 +560,17 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
+	if (document.body.classList.contains('admin-page')) {
+		document.querySelectorAll('.admin-hero-shape').forEach((shape, index) => {
+			shape.style.animationDelay = `${index * 140}ms`;
+		});
+
+		document.querySelectorAll('.admin-animate').forEach((item, index) => {
+			item.style.setProperty('--reveal-delay', `${90 + index * 80}ms`);
+			item.classList.add('is-visible');
+		});
+	}
+
 	if (heroFeatureBox instanceof HTMLElement) {
 		heroFeatureBox.animate(
 			[

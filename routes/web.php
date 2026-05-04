@@ -15,6 +15,7 @@ use App\Http\Controllers\SPMBRegistrationController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 
@@ -29,19 +30,16 @@ Route::middleware('guest')->group(function () {
 
     Route::post('/login', function (Request $request) {
         $credentials = $request->validate([
-            'role' => ['required', 'in:admin,user'],
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        $redirectTo = $credentials['role'] === 'admin'
-            ? route('dashboard')
-            : route('home');
-
-        unset($credentials['role']);
-
-        if (Auth::attempt($credentials + ['role' => $request->string('role')->toString()], $request->boolean('remember'))) {
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
+
+            $redirectTo = Auth::user()->role === 'admin'
+                ? route('dashboard')
+                : route('home');
 
             return redirect()->intended($redirectTo);
         }
@@ -65,7 +63,7 @@ Route::middleware('guest')->group(function () {
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => $data['password'],
+            'password' => Hash::make($data['password']),
             'role' => 'user',
         ]);
 

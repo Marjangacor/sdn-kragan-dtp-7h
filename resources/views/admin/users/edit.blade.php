@@ -8,7 +8,7 @@
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="min-h-screen bg-slate-100 text-slate-900">
+    <body class="admin-page min-h-screen bg-slate-100 text-slate-900">
         <main class="mx-auto max-w-3xl p-6">
             <header class="mb-8 rounded-3xl bg-white p-6 shadow-lg">
                 <h1 class="text-3xl font-semibold text-slate-900">Edit Pengguna</h1>

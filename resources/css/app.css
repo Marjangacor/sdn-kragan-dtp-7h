@@ -2140,6 +2140,9 @@
     font-size: 0.95rem;
     font-weight: 600;
     backdrop-filter: blur(5px);
+    box-sizing: border-box;
+    max-width: calc(100% - 2rem);
+    z-index: 2;
 }
 
 .ekstra-highlight-grid {
@@ -2926,9 +2929,9 @@
 
 .prestasi-hero-card-overlay {
     position: absolute;
-    left: 1rem;
-    right: 1rem;
-    bottom: 1rem;
+    inset: auto 1rem 1rem 1rem;
+    width: calc(100% - 2rem) !important;
+    max-width: calc(100% - 2rem) !important;
     border-radius: 1rem;
     background: rgba(15, 23, 42, 0.55);
     color: #ffffff;
@@ -2936,6 +2939,8 @@
     font-size: 0.95rem;
     font-weight: 600;
     backdrop-filter: blur(5px);
+    box-sizing: border-box;
+    z-index: 2;
 }
 
 .prestasi-highlight-grid {
@@ -4130,6 +4135,107 @@
     .login-title {
         font-size: clamp(2.2rem, 9vw, 3.8rem);
         line-height: 1.14;
+    }
+}
+
+@keyframes login-orb-float {
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-14px) scale(1.03);
+    }
+}
+
+.admin-page {
+    background-color: #f8fafc;
+    background-image:
+        radial-gradient(circle at 20% 8%, rgba(194, 15, 26, 0.14), transparent 22%),
+        radial-gradient(circle at 82% 12%, rgba(141, 15, 22, 0.08), transparent 18%),
+        radial-gradient(circle at 50% 90%, rgba(15, 23, 42, 0.06), transparent 26%);
+}
+
+.admin-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-hero-shape {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(16px);
+    opacity: 0.55;
+    animation: admin-float 12s ease-in-out infinite;
+}
+
+.admin-hero-shape-1 {
+    width: 110px;
+    height: 110px;
+    top: -28px;
+    right: -18px;
+    background: rgba(194, 15, 26, 0.22);
+}
+
+.admin-hero-shape-2 {
+    width: 72px;
+    height: 72px;
+    bottom: -18px;
+    left: 18px;
+    background: rgba(248, 113, 113, 0.16);
+    animation-duration: 10s;
+}
+
+.admin-sidebar {
+    background: linear-gradient(180deg, #030712, #111827);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-link {
+    display: block;
+    border-radius: 1.5rem;
+    padding: 1rem 1.1rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: #f8fafc;
+    font-weight: 600;
+    transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.sidebar-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateX(4px);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
+}
+
+.admin-card {
+    will-change: transform, opacity;
+    transition: transform 260ms ease, box-shadow 260ms ease;
+}
+
+.admin-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 32px 60px rgba(15, 23, 42, 0.16);
+}
+
+.admin-page .admin-card.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.js .admin-page .admin-card.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes admin-float {
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+
+    50% {
+        transform: translateY(-12px) translateX(8px);
     }
 }
 
