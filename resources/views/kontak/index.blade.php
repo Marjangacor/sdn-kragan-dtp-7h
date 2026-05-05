@@ -9,11 +9,11 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="kontak-page school-page bg-slate-100 text-slate-900">
-        @php
+            @php
             $contactCards = collect([
                 [
                     'title' => 'Alamat Sekolah',
-                    'desc' => 'Jl. Pendidikan No. 12, Kragan, Rembang',
+                    'desc' => 'JL. Ambrali, No. 123, Sidoarjo, Jawa Timur, 61254, Indonesia',
                     'icon' => '⌂',
                 ],
                 [
@@ -43,7 +43,7 @@
             $directions = collect([
                 'Lokasi sekolah berada di pusat wilayah Kragan sehingga mudah dijangkau.',
                 'Akses utama dapat melalui jalan lingkungan menuju SDN Kragan.',
-                'Silakan menghubungi sekolah sebelum berkunjung di luar jam layanan.',
+                'Silakan menghubungi sekolah sebelum berkunjung di luar jam layanan.cv c       ',
             ]);
         @endphp
 
@@ -163,8 +163,8 @@
                         <p class="kontak-info-kicker">Alamat Lengkap</p>
                         <h2>Lokasi sekolah</h2>
                         <div class="kontak-address-box">
-                            <p class="kontak-address-main">Jl. Pendidikan No. 12, Kragan, Rembang</p>
-                            <p class="kontak-address-sub">Jawa Tengah, Indonesia</p>
+                            <p class="kontak-address-main">JL. Ambrali, No. 123, Sidoarjo, Jawa Timur, 61254, Indonesia</p>
+                            <p class="kontak-address-sub">Sidoarjo, Jawa Timur</p>
                         </div>
                         <ul class="kontak-list">
                             @foreach ($directions as $item)
@@ -213,7 +213,7 @@
                         <div class="kontak-map-frame">
                             <iframe
                                 title="Peta lokasi SDN Kragan"
-                                src="https://www.google.com/maps?q=Jl.%20Pendidikan%20No.%2012,%20Kragan,%20Rembang&output=embed"
+                                src="https://www.google.com/maps?q=JL.%20Ambrali%2C%20No.%20123%2C%20Sidoarjo%2C%20Jawa%20Timur%2C%2061254%2C%20Indonesia&output=embed"
                                 loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"
                                 allowfullscreen
@@ -227,7 +227,7 @@
                         <div class="space-y-3 mt-5">
                             <div class="kontak-summary-item js-card">
                                 <strong>Alamat</strong>
-                                <span>Jl. Pendidikan No. 12, Kragan, Rembang</span>
+                                <span>JL. Ambrali, No. 123, Sidoarjo, Jawa Timur, 61254, Indonesia</span>
                             </div>
                             <div class="kontak-summary-item js-card">
                                 <strong>Telepon</strong>

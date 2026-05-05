@@ -9,13 +9,13 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="admin-page min-h-screen bg-slate-100 text-slate-900">
-        <main class="mx-auto max-w-7xl p-6 grid gap-6 lg:grid-cols-[280px_1fr]">
-            <aside class="admin-sidebar rounded-3xl bg-slate-950 p-6 shadow-2xl text-white">
-                <div class="space-y-6">
+        <main class="mx-auto max-w-7xl px-6 py-8 grid gap-8 lg:grid-cols-[300px_1fr]">
+            <aside class="admin-sidebar rounded-3xl bg-slate-950 p-8 shadow-2xl text-white h-fit sticky top-8">
+                <div class="space-y-8">
                     <div>
-                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Panel Admin</p>
-                        <h2 class="mt-3 text-2xl font-semibold text-white">Quick Access</h2>
-                        <p class="mt-2 text-sm text-slate-300">Akses monitoring dan CRUD fitur utama dengan cepat.</p>
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-600">Panel Admin</p>
+                        <h2 class="mt-3 text-2xl font-semibold text-slate-900">Quick Access</h2>
+                        <p class="mt-2 text-sm text-slate-800">Akses monitoring dan CRUD fitur utama dengan cepat.</p>
                     </div>
 
                     <div class="rounded-3xl bg-slate-900/80 p-4 border border-white/10 shadow-inner">
@@ -36,24 +36,23 @@
                         <a href="{{ route('admin.prestasi.index') }}" class="sidebar-link">Kelola Prestasi</a>
                     </div>
 
-                    <div class="rounded-3xl bg-white/5 p-5 border border-white/10">
-                        <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Ringkasan Cepat</p>
-                        <dl class="mt-4 space-y-3 text-sm text-slate-200">
+                    <div class="rounded-3xl bg-slate-50 p-5 border border-slate-200">
+                        <p class="text-sm uppercase tracking-[0.24em] text-slate-500">Ringkasan Cepat</p>
+                        <dl class="mt-4 space-y-3 text-sm text-slate-700">
                             <div class="flex items-center justify-between">
                                 <span>Guru / Karyawan</span>
-                                <span class="font-semibold text-white">{{ $totalTeachers }}</span>
+                                <span class="font-semibold text-slate-900">{{ $totalTeachers }}</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <span>Ekstrakurikuler</span>
-                                <span class="font-semibold text-white">{{ $totalExtracurriculars }}</span>
+                                <span class="font-semibold text-slate-900">{{ $totalExtracurriculars }}</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <span>Prestasi</span>
-                                <span class="font-semibold text-white">{{ $totalAchievements }}</span>
+                                <span class="font-semibold text-slate-900">{{ $totalAchievements }}</span>
                             </div>
                         </dl>
                     </div>
-                </div>
 
                     <div class="rounded-3xl bg-slate-50 p-5">
                         <p class="text-sm uppercase tracking-[0.24em] text-slate-500">Ringkasan</p>
@@ -75,8 +74,8 @@
                 </div>
             </aside>
 
-            <div class="space-y-6">
-                <header class="admin-hero rounded-3xl bg-gradient-to-r from-[#fff1f1] via-[#fff5f3] to-[#fef7f6] p-6 shadow-2xl overflow-hidden relative reveal">
+            <div class="space-y-8">
+                <header class="admin-hero rounded-3xl bg-gradient-to-r from-[#fff1f1] via-[#fff5f3] to-[#fef7f6] p-8 shadow-2xl overflow-hidden relative reveal">
                     <div class="admin-hero-shape admin-hero-shape-1"></div>
                     <div class="admin-hero-shape admin-hero-shape-2"></div>
                     <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -94,90 +93,91 @@
                         </div>
                     </div>
 
-                    <div class="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                        <article class="rounded-3xl bg-white/90 p-5 shadow-sm border border-white/70 backdrop-blur-xl">
+                    <div class="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+                        <article class="rounded-3xl bg-white/90 p-6 shadow-sm border border-white/70 backdrop-blur-xl">
                             <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Akun Hari Ini</p>
-                            <p class="mt-3 text-3xl font-bold text-slate-900" data-counter="{{ $recentUsers->count() }}">{{ $recentUsers->count() }}</p>
-                            <p class="mt-2 text-sm text-slate-500">Pengguna baru hari ini</p>
+                            <p class="mt-4 text-3xl font-bold text-slate-900" data-counter="{{ $recentUsers->count() }}">{{ $recentUsers->count() }}</p>
+                            <p class="mt-3 text-sm text-slate-500">Pengguna baru hari ini</p>
                         </article>
-                        <article class="rounded-3xl bg-white/90 p-5 shadow-sm border border-white/70 backdrop-blur-xl">
+                        <article class="rounded-3xl bg-white/90 p-6 shadow-sm border border-white/70 backdrop-blur-xl">
                             <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Total Feedback</p>
-                            <p class="mt-3 text-3xl font-bold text-slate-900" data-counter="{{ $totalFeedbacks }}">{{ $totalFeedbacks }}</p>
-                            <p class="mt-2 text-sm text-slate-500">Kritik dan saran masuk</p>
+                            <p class="mt-4 text-3xl font-bold text-slate-900" data-counter="{{ $totalFeedbacks }}">{{ $totalFeedbacks }}</p>
+                            <p class="mt-3 text-sm text-slate-500">Kritik dan saran masuk</p>
                         </article>
-                        <article class="rounded-3xl bg-white/90 p-5 shadow-sm border border-white/70 backdrop-blur-xl">
+                        <article class="rounded-3xl bg-white/90 p-6 shadow-sm border border-white/70 backdrop-blur-xl">
                             <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Total Pendaftar</p>
-                            <p class="mt-3 text-3xl font-bold text-slate-900" data-counter="{{ $totalSPMB }}">{{ $totalSPMB }}</p>
-                            <p class="mt-2 text-sm text-slate-500">Pendaftar SPMB</p>
+                            <p class="mt-4 text-3xl font-bold text-slate-900" data-counter="{{ $totalSPMB }}">{{ $totalSPMB }}</p>
+                            <p class="mt-3 text-sm text-slate-500">Pendaftar SPMB</p>
                         </article>
-                        <article class="rounded-3xl bg-white/90 p-5 shadow-sm border border-white/70 backdrop-blur-xl">
+                        <article class="rounded-3xl bg-white/90 p-6 shadow-sm border border-white/70 backdrop-blur-xl">
                             <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Admin Aktif</p>
-                            <p class="mt-3 text-3xl font-bold text-orange-600" data-counter="{{ $totalAdmins }}">{{ $totalAdmins }}</p>
-                            <p class="mt-2 text-sm text-slate-500">Akun admin</p>
+                            <p class="mt-4 text-3xl font-bold text-orange-600" data-counter="{{ $totalAdmins }}">{{ $totalAdmins }}</p>
+                            <p class="mt-3 text-sm text-slate-500">Akun admin</p>
                         </article>
                     </div>
                 </header>
 
-            <section class="mb-8 grid gap-4 sm:grid-cols-3">
-                <a href="{{ route('admin.users.index') }}" class="admin-card reveal admin-animate rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5" style="--reveal-delay: 80ms">
-                    <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Kelola Pengguna</p>
-                    <p class="mt-4 text-xl font-semibold text-slate-900">User & Admin</p>
+            <section class="grid gap-6 sm:grid-cols-3">
+                <a href="{{ route('admin.users.index') }}" class="admin-card reveal admin-animate rounded-3xl bg-white p-7 shadow-lg transition hover:-translate-y-0.5" style="--reveal-delay: 80ms">
+                    <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Kelola Pengguna</p>
+                    <p class="mt-5 text-xl font-semibold text-slate-900">User & Admin</p>
                 </a>
-                <a href="{{ route('admin.feedback.index') }}" class="admin-card reveal admin-animate rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5" style="--reveal-delay: 140ms">
-                    <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Kelola Feedback</p>
-                    <p class="mt-4 text-xl font-semibold text-slate-900">Kritik & Saran</p>
+                <a href="{{ route('admin.feedback.index') }}" class="admin-card reveal admin-animate rounded-3xl bg-white p-7 shadow-lg transition hover:-translate-y-0.5" style="--reveal-delay: 140ms">
+                    <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Kelola Feedback</p>
+                    <p class="mt-5 text-xl font-semibold text-slate-900">Kritik & Saran</p>
                 </a>
-                <a href="{{ route('admin.spmb.index') }}" class="admin-card reveal admin-animate rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5" style="--reveal-delay: 200ms">
-                    <p class="mt-4 text-xl font-semibold text-slate-900">Pendaftar SPMB</p>
+                <a href="{{ route('admin.spmb.index') }}" class="admin-card reveal admin-animate rounded-3xl bg-white p-7 shadow-lg transition hover:-translate-y-0.5" style="--reveal-delay: 200ms">
+                    <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Pendaftar</p>
+                    <p class="mt-5 text-xl font-semibold text-slate-900">SPMB</p>
                 </a>
             </section>
 
             <!-- User Statistics -->
-            <section class="mb-8">
-                <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <section>
+                <div class="mb-7 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                     <div>
-                        <h2 class="mb-2 text-2xl font-semibold text-slate-900">Statistik Pengguna</h2>
-                        <p class="text-sm text-slate-500">Ringkasan data akun pengguna dan admin.</p>
+                        <h2 class="text-2xl font-semibold text-slate-900">Statistik Pengguna</h2>
+                        <p class="mt-1 text-sm text-slate-500">Ringkasan data akun pengguna dan admin.</p>
                     </div>
                     <div class="rounded-full bg-white/90 px-4 py-2 text-sm text-slate-600 shadow-sm">Changelog terakhir: UI diperbarui</div>
                 </div>
-                <div class="grid gap-6 lg:grid-cols-4">
-                    <article class="admin-card reveal admin-animate rounded-3xl bg-white p-6 shadow-lg" style="--reveal-delay: 90ms">
-                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Total Akun</p>
-                        <p class="mt-4 text-5xl font-bold text-slate-900" data-counter="{{ $totalUsers }}">{{ $totalUsers }}</p>
-                        <p class="mt-2 text-sm text-slate-600">Jumlah akun terdaftar</p>
+                <div class="grid gap-8 lg:grid-cols-4">
+                    <article class="admin-card reveal admin-animate rounded-3xl bg-white p-7 shadow-lg" style="--reveal-delay: 90ms">
+                        <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Total Akun</p>
+                        <p class="mt-5 text-5xl font-bold text-slate-900" data-counter="{{ $totalUsers }}">{{ $totalUsers }}</p>
+                        <p class="mt-3 text-sm text-slate-600">Jumlah akun terdaftar</p>
                     </article>
-                    <article class="admin-card reveal admin-animate rounded-3xl bg-white p-6 shadow-lg" style="--reveal-delay: 130ms">
-                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Admin</p>
-                        <p class="mt-4 text-5xl font-bold text-orange-600" data-counter="{{ $totalAdmins }}">{{ $totalAdmins }}</p>
-                        <p class="mt-2 text-sm text-slate-600">Akun dengan peran admin</p>
+                    <article class="admin-card reveal admin-animate rounded-3xl bg-white p-7 shadow-lg" style="--reveal-delay: 130ms">
+                        <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Admin</p>
+                        <p class="mt-5 text-5xl font-bold text-orange-600" data-counter="{{ $totalAdmins }}">{{ $totalAdmins }}</p>
+                        <p class="mt-3 text-sm text-slate-600">Akun dengan peran admin</p>
                     </article>
-                    <article class="admin-card reveal admin-animate rounded-3xl bg-white p-6 shadow-lg" style="--reveal-delay: 170ms">
-                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Pengguna Biasa</p>
-                        <p class="mt-4 text-5xl font-bold text-blue-600" data-counter="{{ $totalRegularUsers }}">{{ $totalRegularUsers }}</p>
-                        <p class="mt-2 text-sm text-slate-600">Akun dengan peran user</p>
+                    <article class="admin-card reveal admin-animate rounded-3xl bg-white p-7 shadow-lg" style="--reveal-delay: 170ms">
+                        <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Pengguna Biasa</p>
+                        <p class="mt-5 text-5xl font-bold text-blue-600" data-counter="{{ $totalRegularUsers }}">{{ $totalRegularUsers }}</p>
+                        <p class="mt-3 text-sm text-slate-600">Akun dengan peran user</p>
                     </article>
-                    <article class="admin-card reveal admin-animate rounded-3xl bg-white p-6 shadow-lg" style="--reveal-delay: 210ms">
-                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Bulan Ini</p>
-                        <p class="mt-4 text-5xl font-bold text-green-600" data-counter="{{ $recentUsers->count() }}">{{ $recentUsers->count() }}</p>
-                        <p class="mt-2 text-sm text-slate-600">Akun terbaru</p>
+                    <article class="admin-card reveal admin-animate rounded-3xl bg-white p-7 shadow-lg" style="--reveal-delay: 210ms">
+                        <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Bulan Ini</p>
+                        <p class="mt-5 text-5xl font-bold text-green-600" data-counter="{{ $recentUsers->count() }}">{{ $recentUsers->count() }}</p>
+                        <p class="mt-3 text-sm text-slate-600">Akun terbaru</p>
                     </article>
                 </div>
             </section>
 
             <!-- Feedback Statistics -->
-            <section class="mb-8">
-                <h2 class="mb-4 text-2xl font-semibold text-slate-900">Statistik Kritik & Saran</h2>
-                <div class="grid gap-6 lg:grid-cols-3">
-                    <article class="admin-card reveal admin-animate rounded-3xl bg-white p-6 shadow-lg" style="--reveal-delay: 90ms">
-                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Total Feedback</p>
-                        <p class="mt-4 text-5xl font-bold text-slate-900" data-counter="{{ $totalFeedbacks }}">{{ $totalFeedbacks }}</p>
-                        <p class="mt-2 text-sm text-slate-600">Kritik, saran, dan pujian</p>
+            <section>
+                <h2 class="mb-7 text-2xl font-semibold text-slate-900">Statistik Kritik & Saran</h2>
+                <div class="grid gap-8 lg:grid-cols-3">
+                    <article class="admin-card reveal admin-animate rounded-3xl bg-white p-7 shadow-lg" style="--reveal-delay: 90ms">
+                        <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Total Feedback</p>
+                        <p class="mt-5 text-5xl font-bold text-slate-900" data-counter="{{ $totalFeedbacks }}">{{ $totalFeedbacks }}</p>
+                        <p class="mt-3 text-sm text-slate-600">Kritik, saran, dan pujian</p>
                     </article>
-                    <article class="admin-card reveal admin-animate rounded-3xl bg-white p-6 shadow-lg" style="--reveal-delay: 130ms">
-                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Belum Dibaca</p>
-                        <p class="mt-4 text-5xl font-bold text-red-600" data-counter="{{ $feedbackPending }}">{{ $feedbackPending }}</p>
-                        <p class="mt-2 text-sm text-slate-600">Status pending</p>
+                    <article class="admin-card reveal admin-animate rounded-3xl bg-white p-7 shadow-lg" style="--reveal-delay: 130ms">
+                        <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Belum Dibaca</p>
+                        <p class="mt-5 text-5xl font-bold text-red-600" data-counter="{{ $feedbackPending }}">{{ $feedbackPending }}</p>
+                        <p class="mt-3 text-sm text-slate-600">Status pending</p>
                     </article>
                     <article class="admin-card reveal admin-animate rounded-3xl bg-white p-6 shadow-lg" style="--reveal-delay: 170ms">
                         <div class="space-y-2">
@@ -194,15 +194,15 @@
             </section>
 
             <!-- SPMB Statistics -->
-            <section class="mb-8">
-                <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <section>
+                <div class="mb-7 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                     <div>
-                        <h2 class="mb-2 text-2xl font-semibold text-slate-900">Statistik Pendaftar SPMB</h2>
-                        <p class="text-sm text-slate-500">Data pendaftaran terbaru dan status verifikasi.</p>
+                        <h2 class="text-2xl font-semibold text-slate-900">Statistik Pendaftar SPMB</h2>
+                        <p class="mt-1 text-sm text-slate-500">Data pendaftaran terbaru dan status verifikasi.</p>
                     </div>
                     <div class="rounded-full bg-white/90 px-4 py-2 text-sm text-slate-600 shadow-sm">Tracking performa pendaftaran</div>
                 </div>
-                <div class="grid gap-6 lg:grid-cols-5">
+                <div class="grid gap-8 lg:grid-cols-5">
                     <article class="rounded-3xl bg-white p-6 shadow-lg">
                         <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Total Pendaftar</p>
                         <p class="mt-4 text-5xl font-bold text-slate-900">{{ $totalSPMB }}</p>
@@ -232,10 +232,10 @@
             </section>
 
             <!-- Recent Data Tables -->
-            <section class="grid gap-6 lg:grid-cols-2">
+            <section class="grid gap-8 lg:grid-cols-2">
                 <!-- Recent Users -->
-                <article class="rounded-3xl bg-white p-6 shadow-lg">
-                    <h3 class="mb-4 text-xl font-semibold text-slate-900">Pengguna Terbaru</h3>
+                <article class="rounded-3xl bg-white p-7 shadow-lg">
+                    <h3 class="mb-5 text-xl font-semibold text-slate-900">Pengguna Terbaru</h3>
                     <div class="overflow-hidden rounded-2xl border border-slate-200">
                         <table class="w-full divide-y divide-slate-200 text-left text-sm">
                             <thead class="bg-slate-50 text-slate-700">
@@ -263,8 +263,8 @@
                 </article>
 
                 <!-- Recent Feedback -->
-                <article class="rounded-3xl bg-white p-6 shadow-lg">
-                    <h3 class="mb-4 text-xl font-semibold text-slate-900">Feedback Terbaru</h3>
+                <article class="rounded-3xl bg-white p-7 shadow-lg">
+                    <h3 class="mb-5 text-xl font-semibold text-slate-900">Feedback Terbaru</h3>
                     <div class="overflow-hidden rounded-2xl border border-slate-200">
                         <table class="w-full divide-y divide-slate-200 text-left text-sm">
                             <thead class="bg-slate-50 text-slate-700">
