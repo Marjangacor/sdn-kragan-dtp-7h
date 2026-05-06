@@ -196,66 +196,89 @@
 
             <section class="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-12">
                 <div class="spmb-form-card rounded-3xl bg-white p-8 shadow-lg">
-                    <div class="mb-6">
-                        <p class="spmb-info-kicker">Formulir Pendaftaran</p>
-                        <h2 class="text-2xl font-semibold text-slate-900">Daftar SPMB Sekarang</h2>
-                        <p class="mt-2 text-sm text-slate-600">Isi data calon siswa untuk pendaftaran penerimaan peserta didik baru.</p>
+                    <div class="mb-8">
+                        <p class="spmb-info-kicker">Kontak Pendaftaran</p>
+                        <h2 class="text-2xl font-semibold text-slate-900">Hubungi Panitia SPMB</h2>
+                        <p class="mt-2 text-sm text-slate-600">Silakan hubungi panitia SPMB kami untuk informasi lebih lanjut mengenai pendaftaran, syarat-syarat, dan jadwal penerimaan peserta didik baru.</p>
                     </div>
 
-                    @if(session('success'))
-                        <div class="mb-6 rounded-3xl bg-emerald-100 p-4 text-emerald-900">{{ session('success') }}</div>
-                    @endif
-
-                    <form method="POST" action="{{ route('spmb.store') }}" class="grid gap-6">
-                        @csrf
-
-                        <div class="grid gap-6 lg:grid-cols-2">
-                            <div>
-                                <label class="kritik-label" for="student_name">Nama Siswa</label>
-                                <input id="student_name" name="student_name" type="text" value="{{ old('student_name') }}" class="kritik-input" required />
-                                @error('student_name')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
+                    <div class="grid gap-6 lg:grid-cols-2">
+                        <article class="rounded-2xl border-2 border-slate-200 p-6 hover:border-[#c20f1a] hover:shadow-md transition">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#c20f1a]/10 text-xl">📞</div>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-slate-900">Telepon</h3>
+                                    <p class="mt-2 text-sm text-slate-600">
+                                        <a href="tel:+62318913900" class="text-[#c20f1a] hover:underline font-medium">(+62)318913900</a>
+                                    </p>
+                                    <p class="mt-1 text-xs text-slate-500">Hubungi untuk informasi cepat</p>
+                                </div>
                             </div>
-                            <div>
-                                <label class="kritik-label" for="student_email">Email Siswa</label>
-                                <input id="student_email" name="student_email" type="email" value="{{ old('student_email') }}" class="kritik-input" required />
-                                @error('student_email')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
-                            </div>
-                        </div>
+                        </article>
 
-                        <div class="grid gap-6 lg:grid-cols-2">
-                            <div>
-                                <label class="kritik-label" for="student_birthdate">Tanggal Lahir</label>
-                                <input id="student_birthdate" name="student_birthdate" type="date" value="{{ old('student_birthdate') }}" class="kritik-input" required />
-                                @error('student_birthdate')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
+                        <article class="rounded-2xl border-2 border-slate-200 p-6 hover:border-[#c20f1a] hover:shadow-md transition">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#c20f1a]/10 text-xl">✉</div>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-slate-900">Email</h3>
+                                    <p class="mt-2 text-sm text-slate-600">
+                                        <a href="mailto:info@sdnkragan.sch.id" class="text-[#c20f1a] hover:underline font-medium">info@sdnkragan.sch.id</a>
+                                    </p>
+                                    <p class="mt-1 text-xs text-slate-500">Kirim pertanyaan Anda</p>
+                                </div>
                             </div>
-                            <div>
-                                <label class="kritik-label" for="parent_name">Nama Orang Tua/Wali</label>
-                                <input id="parent_name" name="parent_name" type="text" value="{{ old('parent_name') }}" class="kritik-input" required />
-                                @error('parent_name')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
-                            </div>
-                        </div>
+                        </article>
 
-                        <div class="grid gap-6 lg:grid-cols-2">
-                            <div>
-                                <label class="kritik-label" for="parent_phone">Nomor HP</label>
-                                <input id="parent_phone" name="parent_phone" type="text" value="{{ old('parent_phone') }}" class="kritik-input" required />
-                                @error('parent_phone')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
+                        <article class="rounded-2xl border-2 border-slate-200 p-6 hover:border-[#c20f1a] hover:shadow-md transition">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#c20f1a]/10 text-xl">◷</div>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-slate-900">Jam Layanan</h3>
+                                    <p class="mt-2 text-sm text-slate-600">Senin - Jumat</p>
+                                    <p class="text-sm text-slate-600">Pukul 07.00 - 13.00 WIB</p>
+                                    <p class="mt-1 text-xs text-slate-500">Silakan hubungi selama jam kerja</p>
+                                </div>
                             </div>
-                            <div>
-                                <label class="kritik-label" for="parent_email">Email Orang Tua/Wali</label>
-                                <input id="parent_email" name="parent_email" type="email" value="{{ old('parent_email') }}" class="kritik-input" />
-                                @error('parent_email')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
+                        </article>
+
+                        <article class="rounded-2xl border-2 border-slate-200 p-6 hover:border-[#c20f1a] hover:shadow-md transition">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#c20f1a]/10 text-xl">⌂</div>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-slate-900">Lokasi</h3>
+                                    <p class="mt-2 text-sm text-slate-600">JL. Ambrali, No. 123</p>
+                                    <p class="text-sm text-slate-600">Sidoarjo, Jawa Timur 61254</p>
+                                    <p class="mt-1 text-xs text-slate-500">Kunjungi kantor sekolah</p>
+                                </div>
                             </div>
-                        </div>
+                        </article>
+                    </div>
 
-                        <div>
-                            <label class="kritik-label" for="student_address">Alamat</label>
-                            <textarea id="student_address" name="student_address" rows="4" class="kritik-textarea" required>{{ old('student_address') }}</textarea>
-                            @error('student_address')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
-                        </div>
-
-                        <button type="submit" class="kritik-submit-btn">Kirim Pendaftaran</button>
-                    </form>
+                    <div class="mt-8 rounded-2xl bg-slate-50 p-6 border border-slate-200">
+                        <h3 class="font-semibold text-slate-900 mb-3">📋 Catatan Penting</h3>
+                        <ul class="space-y-2 text-sm text-slate-600">
+                            <li class="flex items-start gap-2">
+                                <span class="text-[#c20f1a] mt-1">•</span>
+                                <span>Pastikan Anda memiliki semua dokumen syarat yang diperlukan sebelum menghubungi kami</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-[#c20f1a] mt-1">•</span>
+                                <span>Proses verifikasi berkas akan dilakukan oleh panitia SPMB</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-[#c20f1a] mt-1">•</span>
+                                <span>Anda akan dihubungi untuk jadwal wawancara dan observasi</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 

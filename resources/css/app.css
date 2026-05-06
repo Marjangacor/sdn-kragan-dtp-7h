@@ -1194,7 +1194,7 @@
     z-index: 0;
 }
 
-.ripple-btn > * {
+.ripple-btn>* {
     position: relative;
     z-index: 1;
 }
@@ -1207,6 +1207,7 @@
 }
 
 @keyframes hero-float {
+
     0%,
     100% {
         transform: translateY(0);
@@ -1658,16 +1659,19 @@
 }
 
 @keyframes guru-float {
+
     0%,
     100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .guru-orb,
     .guru-photo,
     .guru-back-link,
@@ -2014,6 +2018,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .spmb-orb,
     .spmb-cta-link,
     .spmb-step-card,
@@ -2388,6 +2393,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .ekstra-orb,
     .ekstra-photo,
     .ekstra-filter-btn,
@@ -2812,6 +2818,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .kritik-orb,
     .kritik-back-link,
     .kritik-submit-btn,
@@ -3203,6 +3210,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .prestasi-orb,
     .prestasi-back-link,
     .prestasi-cta-link,
@@ -3373,6 +3381,7 @@
     font-weight: 600;
     backdrop-filter: blur(5px);
 }
+
 /* Keep the overlay fully inside the rounded hero card frame */
 .kontak-hero-card-overlay {
     box-sizing: border-box;
@@ -3383,6 +3392,7 @@
     margin-right: auto;
     z-index: 3;
 }
+
 .kontak-highlight-grid {
     display: grid;
     gap: 1rem;
@@ -3667,6 +3677,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .kontak-orb,
     .kontak-back-link,
     .kontak-cta-link,
@@ -4170,6 +4181,7 @@
 }
 
 @keyframes login-orb-float {
+
     0%,
     100% {
         transform: translateY(0) scale(1);
@@ -4192,6 +4204,7 @@
 }
 
 @keyframes login-orb-float {
+
     0%,
     100% {
         transform: translateY(0) scale(1);
@@ -4286,6 +4299,7 @@
 }
 
 @keyframes admin-float {
+
     0%,
     100% {
         transform: translateY(0) translateX(0);
@@ -4301,14 +4315,13 @@
         will-change: transform, opacity;
         transition: transform 220ms ease, box-shadow 220ms ease;
         border: 1px solid rgba(15, 23, 42, 0.04);
-        background: rgba(255,255,255,0.96);
+        background: rgba(255, 255, 255, 0.96);
     }
+
     .admin-card:hover {
         transform: translateY(-4px);
         box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
         border-color: rgba(15, 23, 42, 0.06);
-    }
-        width: 100%;
     }
 
     .login-meta {
@@ -4333,9 +4346,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .login-orb,
     .login-submit-spinner {
         animation: none !important;
     }
 }
-

@@ -15,7 +15,6 @@ use App\Http\Controllers\SPMBRegistrationController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 
@@ -34,13 +33,15 @@ Route::middleware('guest')->group(function () {
             'password' => ['required'],
         ]);
 
+        // Get user from database to determine role
+        $user = User::where('email', $credentials['email'])->first();
+        $redirectTo = ($user && $user->role === 'admin') 
+            ? route('dashboard') 
+            : route('home');
+
+        // Attempt authentication with email and password only
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-
-            $redirectTo = Auth::user()->role === 'admin'
-                ? route('dashboard')
-                : route('home');
-
             return redirect()->intended($redirectTo);
         }
 
@@ -63,7 +64,7 @@ Route::middleware('guest')->group(function () {
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => $data['password'],
             'role' => 'user',
         ]);
 
@@ -104,7 +105,8 @@ Route::get('/spmb', function () {
     return view('spmb.index');
 });
 
-Route::post('/spmb', [SPMBRegistrationController::class, 'store'])->name('spmb.store');
+// SPMB registration form submission disabled - only syarat/requirements page
+// Route::post('/spmb', [SPMBRegistrationController::class, 'store'])->name('spmb.store');
 
 Route::get('/kritik-saran', function () {
     return view('kritik saran.index');

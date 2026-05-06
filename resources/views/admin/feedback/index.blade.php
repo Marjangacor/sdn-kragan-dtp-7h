@@ -9,8 +9,11 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="admin-page min-h-screen bg-slate-100 text-slate-900">
-        <main class="mx-auto max-w-7xl p-6">
-            <header class="mb-8 rounded-3xl bg-white p-6 shadow-lg">
+        <main class="mx-auto max-w-7xl px-6 py-8 grid gap-8 lg:grid-cols-[300px_1fr]">
+            @include('components.admin-sidebar')
+
+            <div class="space-y-8">
+                <header class="rounded-3xl bg-white p-6 shadow-lg">
                 <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <p class="text-sm uppercase tracking-[0.25em] text-orange-500">Admin Panel</p>
@@ -66,6 +69,7 @@
                         @endforelse
                     </tbody>
                 </table>
+            </div>
             </div>
         </main>
     </body>
