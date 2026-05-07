@@ -10,43 +10,7 @@
     </head>
     <body class="min-h-screen bg-slate-100 text-slate-900">
         <main class="mx-auto max-w-7xl p-6 grid gap-6 lg:grid-cols-[280px_1fr]">
-            <aside class="rounded-3xl bg-white p-6 shadow-lg">
-                <div class="space-y-6">
-                    <div>
-                        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Panel Admin</p>
-                        <h2 class="mt-3 text-2xl font-semibold text-slate-900">Navigasi Cepat</h2>
-                        <p class="mt-2 text-sm text-slate-600">Akses monitoring dan CRUD fitur utama.</p>
-                    </div>
-
-                    <div class="space-y-2">
-                        <a href="{{ route('dashboard') }}" class="block rounded-2xl bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">Dashboard</a>
-                        <a href="{{ route('admin.users.index') }}" class="block rounded-2xl bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">Kelola Pengguna</a>
-                        <a href="{{ route('admin.feedback.index') }}" class="block rounded-2xl bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">Kelola Feedback</a>
-                        {{-- <a href="{{ route('admin.spmb.index') }}" class="block rounded-2xl bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">Kelola SPMB</a> --}}
-                        <a href="{{ route('admin.guru.index') }}" class="block rounded-2xl bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">Kelola Guru</a>
-                        <a href="{{ route('admin.ekstra.index') }}" class="block rounded-2xl bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">Kelola Ekstra</a>
-                        <a href="{{ route('admin.prestasi.index') }}" class="block rounded-2xl bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">Kelola Prestasi</a>
-                    </div>
-
-                    <div class="rounded-3xl bg-slate-50 p-5">
-                        <p class="text-sm uppercase tracking-[0.24em] text-slate-500">Ringkasan</p>
-                        <dl class="mt-4 space-y-3 text-sm text-slate-700">
-                            <div class="flex items-center justify-between">
-                                <span>Guru / Karyawan</span>
-                                <span class="font-semibold text-slate-900">{{ $totalTeachers }}</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span>Ekstrakurikuler</span>
-                                <span class="font-semibold text-slate-900">{{ $totalExtracurriculars }}</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span>Prestasi</span>
-                                <span class="font-semibold text-slate-900">{{ $totalAchievements }}</span>
-                            </div>
-                        </dl>
-                    </div>
-                </div>
-            </aside>
+            @include('components.admin-sidebar')
 
             <div class="space-y-6">
                 <header class="rounded-3xl bg-white p-6 shadow-lg">

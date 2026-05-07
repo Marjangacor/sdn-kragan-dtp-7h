@@ -9,8 +9,11 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="min-h-screen bg-slate-100 text-slate-900">
-        <main class="mx-auto max-w-5xl p-6">
-            <header class="mb-8 rounded-3xl bg-white p-6 shadow-lg">
+        <main class="mx-auto max-w-7xl p-6 grid gap-6 lg:grid-cols-[280px_1fr]">
+            @include('components.admin-sidebar')
+
+            <div class="space-y-6">
+                <header class="mb-8 rounded-3xl bg-white p-6 shadow-lg">
                 <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <p class="text-sm uppercase tracking-[0.25em] text-orange-500">Dashboard</p>
@@ -41,6 +44,7 @@
                     <p class="mt-4 text-sm leading-7 text-slate-600">Sebagai pengguna, Anda dapat mengakses halaman khusus pengguna dan kembali ke beranda sekolah. Halaman admin tersedia hanya untuk akun yang memiliki peran admin.</p>
                 </article>
             </section>
+            </div>
         </main>
     </body>
 </html>
