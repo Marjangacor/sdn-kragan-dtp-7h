@@ -21,7 +21,7 @@
                 </div>
             </header>
 
-            <form action="{{ route('admin.prestasi.update', $achievement) }}" method="POST" class="space-y-6 rounded-3xl bg-white p-6 shadow-lg">
+            <form action="{{ route('admin.prestasi.update', $achievement) }}" method="POST" enctype="multipart/form-data" class="space-y-6 rounded-3xl bg-white p-6 shadow-lg">
                 @csrf
                 @method('PUT')
                 <div>
@@ -45,9 +45,18 @@
                     @error('description')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-slate-700">Tautan Gambar (opsional)</label>
-                    <input type="url" name="image_url" value="{{ old('image_url', $achievement->image_url) }}" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-400" />
-                    @error('image_url')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
+                    <label class="block text-sm font-semibold text-slate-700" for="image">Pilih Gambar Baru</label>
+                    <input id="image" type="file" name="image" accept="image/jpeg,image/png,image/webp,image/gif" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-400 file:mr-3 file:cursor-pointer file:border-0 file:bg-orange-500 file:px-3 file:py-2 file:text-white file:font-semibold file:rounded-lg" />
+                    <p class="mt-2 text-xs text-slate-500">Biarkan kosong jika tidak ingin mengganti gambar. Format: JPG, PNG, WebP, GIF. Maksimal 5MB.</p>
+                    <div class="mt-3">
+                        <p class="text-sm font-semibold text-slate-700">Gambar Saat Ini</p>
+                        <img id="currentImagePreview" src="{{ $achievement->image_url ? (str_starts_with($achievement->image_url, 'http') ? $achievement->image_url : asset($achievement->image_url)) : 'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=900&q=80' }}" alt="Gambar {{ $achievement->title }}" class="mt-2 h-48 w-48 rounded-2xl object-cover shadow-sm" />
+                    </div>
+                    <div id="imagePreviewWrap" class="mt-3 hidden">
+                        <p class="text-sm font-semibold text-slate-700">Preview Gambar Baru</p>
+                        <img id="imagePreview" alt="Preview gambar prestasi baru" class="mt-2 h-48 w-48 rounded-2xl object-cover shadow-sm" />
+                    </div>
+                    @error('image')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
                 </div>
                 <div class="flex flex-wrap gap-3">
                     <button type="submit" class="rounded-xl bg-[#c20f1a] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-95">Perbarui</button>
@@ -55,5 +64,29 @@
                 </div>
             </form>
         </main>
+
+        <script>
+            const imageInput = document.getElementById('image');
+            const imagePreviewWrap = document.getElementById('imagePreviewWrap');
+            const imagePreview = document.getElementById('imagePreview');
+            const currentImagePreview = document.getElementById('currentImagePreview');
+
+            if (imageInput && imagePreview && imagePreviewWrap && currentImagePreview) {
+                imageInput.addEventListener('change', function () {
+                    const file = this.files && this.files[0];
+
+                    if (!file) {
+                        imagePreviewWrap.classList.add('hidden');
+                        imagePreview.removeAttribute('src');
+                        currentImagePreview.classList.remove('hidden');
+                        return;
+                    }
+
+                    imagePreview.src = URL.createObjectURL(file);
+                    imagePreviewWrap.classList.remove('hidden');
+                    currentImagePreview.classList.add('hidden');
+                });
+            }
+        </script>
     </body>
 </html>

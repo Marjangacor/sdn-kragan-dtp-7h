@@ -48,7 +48,13 @@
                                 <td class="px-6 py-4 text-slate-900">{{ $teacher->name }}</td>
                                 <td class="px-6 py-4 text-slate-600">{{ $teacher->type }}</td>
                                 <td class="px-6 py-4 text-slate-600">{{ $teacher->subject }}</td>
-                                <td class="px-6 py-4 text-slate-900">{{ $teacher->photo_url ? 'Tautan terpasang' : 'Tidak ada' }}</td>
+                                <td class="px-6 py-4 text-slate-900">
+                                    @if($teacher->photo_url)
+                                        <img src="{{ str_starts_with($teacher->photo_url, 'http') ? $teacher->photo_url : asset($teacher->photo_url) }}" alt="Foto {{ $teacher->name }}" class="h-16 w-16 rounded-2xl object-cover shadow-sm" />
+                                    @else
+                                        <span class="text-slate-500">Tidak ada</span>
+                                    @endif
+                                </td>
                                 <td class="px-6 py-4 text-slate-900">
                                     <div class="flex flex-wrap gap-2">
                                         <a href="{{ route('admin.guru.edit', $teacher) }}" class="rounded-xl bg-slate-900 px-3 py-2 text-xs font-semibold text-white hover:bg-slate-800">Edit</a>

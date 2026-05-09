@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Guru & Karyawan | SDN Kragan</title>
         <link rel="preconnect" href="https://fonts.bunny.net" />
-        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700|cormorant-garamond:600,700" rel="stylesheet" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="guru-page school-page bg-slate-100 text-slate-900">
@@ -32,6 +32,7 @@
                         <a href="{{ url('/') }}#tentang" class="nav-chip">Profil</a>
                         <a href="{{ url('/guru') }}" class="nav-chip is-active">Guru & Karyawan</a>
                         <a href="{{ url('/prestasi') }}" class="nav-chip">Prestasi</a>
+                        <a href="{{ url('/galeri') }}" class="nav-chip">Galeri</a>
                         <a href="{{ url('/ekstra') }}" class="nav-chip">Ekstrakurikuler</a>
                         <a href="{{ url('/kritik-saran') }}" class="nav-chip">Kritik & Saran</a>
                         <a href="{{ url('/kontak') }}" class="nav-chip">Kontak</a>
@@ -65,6 +66,7 @@
                     <a href="{{ url('/') }}#tentang" class="rounded-lg px-3 py-2 hover:bg-slate-100">Profil</a>
                     <a href="{{ url('/guru') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Guru & Karyawan</a>
                     <a href="{{ url('/prestasi') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
+                    <a href="{{ url('/galeri') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Galeri</a>
                     <a href="{{ url('/ekstra') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Ekstrakurikuler</a>
                     <a href="{{ url('/kritik-saran') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kritik & Saran</a>
                     <a href="{{ url('/kontak') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kontak</a>
@@ -142,7 +144,7 @@
 
             <section class="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-12">
                 <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
-                    <h2 class="text-2xl font-semibold text-slate-900">Daftar Tenaga Pendidik & Kependidikan</h2>
+                    <h2 class="guru-section-title">Daftar Tenaga Pendidik & Kependidikan</h2>
                     <div class="guru-filter-wrap" role="tablist" aria-label="Filter data guru dan karyawan">
                         <button type="button" class="guru-filter-btn is-active" data-filter-type="all" role="tab" aria-selected="true">Semua</button>
                         <button type="button" class="guru-filter-btn" data-filter-type="guru" role="tab" aria-selected="false">Guru</button>
@@ -154,12 +156,13 @@
                     @foreach ($staff as $member)
                         <article class="guru-card" data-guru-card data-type="{{ strtolower($member['type']) }}">
                             <div class="guru-photo-wrap">
-                                <img src="{{ $member['photo_url'] ?? 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80' }}" alt="Foto {{ $member['name'] }}" class="guru-photo" loading="lazy" />
+                                <img src="{{ $member['photo_url'] ? (str_starts_with($member['photo_url'], 'http') ? $member['photo_url'] : asset($member['photo_url'])) : 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80' }}" alt="Foto {{ $member['name'] }}" class="guru-photo" loading="lazy" />
                                 <span class="guru-type-badge">{{ $member['type'] }}</span>
                             </div>
                             <div class="p-4">
                                 <h3 class="text-lg font-semibold leading-snug text-slate-900">{{ $member['name'] }}</h3>
                                 <p class="mt-2 text-sm font-medium text-red-700">{{ $member['type'] === 'Guru' ? 'Mapel' : 'Bidang Tugas' }}: {{ $member['subject'] }}</p>
+                                <a href="{{ route('guru.show', $member) }}" class="mt-4 inline-flex items-center rounded-xl border border-red-200 bg-red-50 px-4 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-100">Lihat Detail</a>
                             </div>
                         </article>
                     @endforeach

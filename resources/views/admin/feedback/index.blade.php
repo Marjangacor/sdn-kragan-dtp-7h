@@ -37,6 +37,7 @@
                         <tr>
                             <th class="px-6 py-4 font-medium">Nama</th>
                             <th class="px-6 py-4 font-medium">Email</th>
+                            <th class="px-6 py-4 font-medium">Pesan</th>
                             <th class="px-6 py-4 font-medium">Tipe</th>
                             <th class="px-6 py-4 font-medium">Status</th>
                             <th class="px-6 py-4 font-medium">Aksi</th>
@@ -47,6 +48,7 @@
                             <tr>
                                 <td class="px-6 py-4 text-slate-900">{{ $feedback->name }}</td>
                                 <td class="px-6 py-4 text-slate-600">{{ $feedback->email }}</td>
+                                <td class="px-6 py-4 text-slate-600">{{ \Illuminate\Support\Str::limit($feedback->message, 90) }}</td>
                                 <td class="px-6 py-4 text-slate-900">{{ ucfirst($feedback->type) }}</td>
                                 <td class="px-6 py-4">
                                     <span class="inline-flex rounded-full px-2.5 py-0.5 text-xs font-semibold @if($feedback->status === 'pending') bg-yellow-100 text-yellow-800 @elseif($feedback->status === 'read') bg-blue-100 text-blue-800 @else bg-green-100 text-green-800 @endif">{{ ucfirst($feedback->status) }}</span>
@@ -64,7 +66,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="px-6 py-10 text-center text-slate-500">Belum ada feedback.</td>
+                                <td colspan="6" class="px-6 py-10 text-center text-slate-500">Belum ada feedback.</td>
                             </tr>
                         @endforelse
                     </tbody>

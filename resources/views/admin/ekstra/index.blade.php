@@ -48,7 +48,13 @@
                                 <td class="px-6 py-4 text-slate-900">{{ $activity->title }}</td>
                                 <td class="px-6 py-4 text-slate-600">{{ $activity->category }}</td>
                                 <td class="px-6 py-4 text-slate-600">{{ Str::limit($activity->description, 80) }}</td>
-                                <td class="px-6 py-4 text-slate-900">{{ $activity->photo_url ? 'Tautan terpasang' : 'Tidak ada' }}</td>
+                                <td class="px-6 py-4 text-slate-900">
+                                    @if($activity->photo_url)
+                                        <img src="{{ str_starts_with($activity->photo_url, 'http') ? $activity->photo_url : asset($activity->photo_url) }}" alt="Foto {{ $activity->title }}" class="h-16 w-16 rounded-2xl object-cover shadow-sm" />
+                                    @else
+                                        <span class="text-slate-500">Tidak ada</span>
+                                    @endif
+                                </td>
                                 <td class="px-6 py-4 text-slate-900">
                                     <div class="flex flex-wrap gap-2">
                                         <a href="{{ route('admin.ekstra.edit', $activity) }}" class="rounded-xl bg-slate-900 px-3 py-2 text-xs font-semibold text-white hover:bg-slate-800">Edit</a>

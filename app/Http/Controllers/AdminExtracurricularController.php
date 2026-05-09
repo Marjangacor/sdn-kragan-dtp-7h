@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Extracurricular;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminExtracurricularController extends AdminController
 {
@@ -31,8 +32,15 @@ class AdminExtracurricularController extends AdminController
             'title' => ['required', 'string', 'max:255'],
             'category' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'min:10'],
-            'photo_url' => ['nullable', 'url', 'max:1000'],
+            'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,gif', 'max:5120'],
         ]);
+
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('ekstra', 'public');
+            $data['photo_url'] = 'storage/' . $path;
+        }
+
+        unset($data['photo']);
 
         Extracurricular::create($data);
 
@@ -56,8 +64,19 @@ class AdminExtracurricularController extends AdminController
             'title' => ['required', 'string', 'max:255'],
             'category' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'min:10'],
-            'photo_url' => ['nullable', 'url', 'max:1000'],
+            'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,gif', 'max:5120'],
         ]);
+
+        if ($request->hasFile('photo')) {
+            if ($ekstra->photo_url && str_starts_with($ekstra->photo_url, 'storage/')) {
+                Storage::disk('public')->delete(str_replace('storage/', '', $ekstra->photo_url));
+            }
+
+            $path = $request->file('photo')->store('ekstra', 'public');
+            $data['photo_url'] = 'storage/' . $path;
+        } else {
+            unset($data['photo']);
+        }
 
         $ekstra->update($data);
 

@@ -12,4 +12,15 @@ class EkstraController extends Controller
             'activities' => Extracurricular::orderBy('title')->get(),
         ]);
     }
+
+    public function show(Extracurricular $ekstra)
+    {
+        return view('ekstra.show', [
+            'activity' => $ekstra,
+            'relatedActivities' => Extracurricular::where('id', '!=', $ekstra->id)
+                ->orderBy('title')
+                ->limit(4)
+                ->get(),
+        ]);
+    }
 }

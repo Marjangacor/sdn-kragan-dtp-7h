@@ -14,7 +14,9 @@
                 <div class="mb-8">
                     <p class="text-8xl font-bold text-orange-600">403</p>
                     <p class="mt-4 text-3xl font-semibold text-slate-900">Akses Ditolak</p>
-                    <p class="mt-2 text-slate-600">Anda tidak memiliki izin untuk mengakses halaman ini.</p>
+                    <p class="mt-2 max-w-md text-slate-600">
+                        {{ $exception->getMessage() ?: 'Anda tidak memiliki izin untuk mengakses halaman ini. Halaman ini hanya dapat diakses oleh administrator sekolah.' }}
+                    </p>
                 </div>
 
                 <div class="flex flex-col gap-3 sm:flex-row sm:justify-center">
@@ -26,7 +28,18 @@
                             <a href="{{ route('dashboard') }}" class="inline-flex items-center rounded-xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-700 transition hover:bg-slate-50">
                                 Ke Dashboard
                             </a>
+                        @else
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="inline-flex items-center rounded-xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-700 transition hover:bg-slate-50">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         @endif
+                    @else
+                        <a href="{{ route('login') }}" class="inline-flex items-center rounded-xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-700 transition hover:bg-slate-50">
+                            Masuk dengan Akun Admin
+                        </a>
                     @endauth
                 </div>
 

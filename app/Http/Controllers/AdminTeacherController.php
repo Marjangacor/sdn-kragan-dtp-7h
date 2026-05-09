@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminTeacherController extends AdminController
 {
@@ -31,8 +32,15 @@ class AdminTeacherController extends AdminController
             'name' => ['required', 'string', 'max:255'],
             'type' => ['required', 'in:Guru,Karyawan'],
             'subject' => ['required', 'string', 'max:255'],
-            'photo_url' => ['nullable', 'url', 'max:1000'],
+            'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,gif', 'max:5120'],
         ]);
+
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('teachers', 'public');
+            $data['photo_url'] = 'storage/' . $path;
+        }
+
+        unset($data['photo']);
 
         Teacher::create($data);
 
@@ -56,8 +64,19 @@ class AdminTeacherController extends AdminController
             'name' => ['required', 'string', 'max:255'],
             'type' => ['required', 'in:Guru,Karyawan'],
             'subject' => ['required', 'string', 'max:255'],
-            'photo_url' => ['nullable', 'url', 'max:1000'],
+            'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,gif', 'max:5120'],
         ]);
+
+        if ($request->hasFile('photo')) {
+            if ($guru->photo_url && str_starts_with($guru->photo_url, 'storage/')) {
+                Storage::disk('public')->delete(str_replace('storage/', '', $guru->photo_url));
+            }
+
+            $path = $request->file('photo')->store('teachers', 'public');
+            $data['photo_url'] = 'storage/' . $path;
+        } else {
+            unset($data['photo']);
+        }
 
         $guru->update($data);
 

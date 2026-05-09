@@ -18,7 +18,7 @@
                         <div>
                             <p class="text-sm uppercase tracking-[0.25em] text-orange-500">Dashboard Admin</p>
                             <h1 class="mt-2 text-3xl font-semibold text-slate-900">Selamat datang, {{ auth()->user()->name }}</h1>
-                            <p class="mt-2 text-sm text-slate-600">Pantau pengguna, feedback, data guru, dan ekstrakurikuler.</p>
+                            <p class="mt-2 text-sm text-slate-600">Pantau pengguna, feedback, data guru, ekstrakurikuler, dan galeri kegiatan.</p>
                         </div>
                         <div class="flex flex-wrap items-center gap-3">
                             <a href="{{ route('home') }}" class="inline-flex items-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">Beranda</a>
@@ -38,6 +38,10 @@
                 <a href="{{ route('admin.feedback.index') }}" class="rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5">
                     <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Kelola Feedback</p>
                     <p class="mt-4 text-xl font-semibold text-slate-900">Kritik & Saran</p>
+                </a>
+                <a href="{{ route('admin.galeri.index') }}" class="rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5">
+                    <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Kelola Galeri</p>
+                    <p class="mt-4 text-xl font-semibold text-slate-900">Dokumentasi Kegiatan</p>
                 </a>
                 {{-- <a href="{{ route('admin.spmb.index') }}" class="rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5">
                     <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Kelola SPMB</p>
@@ -141,6 +145,7 @@
                             <thead class="bg-slate-50 text-slate-700">
                                 <tr>
                                     <th class="px-4 py-3 font-medium">Nama</th>
+                                    <th class="px-4 py-3 font-medium">Pesan</th>
                                     <th class="px-4 py-3 font-medium">Tipe</th>
                                     <th class="px-4 py-3 font-medium">Status</th>
                                 </tr>
@@ -149,6 +154,7 @@
                                 @forelse ($recentFeedbacks as $feedback)
                                     <tr>
                                         <td class="px-4 py-3 text-slate-900">{{ $feedback->name }}</td>
+                                        <td class="px-4 py-3 text-slate-600">{{ \Illuminate\Support\Str::limit($feedback->message, 80) }}</td>
                                         <td class="px-4 py-3 text-slate-600">{{ ucfirst($feedback->type) }}</td>
                                         <td class="px-4 py-3">
                                             @if($feedback->status === 'pending')
@@ -162,7 +168,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="3" class="px-4 py-6 text-center text-slate-500">Belum ada feedback</td>
+                                        <td colspan="4" class="px-4 py-6 text-center text-slate-500">Belum ada feedback</td>
                                     </tr>
                                 @endforelse
                             </tbody>

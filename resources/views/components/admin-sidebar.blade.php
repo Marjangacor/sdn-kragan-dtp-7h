@@ -3,11 +3,13 @@
     use App\Models\Teacher;
     use App\Models\Extracurricular;
     use App\Models\Achievement;
+    use App\Models\Gallery;
     
     $totalUsers = User::count();
     $totalTeachers = Teacher::count();
     $totalExtracurriculars = Extracurricular::count();
     $totalAchievements = Achievement::count();
+    $totalGalleries = Gallery::count();
 @endphp
 
 <aside class="admin-sidebar rounded-3xl bg-slate-950 p-8 shadow-2xl text-white h-fit">
@@ -34,6 +36,7 @@
             <a href="{{ route('admin.guru.index') }}" class="sidebar-link">Kelola Guru</a>
             <a href="{{ route('admin.ekstra.index') }}" class="sidebar-link">Kelola Ekstra</a>
             <a href="{{ route('admin.prestasi.index') }}" class="sidebar-link">Kelola Prestasi</a>
+            <a href="{{ route('admin.galeri.index') }}" class="sidebar-link">Kelola Galeri</a>
         </div>
 
         <div class="rounded-3xl bg-slate-50 p-5 border border-slate-200">
@@ -50,6 +53,10 @@
                 <div class="flex items-center justify-between">
                     <span>Prestasi</span>
                     <span class="font-semibold text-slate-900">{{ $totalAchievements }}</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span>Galeri</span>
+                    <span class="font-semibold text-slate-900">{{ $totalGalleries }}</span>
                 </div>
             </dl>
         </div>
@@ -68,6 +75,10 @@
                 <div class="flex items-center justify-between">
                     <span>Prestasi</span>
                     <span class="font-semibold text-slate-900">{{ $totalAchievements }}</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span>Galeri</span>
+                    <span class="font-semibold text-slate-900">{{ $totalGalleries }}</span>
                 </div>
             </dl>
         </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Achievement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminAchievementController extends AdminController
 {
@@ -32,8 +33,15 @@ class AdminAchievementController extends AdminController
             'category' => ['required', 'string', 'max:255'],
             'year' => ['required', 'string', 'max:10'],
             'description' => ['required', 'string', 'min:10'],
-            'image_url' => ['nullable', 'url', 'max:1000'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,gif', 'max:5120'],
         ]);
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('prestasi', 'public');
+            $data['image_url'] = 'storage/' . $path;
+        }
+
+        unset($data['image']);
 
         Achievement::create($data);
 
@@ -58,8 +66,19 @@ class AdminAchievementController extends AdminController
             'category' => ['required', 'string', 'max:255'],
             'year' => ['required', 'string', 'max:10'],
             'description' => ['required', 'string', 'min:10'],
-            'image_url' => ['nullable', 'url', 'max:1000'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,gif', 'max:5120'],
         ]);
+
+        if ($request->hasFile('image')) {
+            if ($prestasi->image_url && str_starts_with($prestasi->image_url, 'storage/')) {
+                Storage::disk('public')->delete(str_replace('storage/', '', $prestasi->image_url));
+            }
+
+            $path = $request->file('image')->store('prestasi', 'public');
+            $data['image_url'] = 'storage/' . $path;
+        } else {
+            unset($data['image']);
+        }
 
         $prestasi->update($data);
 

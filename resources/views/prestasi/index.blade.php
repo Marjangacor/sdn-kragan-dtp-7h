@@ -59,6 +59,7 @@
                         <a href="{{ url('/') }}#tentang" class="nav-chip">Profil</a>
                         <a href="{{ url('/guru') }}" class="nav-chip">Guru & Karyawan</a>
                         <a href="{{ url('/prestasi') }}" class="nav-chip is-active">Prestasi</a>
+                        <a href="{{ url('/galeri') }}" class="nav-chip">Galeri</a>
                         <a href="{{ url('/ekstra') }}" class="nav-chip">Ekstrakurikuler</a>
                         <a href="{{ url('/kritik-saran') }}" class="nav-chip">Kritik & Saran</a>
                         <a href="{{ url('/kontak') }}" class="nav-chip">Kontak</a>
@@ -92,6 +93,7 @@
                     <a href="{{ url('/') }}#tentang" class="rounded-lg px-3 py-2 hover:bg-slate-100">Profil</a>
                     <a href="{{ url('/guru') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Guru & Karyawan</a>
                     <a href="{{ url('/prestasi') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
+                    <a href="{{ url('/galeri') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Galeri</a>
                     <a href="{{ url('/ekstra') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Ekstrakurikuler</a>
                     <a href="{{ url('/kritik-saran') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kritik & Saran</a>
                     <a href="{{ url('/kontak') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kontak</a>
@@ -189,8 +191,12 @@
                                 <span class="prestasi-badge">{{ $item['category'] }}</span>
                                 <span class="prestasi-year">{{ $item['year'] }}</span>
                             </div>
+                            <div class="mb-4 overflow-hidden rounded-2xl">
+                                <img src="{{ $item['image_url'] ? (str_starts_with($item['image_url'], 'http') ? $item['image_url'] : asset($item['image_url'])) : 'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=900&q=80' }}" alt="{{ $item['title'] }}" class="h-44 w-full object-cover" loading="lazy" />
+                            </div>
                             <h3>{{ $item['title'] }}</h3>
-                            <p>{{ $item['desc'] }}</p>
+                            <p>{{ \Illuminate\Support\Str::limit($item['description'], 120) }}</p>
+                            <a href="{{ route('prestasi.show', $item) }}" class="mt-4 inline-flex items-center rounded-xl border border-red-200 bg-red-50 px-4 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-100">Lihat Detail</a>
                         </article>
                     @endforeach
                 </div>

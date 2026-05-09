@@ -12,4 +12,15 @@ class PrestasiController extends Controller
             'achievements' => Achievement::orderByDesc('year')->get(),
         ]);
     }
+
+    public function show(Achievement $prestasi)
+    {
+        return view('prestasi.show', [
+            'achievement' => $prestasi,
+            'relatedAchievements' => Achievement::where('id', '!=', $prestasi->id)
+                ->orderByDesc('year')
+                ->limit(4)
+                ->get(),
+        ]);
+    }
 }

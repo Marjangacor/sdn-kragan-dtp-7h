@@ -14,6 +14,7 @@
                 <a href="{{ url('/') }}#tentang" class="nav-chip {{ $active === 'profil' ? 'is-active' : '' }}">Profil</a>
                 <a href="{{ url('/guru') }}" class="nav-chip {{ $active === 'guru' ? 'is-active' : '' }}">Guru & Karyawan</a>
                 <a href="{{ url('/prestasi') }}" class="nav-chip {{ $active === 'prestasi' ? 'is-active' : '' }}">Prestasi</a>
+                <a href="{{ url('/galeri') }}" class="nav-chip {{ $active === 'galeri' ? 'is-active' : '' }}">Galeri</a>
                 <a href="{{ url('/ekstra') }}" class="nav-chip {{ $active === 'ekstra' ? 'is-active' : '' }}">Ekstrakurikuler</a>
                 <a href="{{ url('/kritik-saran') }}" class="nav-chip {{ $active === 'kritik' ? 'is-active' : '' }}">Kritik & Saran</a>
                 <a href="{{ url('/kontak') }}" class="nav-chip {{ $active === 'kontak' ? 'is-active' : '' }}">Kontak</a>
@@ -47,6 +48,7 @@
             <a href="{{ url('/') }}#tentang" class="rounded-lg px-3 py-2 hover:bg-slate-100">Profil</a>
             <a href="{{ url('/guru') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Guru & Karyawan</a>
             <a href="{{ url('/prestasi') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
+            <a href="{{ url('/galeri') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Galeri</a>
             <a href="{{ url('/ekstra') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Ekstrakurikuler</a>
             <a href="{{ url('/kritik-saran') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kritik & Saran</a>
             <a href="{{ url('/kontak') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kontak</a>

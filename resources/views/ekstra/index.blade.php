@@ -31,6 +31,7 @@
                         <a href="{{ url('/') }}#tentang" class="nav-chip">Profil</a>
                         <a href="{{ url('/guru') }}" class="nav-chip">Guru & Karyawan</a>
                         <a href="{{ url('/prestasi') }}" class="nav-chip">Prestasi</a>
+                        <a href="{{ url('/galeri') }}" class="nav-chip">Galeri</a>
                         <a href="{{ url('/ekstra') }}" class="nav-chip is-active">Ekstrakurikuler</a>
                         <a href="{{ url('/kritik-saran') }}" class="nav-chip">Kritik & Saran</a>
                         <a href="{{ url('/kontak') }}" class="nav-chip">Kontak</a>
@@ -64,6 +65,7 @@
                     <a href="{{ url('/') }}#tentang" class="rounded-lg px-3 py-2 hover:bg-slate-100">Profil</a>
                     <a href="{{ url('/guru') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Guru & Karyawan</a>
                     <a href="{{ url('/prestasi') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
+                    <a href="{{ url('/galeri') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Galeri</a>
                     <a href="{{ url('/ekstra') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Ekstrakurikuler</a>
                     <a href="{{ url('/kritik-saran') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kritik & Saran</a>
                     <a href="{{ url('/kontak') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kontak</a>
@@ -159,12 +161,13 @@
                     @foreach ($activities as $activity)
                         <article class="ekstra-card js-card" data-ekstra-card data-category="{{ $activity['category'] }}">
                             <div class="ekstra-photo-wrap">
-                                <img src="{{ $activity['photo_url'] ?? 'https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=900&q=80' }}" alt="{{ $activity['title'] }}" class="ekstra-photo" loading="lazy" />
+                                <img src="{{ $activity['photo_url'] ? (str_starts_with($activity['photo_url'], 'http') ? $activity['photo_url'] : asset($activity['photo_url'])) : 'https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=900&q=80' }}" alt="{{ $activity['title'] }}" class="ekstra-photo" loading="lazy" />
                                 <span class="ekstra-category-badge">{{ $activity['category'] }}</span>
                             </div>
                             <div class="p-4">
                                 <h3 class="text-lg font-semibold leading-snug text-slate-900">{{ $activity['title'] }}</h3>
-                                <p class="mt-2 text-sm leading-6 text-slate-600">{{ $activity['desc'] }}</p>
+                                <p class="mt-2 text-sm leading-6 text-slate-600">{{ \Illuminate\Support\Str::limit($activity['description'], 120) }}</p>
+                                <a href="{{ route('ekstra.show', $activity) }}" class="mt-4 inline-flex items-center rounded-xl border border-red-200 bg-red-50 px-4 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-100">Lihat Detail</a>
                             </div>
                         </article>
                     @endforeach

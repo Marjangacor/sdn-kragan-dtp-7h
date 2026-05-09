@@ -26,6 +26,7 @@
                         <a href="#tentang" class="nav-chip">Profil</a>
                         <a href="{{ url('/guru') }}" class="nav-chip">Guru & Karyawan</a>
                         <a href="{{ url('/prestasi') }}" class="nav-chip">Prestasi</a>
+                        <a href="{{ url('/galeri') }}" class="nav-chip">Galeri</a>
                         <a href="{{ url('/ekstra') }}" class="nav-chip">Ekstrakurikuler</a>
                         <a href="{{ url('/kritik-saran') }}" class="nav-chip">Kritik & Saran</a>
                         <a href="{{ url('/kontak') }}" class="nav-chip">Kontak</a>
@@ -59,6 +60,7 @@
                     <a href="#tentang" class="rounded-lg px-3 py-2 hover:bg-slate-100">Profil</a>
                     <a href="{{ url('/guru') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Guru & Karyawan</a>
                     <a href="{{ url('/prestasi') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
+                    <a href="{{ url('/galeri') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Galeri</a>
                     <a href="{{ url('/ekstra') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Ekstrakurikuler</a>
                     <a href="{{ url('/kritik-saran') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kritik & Saran</a>
                     <a href="{{ url('/kontak') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Kontak</a>

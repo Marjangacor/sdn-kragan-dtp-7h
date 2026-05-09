@@ -21,7 +21,7 @@
                 </div>
             </header>
 
-            <form action="{{ route('admin.prestasi.store') }}" method="POST" class="space-y-6 rounded-3xl bg-white p-6 shadow-lg">
+            <form action="{{ route('admin.prestasi.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6 rounded-3xl bg-white p-6 shadow-lg">
                 @csrf
                 <div>
                     <label class="block text-sm font-semibold text-slate-700">Judul Prestasi</label>
@@ -44,9 +44,14 @@
                     @error('description')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-slate-700">Tautan Gambar (opsional)</label>
-                    <input type="url" name="image_url" value="{{ old('image_url') }}" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-400" />
-                    @error('image_url')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
+                    <label class="block text-sm font-semibold text-slate-700" for="image">Pilih Gambar</label>
+                    <input id="image" type="file" name="image" accept="image/jpeg,image/png,image/webp,image/gif" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-400 file:mr-3 file:cursor-pointer file:border-0 file:bg-orange-500 file:px-3 file:py-2 file:text-white file:font-semibold file:rounded-lg" />
+                    <p class="mt-2 text-xs text-slate-500">Format: JPG, PNG, WebP, GIF. Maksimal 5MB.</p>
+                    <div id="imagePreviewWrap" class="mt-3 hidden">
+                        <p class="text-sm font-semibold text-slate-700">Preview Gambar</p>
+                        <img id="imagePreview" alt="Preview gambar prestasi" class="mt-2 h-48 w-48 rounded-2xl object-cover shadow-sm" />
+                    </div>
+                    @error('image')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
                 </div>
                 <div class="flex flex-wrap gap-3">
                     <button type="submit" class="rounded-xl bg-[#c20f1a] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-95">Simpan</button>
@@ -54,5 +59,26 @@
                 </div>
             </form>
         </main>
+
+        <script>
+            const imageInput = document.getElementById('image');
+            const imagePreviewWrap = document.getElementById('imagePreviewWrap');
+            const imagePreview = document.getElementById('imagePreview');
+
+            if (imageInput && imagePreview && imagePreviewWrap) {
+                imageInput.addEventListener('change', function () {
+                    const file = this.files && this.files[0];
+
+                    if (!file) {
+                        imagePreviewWrap.classList.add('hidden');
+                        imagePreview.removeAttribute('src');
+                        return;
+                    }
+
+                    imagePreview.src = URL.createObjectURL(file);
+                    imagePreviewWrap.classList.remove('hidden');
+                });
+            }
+        </script>
     </body>
 </html>
