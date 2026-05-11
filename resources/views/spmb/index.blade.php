@@ -58,7 +58,6 @@
 
                     <nav class="nav-list hidden items-center gap-2 lg:flex">
                         <a href="{{ url('/') }}#beranda" class="nav-chip">Beranda</a>
-                        <a href="{{ url('/') }}#tentang" class="nav-chip">Profil</a>
                         <a href="{{ url('/guru') }}" class="nav-chip">Guru & Karyawan</a>
                         <a href="{{ url('/prestasi') }}" class="nav-chip">Prestasi</a>
                         <a href="{{ url('/galeri') }}" class="nav-chip">Galeri</a>
@@ -92,7 +91,6 @@
             <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-4 py-3 lg:hidden">
                 <div class="grid gap-2 text-sm font-medium text-slate-700">
                     <a href="{{ url('/') }}#beranda" class="rounded-lg px-3 py-2 hover:bg-slate-100">Beranda</a>
-                    <a href="{{ url('/') }}#tentang" class="rounded-lg px-3 py-2 hover:bg-slate-100">Profil</a>
                     <a href="{{ url('/guru') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Guru & Karyawan</a>
                     <a href="{{ url('/prestasi') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
                     <a href="{{ url('/galeri') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Galeri</a>
@@ -291,7 +289,7 @@
                         <h3>Ingin bertanya lebih lanjut sebelum mendaftar?</h3>
                         <p>Silakan hubungi sekolah agar orang tua mendapatkan informasi yang lebih lengkap dan akurat mengenai proses penerimaan.</p>
                     </div>
-                    <a href="{{ url('/') }}#kontak" class="spmb-cta-link">Hubungi Sekolah</a>
+                    <a href="https://wa.me/62318913900?text=Halo%20Admin%20SDN%20Kragan,%20saya%20ingin%20menghubungi%20sekolah." class="spmb-cta-link" target="_blank" rel="noopener noreferrer">Hubungi Sekolah</a>
                 </div>
             </section>
         </main>

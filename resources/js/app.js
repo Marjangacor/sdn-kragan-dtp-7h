@@ -797,6 +797,70 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
+	const galeriPage = document.querySelector('.galeri-page');
+	if (galeriPage instanceof HTMLElement) {
+		const modal = document.querySelector('#galeriDetailModal');
+		const modalImage = document.querySelector('#galeriModalImage');
+		const modalCategory = document.querySelector('#galeriModalCategory');
+		const modalTitle = document.querySelector('#galeriModalTitle');
+		const modalDate = document.querySelector('#galeriModalDate');
+		const modalDescription = document.querySelector('#galeriModalDescription');
+		const openButtons = Array.from(document.querySelectorAll('.galeri-detail-trigger'));
+		const closeButtons = Array.from(document.querySelectorAll('[data-galeri-modal-close]'));
+
+		if (
+			modal instanceof HTMLElement &&
+			modalImage instanceof HTMLImageElement &&
+			modalCategory instanceof HTMLElement &&
+			modalTitle instanceof HTMLElement &&
+			modalDate instanceof HTMLElement &&
+			modalDescription instanceof HTMLElement
+		) {
+			const openModal = (button) => {
+				if (!(button instanceof HTMLElement)) {
+					return;
+				}
+
+				const title = button.getAttribute('data-title') || 'Detail kegiatan';
+				const category = button.getAttribute('data-category') || '-';
+				const description = button.getAttribute('data-description') || '-';
+				const image = button.getAttribute('data-image') || '';
+				const date = button.getAttribute('data-date') || 'Tanggal belum ditentukan';
+
+				modalImage.src = image;
+				modalImage.alt = title;
+				modalCategory.textContent = category;
+				modalTitle.textContent = title;
+				modalDate.textContent = date;
+				modalDescription.textContent = description;
+
+				modal.classList.add('is-open');
+				modal.setAttribute('aria-hidden', 'false');
+				document.body.style.overflow = 'hidden';
+			};
+
+			const closeModal = () => {
+				modal.classList.remove('is-open');
+				modal.setAttribute('aria-hidden', 'true');
+				document.body.style.overflow = '';
+			};
+
+			openButtons.forEach((button) => {
+				button.addEventListener('click', () => openModal(button));
+			});
+
+			closeButtons.forEach((button) => {
+				button.addEventListener('click', closeModal);
+			});
+
+			document.addEventListener('keydown', (event) => {
+				if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+					closeModal();
+				}
+			});
+		}
+	}
+
 	const ekstraPage = document.querySelector('.ekstra-page');
 	if (ekstraPage instanceof HTMLElement) {
 		const extraCards = Array.from(ekstraPage.querySelectorAll('[data-ekstra-card]'));

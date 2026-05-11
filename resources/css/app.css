@@ -1127,7 +1127,7 @@ form .top-login-btn {
     border-left-width: 6px;
     border-radius: 1rem;
     background: #ffffff;
-    padding: 1rem 1.1rem;
+    padding: 1.15rem 1.2rem;
     box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
 }
 
@@ -1160,16 +1160,173 @@ form .top-login-btn {
 }
 
 .feature-card h3 {
-    font-size: 0.95rem;
+    font-size: 1.08rem;
     font-weight: 700;
     color: #0f172a;
 }
 
 .feature-card p {
-    margin-top: 0.3rem;
-    font-size: 0.82rem;
-    line-height: 1.55;
+    margin-top: 0.38rem;
+    font-size: 0.96rem;
+    line-height: 1.66;
     color: #334155;
+}
+
+.feature-card-summary {
+    border-left-color: #c31925;
+    border-left-width: 0.5rem;
+    padding: 1.45rem 1.35rem;
+    background:
+        linear-gradient(135deg, rgba(194, 15, 26, 0.98), rgba(194, 15, 26, 0.88)),
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.12), transparent 38%);
+    color: #ffffff;
+    box-shadow: 0 14px 26px rgba(128, 17, 23, 0.2);
+}
+
+.feature-card-summary h3,
+.feature-card-summary p {
+    color: #ffffff;
+}
+
+.feature-card-summary h3 {
+    font-size: 1.45rem;
+    line-height: 1.12;
+}
+
+.feature-card-summary p {
+    margin-top: 0.7rem;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.96);
+}
+
+.sambutan-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 1.35rem;
+    align-items: start;
+}
+
+.sambutan-image-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sambutan-image-card::before {
+    content: '';
+    position: absolute;
+    inset: 1.15rem -0.35rem 1.15rem 1rem;
+    border-radius: 1.4rem;
+    background: linear-gradient(135deg, rgba(194, 15, 26, 0.08), rgba(245, 194, 26, 0.06));
+    filter: blur(0);
+}
+
+.sambutan-image-frame {
+    position: relative;
+    width: min(100%, 27.5rem);
+    aspect-ratio: 4 / 4.85;
+    overflow: hidden;
+    border-radius: 1.55rem;
+    background: #ffffff;
+    box-shadow: 0 14px 24px rgba(15, 23, 42, 0.1);
+}
+
+.sambutan-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sambutan-badges {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 27.5rem);
+    margin-top: 0.65rem;
+    margin-left: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+}
+
+.sambutan-badge {
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(226, 232, 240, 0.95);
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
+    padding: 0.56rem 0.72rem;
+    color: #334155;
+}
+
+.sambutan-badge-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #64748b;
+    line-height: 1;
+}
+
+.sambutan-badge strong {
+    display: block;
+    margin-top: 0.22rem;
+    font-size: 0.88rem;
+    line-height: 1.15;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.sambutan-card {
+    position: relative;
+    border-radius: 1.45rem;
+    background: #ffffff;
+    padding: 1.35rem 1.4rem;
+    box-shadow: 0 14px 26px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e2e8f0;
+}
+
+.sambutan-kicker {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c31925;
+}
+
+.sambutan-card h2 {
+    margin-top: 0.58rem;
+    font-size: clamp(1.38rem, 2.05vw, 1.82rem);
+    line-height: 1.16;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.sambutan-card p {
+    margin-top: 0.68rem;
+    font-size: 0.9rem;
+    line-height: 1.62;
+    color: #475569;
+}
+
+.sambutan-signature {
+    margin-top: 0.92rem;
+    padding-top: 0.82rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.sambutan-name {
+    margin: 0;
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: #334155;
+}
+
+.sambutan-role {
+    margin-top: 0.15rem !important;
+    font-size: 0.82rem !important;
+    color: #64748b !important;
 }
 
 .logo-box {
@@ -1314,14 +1471,21 @@ form .top-login-btn {
     color: #ffffff !important;
 }
 
-:is(.spmb-cta-link, .ekstra-cta-link, .kritik-cta-link, .prestasi-cta-link, .kontak-cta-link, .guru-cta-link) {
-    border: 1px solid #ffffff !important;
+:is(.spmb-cta-link, .ekstra-cta-link, .kritik-cta-link, .prestasi-cta-link, .kontak-cta-link, .guru-cta-link, .galeri-cta-link) {
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
     color: #ffffff !important;
-    background: transparent !important;
+    background: linear-gradient(135deg, var(--kragan-red) 0%, #c20f1a 60%) !important;
+    box-shadow: 0 10px 18px rgba(194, 15, 26, 0.18);
+    padding: 0.68rem 1.05rem !important;
+    border-radius: 0.9rem !important;
+    font-weight: 700 !important;
+    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
-:is(.spmb-cta-link:hover, .ekstra-cta-link:hover, .kritik-cta-link:hover, .prestasi-cta-link:hover, .kontak-cta-link:hover, .guru-cta-link:hover) {
-    background: rgba(255, 255, 255, 0.2) !important;
+:is(.spmb-cta-link:hover, .ekstra-cta-link:hover, .kritik-cta-link:hover, .prestasi-cta-link:hover, .kontak-cta-link:hover, .guru-cta-link:hover, .galeri-cta-link:hover) {
+    background: linear-gradient(135deg, #9f1119 0%, #c20f1a 60%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 26px rgba(194, 15, 26, 0.26) !important;
 }
 
 .ripple-btn {
@@ -1486,6 +1650,77 @@ form .top-login-btn {
         font-size: 0.82rem;
     }
 
+    .feature-card {
+        padding: 1rem 1.05rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1rem;
+    }
+
+    .feature-card p {
+        font-size: 0.92rem;
+        line-height: 1.6;
+    }
+
+    .feature-card-summary {
+        padding: 1.2rem 1.1rem;
+    }
+
+    .feature-card-summary h3 {
+        font-size: 1.2rem;
+    }
+
+    .feature-card-summary p {
+        font-size: 0.95rem;
+    }
+
+    .sambutan-layout {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .sambutan-image-card::before {
+        inset: 0.85rem -0.15rem 0.85rem 0.35rem;
+        border-radius: 1.15rem;
+    }
+
+    .sambutan-image-frame {
+        width: 100%;
+        aspect-ratio: 4 / 4.7;
+        border-radius: 1.15rem;
+    }
+
+    .sambutan-badges {
+        width: 100%;
+        margin-top: 0.55rem;
+        margin-left: 0;
+        gap: 0.4rem;
+    }
+
+    .sambutan-badge {
+        border-radius: 0.9rem;
+        padding: 0.5rem 0.62rem;
+    }
+
+    .sambutan-badge strong {
+        font-size: 0.76rem;
+    }
+
+    .sambutan-card {
+        padding: 1.1rem 1rem;
+        border-radius: 1.15rem;
+    }
+
+    .sambutan-card h2 {
+        font-size: clamp(1.25rem, 6.1vw, 1.62rem);
+    }
+
+    .sambutan-card p {
+        font-size: 0.88rem;
+        line-height: 1.58;
+    }
+
     .hero-stats-grid {
         grid-template-columns: 1fr;
         gap: 0.9rem;
@@ -1525,44 +1760,64 @@ form .top-login-btn {
 }
 
 .guru-hero {
-    /* Make the light area slightly red/pink and more transparent so it blends with the red base */
-    background: linear-gradient(140deg, #8f1117 0%, #cc1f2a 56%, rgba(255,230,232,0.12) 100%);
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 84% 16%, rgba(255, 255, 255, 0.16), transparent 20%),
+        radial-gradient(circle at 14% 82%, rgba(255, 214, 217, 0.12), transparent 16%),
+        radial-gradient(circle at 56% 20%, rgba(255, 255, 255, 0.08), transparent 22%),
+        linear-gradient(135deg, #6f0b12 0%, #a8131d 34%, #c51925 62%, #da3e48 100%);
+}
+
+.guru-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 26%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05), transparent 30%, rgba(255, 255, 255, 0.02)),
+        linear-gradient(90deg, rgba(111, 11, 18, 0.16), transparent 26%, transparent 72%, rgba(255, 255, 255, 0.04));
+    pointer-events: none;
 }
 
 .guru-orb {
     position: absolute;
     border-radius: 999px;
     pointer-events: none;
-    filter: blur(2px);
+    filter: blur(0);
     animation: guru-float 8s ease-in-out infinite;
 }
 
 .guru-orb-1 {
-    width: 150px;
-    height: 150px;
-    right: 10px;
-    top: 8px;
-    /* Tinted white (soft pink) with lower opacity to blend with the red background */
-    background: radial-gradient(circle, rgba(255, 230, 232, 0.18), rgba(255, 230, 232, 0));
+    width: 190px;
+    height: 190px;
+    right: 4%;
+    top: 3%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 66%);
 }
 
 .guru-orb-2 {
-    width: 180px;
-    height: 180px;
-    left: 0;
-    bottom: 0;
-    /* Slightly reduce opacity so the orb is subtle */
-    background: radial-gradient(circle, rgba(255, 214, 217, 0.16), rgba(255, 214, 217, 0));
+    width: 220px;
+    height: 220px;
+    left: -1%;
+    bottom: -4%;
+    background: radial-gradient(circle, rgba(255, 167, 176, 0.18), rgba(255, 167, 176, 0) 70%);
     animation-delay: 0.45s;
 }
 
+.guru-hero .hero-grid,
+.guru-hero > .relative {
+    position: relative;
+    z-index: 1;
+}
+
 .guru-summary-card {
-    border-radius: 0.95rem;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(4px);
-    padding: 0.95rem 1rem;
-    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+    backdrop-filter: blur(6px);
+    padding: 1rem 1.05rem;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.14);
 }
 
 .guru-summary-card[data-guru-card] {
@@ -1572,7 +1827,7 @@ form .top-login-btn {
 
 .guru-summary-card[data-guru-card]:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 28px rgba(15, 23, 42, 0.2);
+    box-shadow: 0 18px 32px rgba(15, 23, 42, 0.22);
 }
 
 .guru-summary-number {
@@ -1587,6 +1842,22 @@ form .top-login-btn {
     font-size: 0.9rem;
     font-weight: 600;
     color: rgba(255, 237, 240, 0.96);
+}
+
+@media (max-width: 1023px) {
+    .guru-orb-1 {
+        width: 150px;
+        height: 150px;
+        right: -12px;
+        top: 10px;
+    }
+
+    .guru-orb-2 {
+        width: 170px;
+        height: 170px;
+        left: -18px;
+        bottom: -26px;
+    }
 }
 
 .guru-filter-wrap {
@@ -1849,6 +2120,20 @@ form .top-login-btn {
 @media (max-width: 767px) {
     .guru-showcase-grid {
         grid-template-columns: 1fr;
+    }
+
+    .guru-orb-1 {
+        width: 150px;
+        height: 150px;
+        right: -12px;
+        top: 10px;
+    }
+
+    .guru-orb-2 {
+        width: 170px;
+        height: 170px;
+        left: -18px;
+        bottom: -26px;
     }
 
     .guru-cta-box {
@@ -2122,6 +2407,25 @@ form .top-login-btn {
     box-shadow: 0 24px 48px rgba(196, 30, 58, 0.32);
 }
 
+/* Force consistent red background for all 'Hubungi Sekolah' CTA links
+   Placed at EOF to override per-page transparent CTA rules. */
+:is(.spmb-cta-link, .ekstra-cta-link, .kritik-cta-link, .prestasi-cta-link, .kontak-cta-link, .guru-cta-link, .galeri-cta-link) {
+    background: linear-gradient(135deg, var(--kragan-red) 0%, #c20f1a 60%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 10px 20px rgba(194, 15, 26, 0.18) !important;
+    padding: 0.68rem 1.05rem !important;
+    border-radius: 0.9rem !important;
+    font-weight: 700 !important;
+    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease !important;
+}
+
+:is(.spmb-cta-link:hover, .ekstra-cta-link:hover, .kritik-cta-link:hover, .prestasi-cta-link:hover, .kontak-cta-link:hover, .guru-cta-link:hover, .galeri-cta-link:hover) {
+    background: linear-gradient(135deg, #9f1119 0%, #c20f1a 60%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 14px 28px rgba(194, 15, 26, 0.26) !important;
+}
+
 .spmb-cta-box::before {
     content: '';
     position: absolute;
@@ -2216,6 +2520,57 @@ form .top-login-btn {
 
 .galeri-page {
     font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+.galeri-intro-card {
+    border-radius: 1.25rem;
+    border: 1px solid #e7edf5;
+    background:
+        radial-gradient(circle at 88% 10%, rgba(254, 226, 226, 0.6), transparent 32%),
+        linear-gradient(150deg, #ffffff, #f8fafc 72%);
+    padding: 1.45rem 1.55rem;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.07);
+}
+
+.galeri-intro-kicker {
+    color: #be123c;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.galeri-intro-card h1 {
+    margin-top: 0.6rem;
+    font-size: clamp(1.9rem, 2.9vw, 2.55rem);
+    line-height: 1.14;
+    letter-spacing: -0.02em;
+    font-weight: 750;
+    color: #0f172a;
+}
+
+.galeri-intro-card p {
+    margin-top: 0.6rem;
+    max-width: 64ch;
+    color: #334155;
+    line-height: 1.68;
+}
+
+.galeri-intro-points {
+    margin-top: 0.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.galeri-intro-points span {
+    border-radius: 999px;
+    border: 1px solid #f1c3ca;
+    background: rgba(255, 255, 255, 0.88);
+    color: #9f1239;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.35rem 0.62rem;
 }
 
 .galeri-hero {
@@ -2401,30 +2756,73 @@ form .top-login-btn {
     padding: 0.28rem 0.62rem;
 }
 
+.galeri-album-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem 1.6rem;
+    align-items: end;
+    border-left: 5px solid #c31925;
+    padding: 0.25rem 0 0.25rem 1rem;
+}
+
+.galeri-album-kicker {
+    color: #c31925;
+    font-size: 0.86rem;
+    letter-spacing: 0.14em;
+    font-weight: 800;
+}
+
+.galeri-album-title {
+    font-size: clamp(1.82rem, 3.1vw, 2.55rem);
+    line-height: 1.13;
+    letter-spacing: -0.018em;
+    font-weight: 800;
+    color: #0f172a;
+    max-width: 18ch;
+}
+
+.galeri-album-description {
+    margin: 0;
+    max-width: 50ch;
+    text-align: left;
+    color: #334155;
+    font-size: 0.98rem;
+    line-height: 1.7;
+}
+
 .galeri-grid {
     display: grid;
-    gap: 1rem;
+    gap: 1.15rem;
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .galeri-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
     overflow: hidden;
-    border-radius: 1rem;
+    border-radius: 1.1rem;
     border: 1px solid #dde5f0;
     background: #ffffff;
-    box-shadow: 0 10px 18px rgba(15, 23, 42, 0.08);
-    opacity: 0;
-    transform: translateY(24px) scale(0.98);
-    transition: box-shadow 240ms ease, opacity 240ms ease, transform 240ms ease;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.07);
+    cursor: pointer;
+    transition: box-shadow 240ms ease, transform 240ms ease;
 }
 
 .galeri-card.is-visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: none;
 }
 
 .galeri-card:hover {
-    box-shadow: 0 16px 26px rgba(15, 23, 42, 0.12);
+    transform: translateY(-4px);
+    box-shadow: 0 18px 28px rgba(15, 23, 42, 0.12);
+}
+
+.galeri-card:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
 }
 
 .galeri-image-wrap {
@@ -2460,13 +2858,30 @@ form .top-login-btn {
 }
 
 .galeri-card-body {
-    padding: 1.2rem;
+    padding: 1rem 1.05rem 1.1rem;
     display: flex;
     flex-direction: column;
     flex: 1;
 }
 
+.galeri-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.36rem;
+}
+
+.galeri-card-meta span {
+    border-radius: 999px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: #475569;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.2rem 0.48rem;
+}
+
 .galeri-card-body h3 {
+    margin-top: 0.65rem;
     font-size: 1.15rem;
     font-weight: 700;
     color: #0f172a;
@@ -2475,7 +2890,7 @@ form .top-login-btn {
 }
 
 .galeri-card-body p {
-    margin-top: 0.7rem;
+    margin-top: 0.55rem;
     color: #475569;
     line-height: 1.6;
     font-size: 0.95rem;
@@ -2484,6 +2899,23 @@ form .top-login-btn {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.galeri-detail-hint {
+    margin-top: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #c31925;
+}
+
+.galeri-detail-hint::after {
+    content: 'lihat';
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 .galeri-cta-box {
@@ -2531,14 +2963,109 @@ form .top-login-btn {
 }
 
 [data-galeri-fade] {
-    opacity: 0;
-    transform: translateY(14px);
+    opacity: 1;
+    transform: none;
 }
 
 [data-galeri-fade].is-visible {
     opacity: 1;
     transform: translateY(0);
     transition: opacity 560ms ease, transform 560ms ease;
+}
+
+.galeri-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 120;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 220ms ease;
+}
+
+.galeri-modal.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.galeri-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.7);
+}
+
+.galeri-modal-dialog {
+    position: relative;
+    width: min(900px, 100%);
+    max-height: calc(100vh - 2rem);
+    overflow: auto;
+    border-radius: 1.15rem;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    box-shadow: 0 24px 46px rgba(2, 6, 23, 0.35);
+}
+
+.galeri-modal-close {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.65rem;
+    z-index: 2;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    background: rgba(255, 255, 255, 0.95);
+    color: #0f172a;
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+.galeri-modal-media-wrap {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    overflow: hidden;
+}
+
+.galeri-modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.galeri-modal-content {
+    padding: 1rem 1.05rem 1.15rem;
+}
+
+.galeri-modal-category {
+    display: inline-flex;
+    border-radius: 999px;
+    background: #fee2e2;
+    color: #b91c1c;
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 0.25rem 0.62rem;
+}
+
+.galeri-modal-title {
+    margin-top: 0.7rem;
+    font-size: clamp(1.28rem, 2vw, 1.75rem);
+    color: #0f172a;
+    line-height: 1.3;
+    font-weight: 800;
+}
+
+.galeri-modal-date {
+    margin-top: 0.5rem;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.galeri-modal-description {
+    margin-top: 0.75rem;
+    color: #334155;
+    line-height: 1.72;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2557,6 +3084,44 @@ form .top-login-btn {
         font-size: clamp(2.2rem, 10vw, 3.4rem);
     }
 
+    .galeri-intro-card {
+        padding: 0.95rem;
+    }
+
+    .galeri-intro-kicker {
+        font-size: 0.72rem;
+    }
+
+    .galeri-intro-card h1 {
+        font-size: clamp(1.48rem, 8vw, 1.95rem);
+    }
+
+    .galeri-intro-card p {
+        font-size: 0.95rem;
+    }
+
+    .galeri-album-header {
+        gap: 0.55rem;
+        align-items: start;
+        padding: 0.2rem 0 0.2rem 0.75rem;
+    }
+
+    .galeri-album-kicker {
+        font-size: 0.76rem;
+        letter-spacing: 0.11em;
+    }
+
+    .galeri-album-title {
+        font-size: clamp(1.55rem, 8.2vw, 2rem);
+        max-width: 100%;
+    }
+
+    .galeri-album-description {
+        max-width: 100%;
+        font-size: 0.92rem;
+        line-height: 1.6;
+    }
+
     .galeri-stats-grid {
         grid-template-columns: 1fr;
     }
@@ -2572,6 +3137,10 @@ form .top-login-btn {
     .galeri-cta-box {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .galeri-modal-content {
+        padding: 0.95rem 0.95rem 1rem;
     }
 }
 
@@ -3879,7 +4448,7 @@ form .top-login-btn {
     position: relative;
     overflow: hidden;
     border-radius: 2rem;
-    min-height: 28rem;
+    min-height: 22rem;
 }
 
 .kontak-hero-image-container img {
@@ -4048,13 +4617,13 @@ form .top-login-btn {
     overflow: hidden;
     border: 1px solid #cbd5e1;
     background: #e2e8f0;
-    min-height: 22rem;
+    min-height: 18rem;
 }
 
 .kontak-map-frame iframe {
     width: 100%;
     height: 100%;
-    min-height: 22rem;
+    min-height: 18rem;
     border: 0;
 }
 
@@ -4190,6 +4759,20 @@ form .top-login-btn {
 @media (max-width: 767px) {
     .kontak-title {
         font-size: clamp(2.2rem, 10vw, 3.2rem);
+    }
+
+    .kontak-hero-image-container {
+        min-height: 15rem;
+        border-radius: 1.4rem;
+    }
+
+    .kontak-hero-image-container img {
+        min-height: 15rem;
+    }
+
+    .kontak-map-frame,
+    .kontak-map-frame iframe {
+        min-height: 15rem;
     }
 
     .kontak-highlight-grid,

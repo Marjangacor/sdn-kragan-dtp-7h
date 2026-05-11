@@ -11,7 +11,6 @@
 
             <nav class="nav-list hidden items-center gap-2 lg:flex">
                 <a href="{{ url('/') }}#beranda" class="nav-chip {{ $active === 'beranda' ? 'is-active' : '' }}">Beranda</a>
-                <a href="{{ url('/') }}#tentang" class="nav-chip {{ $active === 'profil' ? 'is-active' : '' }}">Profil</a>
                 <a href="{{ url('/guru') }}" class="nav-chip {{ $active === 'guru' ? 'is-active' : '' }}">Guru & Karyawan</a>
                 <a href="{{ url('/prestasi') }}" class="nav-chip {{ $active === 'prestasi' ? 'is-active' : '' }}">Prestasi</a>
                 <a href="{{ url('/galeri') }}" class="nav-chip {{ $active === 'galeri' ? 'is-active' : '' }}">Galeri</a>
@@ -45,7 +44,6 @@
     <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-4 py-3 lg:hidden">
         <div class="grid gap-2 text-sm font-medium text-slate-700">
             <a href="{{ url('/') }}#beranda" class="rounded-lg px-3 py-2 hover:bg-slate-100">Beranda</a>
-            <a href="{{ url('/') }}#tentang" class="rounded-lg px-3 py-2 hover:bg-slate-100">Profil</a>
             <a href="{{ url('/guru') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Guru & Karyawan</a>
             <a href="{{ url('/prestasi') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
             <a href="{{ url('/galeri') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Galeri</a>

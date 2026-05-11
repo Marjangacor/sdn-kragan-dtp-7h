@@ -56,7 +56,6 @@
 
                     <nav class="nav-list hidden items-center gap-2 lg:flex">
                         <a href="{{ url('/') }}#beranda" class="nav-chip">Beranda</a>
-                        <a href="{{ url('/') }}#tentang" class="nav-chip">Profil</a>
                         <a href="{{ url('/guru') }}" class="nav-chip">Guru & Karyawan</a>
                         <a href="{{ url('/prestasi') }}" class="nav-chip is-active">Prestasi</a>
                         <a href="{{ url('/galeri') }}" class="nav-chip">Galeri</a>
@@ -90,7 +89,6 @@
             <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-4 py-3 lg:hidden">
                 <div class="grid gap-2 text-sm font-medium text-slate-700">
                     <a href="{{ url('/') }}#beranda" class="rounded-lg px-3 py-2 hover:bg-slate-100">Beranda</a>
-                    <a href="{{ url('/') }}#tentang" class="rounded-lg px-3 py-2 hover:bg-slate-100">Profil</a>
                     <a href="{{ url('/guru') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Guru & Karyawan</a>
                     <a href="{{ url('/prestasi') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
                     <a href="{{ url('/galeri') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Galeri</a>
@@ -178,7 +176,7 @@
                         <p class="prestasi-info-kicker">Daftar Prestasi</p>
                         <h2 class="mt-2 text-2xl font-semibold text-slate-900">Pencapaian yang telah diraih</h2>
                     </div>
-                    <p class="max-w-2xl text-sm leading-7 text-slate-600">Semua kartu di bawah ini tampil dengan animasi masuk bertahap agar halaman terasa hidup tanpa berlebihan.</p>
+                    <!-- Descriptive line about card animations removed -->
                 </div>
 
                 <div class="prestasi-grid">
@@ -206,7 +204,7 @@
                         <h3>Prestasi adalah hasil dari kerja sama dan pembinaan yang konsisten</h3>
                         <p>Kami terus membuka ruang bagi siswa untuk berkembang di bidang akademik, seni, olahraga, dan karakter.</p>
                     </div>
-                    <a href="{{ url('/') }}#kontak" class="prestasi-cta-link">Hubungi Sekolah</a>
+                    <a href="https://wa.me/62318913900?text=Halo%20Admin%20SDN%20Kragan,%20saya%20ingin%20menghubungi%20sekolah." class="prestasi-cta-link" target="_blank" rel="noopener noreferrer">Hubungi Sekolah</a>
                 </div>
             </section>
         </main>

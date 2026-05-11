@@ -79,7 +79,6 @@
 
                     <nav class="nav-list hidden items-center gap-2 lg:flex">
                         <a href="{{ url('/') }}#beranda" class="nav-chip">Beranda</a>
-                        <a href="{{ url('/') }}#tentang" class="nav-chip">Profil</a>
                         <a href="{{ url('/guru') }}" class="nav-chip">Guru & Karyawan</a>
                         <a href="{{ url('/prestasi') }}" class="nav-chip">Prestasi</a>
                         <a href="{{ url('/galeri') }}" class="nav-chip is-active">Galeri</a>
@@ -113,7 +112,6 @@
             <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-4 py-3 lg:hidden">
                 <div class="grid gap-2 text-sm font-medium text-slate-700">
                     <a href="{{ url('/') }}#beranda" class="rounded-lg px-3 py-2 hover:bg-slate-100">Beranda</a>
-                    <a href="{{ url('/') }}#tentang" class="rounded-lg px-3 py-2 hover:bg-slate-100">Profil</a>
                     <a href="{{ url('/guru') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Guru & Karyawan</a>
                     <a href="{{ url('/prestasi') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
                     <a href="{{ url('/galeri') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Galeri</a>
@@ -138,87 +136,57 @@
         </header>
 
         <main class="galeri-page">
-            <section class="galeri-hero relative overflow-hidden text-white">
-                <div class="galeri-noise" aria-hidden="true"></div>
-                <div class="galeri-orb galeri-orb-1" aria-hidden="true"></div>
-                <div class="galeri-orb galeri-orb-2" aria-hidden="true"></div>
-
-                <div class="relative mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-14">
-                    <div class="space-y-5">
-                        <p class="galeri-kicker reveal">Dokumentasi Sekolah</p>
-                        <div class="space-y-4 reveal" style="--reveal-delay: 90ms">
-                            <h1 class="galeri-title">Galeri Kegiatan SDN Kragan</h1>
-                            <p class="galeri-description">Kumpulan foto dokumentasi kegiatan sekolah, mulai dari pembelajaran, upacara, seni, lomba, hingga kebersamaan warga sekolah. Setiap foto merekam proses tumbuh bersama di lingkungan yang aktif dan positif.</p>
-                        </div>
-
-                        <div class="galeri-stats-grid reveal" style="--reveal-delay: 180ms">
-                            @foreach ($highlights as $item)
-                                <article class="galeri-stat-card js-card" data-galeri-card>
-                                    <p class="galeri-stat-number"><span data-counter="{{ data_get($item, 'value') }}">0</span>+</p>
-                                    <p class="galeri-stat-label">{{ data_get($item, 'label') }}</p>
-                                </article>
-                            @endforeach
-                        </div>
+            <section class="mx-auto max-w-7xl px-6 pt-8 lg:px-8 lg:pt-10">
+                <div class="galeri-intro-card">
+                    <p class="galeri-intro-kicker">Galeri Kegiatan</p>
+                    <h1>Cerita Kegiatan SDN Kragan</h1>
+                    <p>Di sini kamu bisa melihat berbagai momen sekolah, dari belajar di kelas sampai kegiatan kebersamaan. Klik foto mana saja untuk membuka detail kegiatan secara lengkap.</p>
+                    <div class="galeri-intro-points">
+                        <span>Foto terbaru</span>
+                        <span>Informasi ringkas</span>
+                        <span>Detail bisa dibuka</span>
                     </div>
-
-                    <div class="reveal" style="--reveal-delay: 160ms">
-                        <div class="galeri-hero-card js-card">
-                            <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=1200&q=80" alt="Siswa dan kegiatan sekolah" class="h-full w-full object-cover" />
-                            <div class="galeri-hero-card-overlay">
-                                <p>Setiap momen terdokumentasi untuk menghidupkan kembali semangat kegiatan sekolah.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="mx-auto max-w-7xl px-6 py-8 lg:px-8 lg:py-10">
-                <div class="galeri-highlight-grid">
-                    <article class="galeri-info-card" data-galeri-fade>
-                        <p class="galeri-info-kicker">Ragam Kegiatan</p>
-                        <h2>Foto dokumentasi yang mewakili suasana sekolah</h2>
-                        <ul class="galeri-list">
-                            <li>Upacara dan kegiatan rutin sekolah</li>
-                            <li>Pembelajaran aktif di kelas</li>
-                            <li>Kegiatan lomba, seni, dan kreasi siswa</li>
-                            <li>Kerja bakti dan kolaborasi warga sekolah</li>
-                        </ul>
-                    </article>
-                    <article class="galeri-info-card galeri-info-card-accent" data-galeri-fade>
-                        <p class="galeri-info-kicker">Sorotan Utama</p>
-                        <h2>Momen yang paling sering terdokumentasi</h2>
-                        <div class="galeri-chip-wrap">
-                            <span class="galeri-chip">Pembelajaran</span>
-                            <span class="galeri-chip">Upacara</span>
-                            <span class="galeri-chip">Seni & Lomba</span>
-                            <span class="galeri-chip">Gotong Royong</span>
-                            <span class="galeri-chip">Kolaborasi</span>
-                        </div>
-                    </article>
                 </div>
             </section>
 
             <section class="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-12">
-                <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div class="galeri-album-header mb-8">
                     <div>
-                        <p class="galeri-info-kicker">Album Kegiatan</p>
-                        <h2 class="mt-2 text-2xl font-semibold text-slate-900">Dokumentasi foto sekolah</h2>
+                        <p class="galeri-info-kicker galeri-album-kicker">Album Kegiatan</p>
+                        <h2 class="galeri-album-title mt-3">Momen Sekolah Dalam Foto</h2>
                     </div>
-                    <p class="max-w-2xl text-sm leading-7 text-slate-600">Galeri dibuat dalam format kartu foto agar mudah dipindai di desktop maupun mobile, tanpa mengorbankan tampilan visual.</p>
                 </div>
 
                 <div class="galeri-grid">
                     @foreach ($galleryItems as $item)
-                        <article class="galeri-card js-card" data-galeri-card>
+                        @php
+                            $eventDate = data_get($item, 'event_date');
+                            $formattedDate = $eventDate ? \Illuminate\Support\Carbon::parse($eventDate)->translatedFormat('d F Y') : 'Tanggal belum ditentukan';
+                        @endphp
+                        <button
+                            type="button"
+                            class="galeri-card js-card galeri-detail-trigger"
+                            data-galeri-card
+                            data-title="{{ data_get($item, 'title') }}"
+                            data-category="{{ data_get($item, 'category') }}"
+                            data-description="{{ data_get($item, 'description') }}"
+                            data-image="{{ data_get($item, 'image_url') }}"
+                            data-date="{{ $formattedDate }}"
+                        >
                             <div class="galeri-image-wrap">
                                 <img src="{{ data_get($item, 'image_url') }}" alt="{{ data_get($item, 'title') }}" class="galeri-image" />
                                 <span class="galeri-badge">{{ data_get($item, 'category') }}</span>
                             </div>
                             <div class="galeri-card-body">
+                                <div class="galeri-card-meta">
+                                    <span>{{ data_get($item, 'category') }}</span>
+                                    <span>{{ $formattedDate }}</span>
+                                </div>
                                 <h3>{{ data_get($item, 'title') }}</h3>
                                 <p>{{ data_get($item, 'description') }}</p>
+                                <span class="galeri-detail-hint">Lihat detail kegiatan</span>
                             </div>
-                        </article>
+                        </button>
                     @endforeach
                 </div>
             </section>
@@ -230,9 +198,98 @@
                         <h3>Dokumentasi kegiatan membantu sekolah bercerita lewat gambar</h3>
                         <p>Kalau kamu punya foto kegiatan baru, halaman ini bisa dikembangkan lagi menjadi album yang lebih lengkap dan terurut per agenda.</p>
                     </div>
-                    <a href="{{ url('/kontak') }}" class="galeri-cta-link">Hubungi Sekolah</a>
+                    <a href="https://wa.me/62318913900?text=Halo%20Admin%20SDN%20Kragan,%20saya%20ingin%20menghubungi%20sekolah." class="galeri-cta-link" target="_blank" rel="noopener noreferrer">Hubungi Sekolah</a>
                 </div>
             </section>
+
+            <div id="galeriDetailModal" class="galeri-modal" aria-hidden="true">
+                <div class="galeri-modal-backdrop" data-galeri-modal-close></div>
+                <div class="galeri-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="galeriModalTitle">
+                    <button type="button" class="galeri-modal-close" data-galeri-modal-close aria-label="Tutup detail galeri">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="galeri-modal-media-wrap">
+                        <img id="galeriModalImage" src="" alt="" class="galeri-modal-image" />
+                    </div>
+                    <div class="galeri-modal-content">
+                        <p id="galeriModalCategory" class="galeri-modal-category"></p>
+                        <h3 id="galeriModalTitle" class="galeri-modal-title"></h3>
+                        <p id="galeriModalDate" class="galeri-modal-date"></p>
+                        <p id="galeriModalDescription" class="galeri-modal-description"></p>
+                    </div>
+                </div>
+            </div>
         </main>
+
+        <footer id="kontak" class="footer-wrap text-slate-200">
+            <div class="mx-auto grid max-w-7xl gap-8 px-6 py-12 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
+                <div class="space-y-5 reveal js-card">
+                    <div class="flex items-center gap-3">
+                        <img src="{{ asset('images/logo-upt-sdn-kragan.png') }}" alt="Logo SDN Kragan" class="school-logo-img school-logo-img--footer" />
+                        <div>
+                            <p class="text-base font-semibold text-white">SDN Kragan</p>
+                            <p class="text-xs text-blue-100/80">Galeri Kegiatan Sekolah</p>
+                        </div>
+                    </div>
+                    <p class="max-w-md text-sm leading-7 text-blue-100/80">Dokumentasi kegiatan sekolah sebagai media informasi dan arsip visual untuk siswa, orang tua, dan masyarakat.</p>
+                </div>
+                <div class="grid gap-6 sm:grid-cols-2">
+                    <div class="reveal js-card" style="--reveal-delay: 80ms">
+                        <h3 class="text-sm font-semibold text-white">Tautan Cepat</h3>
+                        <ul class="space-y-3 text-slate-600 list-disc pl-5 marker:text-white-600">
+                            <!-- Profil Sekolah link removed -->
+                            <li><a href="{{ route('guru.index') }}" class="hover:text-white">Guru & Karyawan</a></li>
+                            <li><a href="{{ route('prestasi.index') }}" class="hover:text-white">Prestasi</a></li>
+                            <li><a href="{{ route('ekstra.index') }}" class="hover:text-white">Ekstrakurikuler</a></li>
+                        </ul>
+                    </div>
+                    <div class="reveal js-card" style="--reveal-delay: 160ms">
+                        <h3 class="text-sm font-semibold text-white">Kontak</h3>
+                        <div class="mt-3 space-y-2 text-sm text-blue-100/80">
+                            <p>Jl. Pendidikan No. 12, Kragan, Rembang</p>
+                            <p>(0298) 123-456</p>
+                            <p>info@sdnkragan.sch.id</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/15 py-4 text-center text-xs text-blue-100/70">© 2026 SDN Kragan. All rights reserved.</div>
+        </footer>
+
+        <button id="accessibilityToggle" class="acc-toggle-btn" type="button" aria-label="Buka aksesibilitas" aria-expanded="false" aria-controls="accessibilityPanel">
+            <svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" aria-hidden="true">
+                <path d="M12 4.5C10.4812 4.5 9.25 5.73122 9.25 7.25C9.25 8.76878 10.4812 10 12 10C13.5188 10 14.75 8.76878 14.75 7.25C14.75 5.73122 13.5188 4.5 12 4.5Z" stroke="currentColor" stroke-width="1.7" />
+                <path d="M6.5 12.5H17.5M8.8 12.5L7.2 19.5M15.2 12.5L16.8 19.5M12 10.5V19.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+            </svg>
+        </button>
+
+        <aside id="accessibilityPanel" class="acc-panel" aria-hidden="true">
+            <div class="acc-panel-header">
+                <button id="accessibilityClose" class="acc-icon-btn" type="button" aria-label="Tutup panel">
+                    <svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                </button>
+                <h3>Aksesibilitas</h3>
+                <button id="accessibilityReset" class="acc-icon-btn" type="button" aria-label="Reset pengaturan">
+                    <svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" aria-hidden="true"><path d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C14.6344 4 16.9712 5.27366 18.429 7.2376M18.429 7.2376V4.5M18.429 7.2376H15.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </button>
+            </div>
+
+            <div class="acc-list">
+                <button class="acc-item" type="button" data-acc-action="text-increase"><span class="acc-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19H10M7 19V7M17 8V16M13 12H21" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span>Perbesar Teks</span></button>
+                <button class="acc-item" type="button" data-acc-action="text-decrease"><span class="acc-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19H10M7 19V7M13 12H21" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span>Perkecil Teks</span></button>
+                <button class="acc-item" type="button" data-acc-action="letter-increase"><span class="acc-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 17L7.5 7L11 17M5.5 13H9.5M14 8H20M17 5V11" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span>Tambah Jarak Teks</span></button>
+                <button class="acc-item" type="button" data-acc-action="letter-decrease"><span class="acc-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 17L7.5 7L11 17M5.5 13H9.5M14 8H20" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span>Kurangi Jarak Teks</span></button>
+                <button class="acc-item" type="button" data-acc-action="line-increase"><span class="acc-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7H12M4 17H12M16 12H22M19 9V15" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span>Tambah Tinggi Teks</span></button>
+                <button class="acc-item" type="button" data-acc-action="line-decrease"><span class="acc-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7H12M4 17H12M16 12H22" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span>Kurangi Tinggi Teks</span></button>
+                <button class="acc-item" type="button" data-acc-action="invert"><span class="acc-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20V4Z" fill="currentColor" /><path d="M12 4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span>Balik Warna</span></button>
+                <button class="acc-item" type="button" data-acc-action="grayscale"><span class="acc-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7.5L8 4L12 7.5L16 4L20 7.5V16.5L16 20L12 16.5L8 20L4 16.5V7.5Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" /></svg></span><span>Warna Abu-Abu</span></button>
+                <button class="acc-item" type="button" data-acc-action="underline"><span class="acc-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 6V11C7 13.7614 9.23858 16 12 16C14.7614 16 17 13.7614 17 11V6M6 19H18" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span>Garis Bawahi Teks</span></button>
+                <button class="acc-item" type="button" data-acc-action="big-cursor"><span class="acc-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4L14 12L10 12.8L12.5 19L9.5 20L7 13.8L4.8 16.5L5 4Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" /></svg></span><span>Perbesar Kursor</span></button>
+                <button class="acc-item" type="button" data-acc-action="reading-guide"><span class="acc-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7H20M4 12H20M4 17H14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" /></svg></span><span>Alat Bantu Baca</span></button>
+                <button class="acc-item" type="button" data-acc-action="reduce-motion"><span class="acc-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4ZM6 18L18 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span>Matikan Animasi</span></button>
+            </div>
+        </aside>
+
+        <div id="readingGuide" class="reading-guide" aria-hidden="true"></div>
     </body>
 </html>

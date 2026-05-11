@@ -60,7 +60,6 @@
 
                     <nav class="nav-list hidden items-center gap-2 lg:flex">
                         <a href="{{ url('/') }}#beranda" class="nav-chip">Beranda</a>
-                        <a href="{{ url('/') }}#tentang" class="nav-chip">Profil</a>
                         <a href="{{ url('/guru') }}" class="nav-chip">Guru & Karyawan</a>
                         <a href="{{ url('/prestasi') }}" class="nav-chip">Prestasi</a>
                         <a href="{{ url('/galeri') }}" class="nav-chip">Galeri</a>
@@ -94,7 +93,6 @@
             <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-4 py-3 lg:hidden">
                 <div class="grid gap-2 text-sm font-medium text-slate-700">
                     <a href="{{ url('/') }}#beranda" class="rounded-lg px-3 py-2 hover:bg-slate-100">Beranda</a>
-                    <a href="{{ url('/') }}#tentang" class="rounded-lg px-3 py-2 hover:bg-slate-100">Profil</a>
                     <a href="{{ url('/guru') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Guru & Karyawan</a>
                     <a href="{{ url('/prestasi') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
                     <a href="{{ url('/galeri') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Galeri</a>
@@ -124,7 +122,7 @@
                 <div class="kontak-orb kontak-orb-1" aria-hidden="true"></div>
                 <div class="kontak-orb kontak-orb-2" aria-hidden="true"></div>
 
-                <div class="relative mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-14">
+                <div class="relative mx-auto grid max-w-7xl gap-8 px-6 py-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-10">
                     <div class="space-y-5">
                         <p class="kontak-kicker reveal">Hubungi Kami</p>
                         <div class="space-y-4 reveal" style="--reveal-delay: 90ms">
@@ -155,7 +153,7 @@
                     </div>
                 </div>
             </section>
-            <section class="mx-auto max-w-7xl px-6 py-8 lg:px-8 lg:py-10">
+            <section class="mx-auto max-w-7xl px-6 py-6 lg:px-8 lg:py-8">
                 <div class="kontak-highlight-grid">
                     <article class="kontak-info-card" data-kontak-fade>
                         <p class="kontak-info-kicker">Alamat Lengkap</p>
@@ -183,13 +181,13 @@
                 </div>
             </section>
 
-            <section class="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-12">
-                <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <section class="mx-auto max-w-7xl px-6 py-8 lg:px-8 lg:py-10">
+                <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                     <div>
                         <p class="kontak-info-kicker">Informasi Kontak</p>
                         <h2 class="mt-2 text-2xl font-semibold text-slate-900">Saluran komunikasi sekolah</h2>
                     </div>
-                    <p class="max-w-2xl text-sm leading-7 text-slate-600">Semua kartu dibuat dengan animasi masuk yang lembut agar halaman tetap selaras dengan tampilan lain di situs ini.</p>
+                    <!-- Descriptive line about card animations removed -->
                 </div>
 
                 <div class="kontak-grid">
@@ -203,7 +201,7 @@
                 </div>
             </section>
 
-            <section class="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-12">
+            <section class="mx-auto max-w-7xl px-6 py-8 lg:px-8 lg:py-10">
                 <div class="kontak-map-grid">
                     <article class="kontak-map-card" data-kontak-fade>
                         <p class="kontak-info-kicker">Peta Lokasi</p>
@@ -244,14 +242,14 @@
                 </div>
             </section>
 
-            <section class="mx-auto max-w-7xl px-6 pb-14 lg:px-8 lg:pb-16">
+            <section class="mx-auto max-w-7xl px-6 pb-10 lg:px-8 lg:pb-12">
                 <div class="kontak-cta-box" data-kontak-fade>
                     <div>
                         <p class="kontak-info-kicker">Tetap Terhubung</p>
                         <h3>Silakan hubungi sekolah jika membutuhkan informasi lebih lanjut</h3>
                         <p>Kami siap menerima pertanyaan, masukan, dan kebutuhan informasi terkait kegiatan sekolah maupun pendaftaran.</p>
                     </div>
-                    <a href="{{ url('/') }}#kontak" class="kontak-cta-link">Lihat Footer Kontak</a>
+                    <a href="https://wa.me/62318913900?text=Halo%20Admin%20SDN%20Kragan,%20saya%20ingin%20menghubungi%20sekolah%20terkait%20informasi%20lebih%20lanjut." class="kontak-cta-link" target="_blank" rel="noopener noreferrer">Chat WhatsApp Admin</a>
                 </div>
             </section>
         </main>

@@ -23,7 +23,6 @@
 
                     <nav class="nav-list hidden items-center gap-2 lg:flex">
                         <a href="#beranda" class="nav-chip is-active">Beranda</a>
-                        <a href="#tentang" class="nav-chip">Profil</a>
                         <a href="{{ url('/guru') }}" class="nav-chip">Guru & Karyawan</a>
                         <a href="{{ url('/prestasi') }}" class="nav-chip">Prestasi</a>
                         <a href="{{ url('/galeri') }}" class="nav-chip">Galeri</a>
@@ -54,10 +53,9 @@
                     </button>
                 </div>
             </div>
-            <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-4 py-3 lg:hidden">
+                    <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-4 py-3 lg:hidden">
                 <div class="grid gap-2 text-sm font-medium text-slate-700">
                     <a href="#beranda" class="rounded-lg px-3 py-2 hover:bg-slate-100">Beranda</a>
-                    <a href="#tentang" class="rounded-lg px-3 py-2 hover:bg-slate-100">Profil</a>
                     <a href="{{ url('/guru') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Guru & Karyawan</a>
                     <a href="{{ url('/prestasi') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Prestasi</a>
                     <a href="{{ url('/galeri') }}" class="rounded-lg px-3 py-2 hover:bg-slate-100">Galeri</a>
@@ -99,7 +97,7 @@
                         <div id="heroFeatureBox" class="hero-feature-box reveal" style="--reveal-delay: 220ms">
                             <div id="heroCtaGroup" class="hero-cta-group flex flex-wrap gap-3">
                                 <a href="{{ url('/spmb') }}" class="hero-cta hero-cta-primary ripple-btn">Daftar SPMB</a>
-                                <a href="#tentang" class="hero-cta hero-cta-secondary ripple-btn">Lihat Profil Sekolah</a>
+                                <!-- Profil link removed per request -->
                             </div>
                             <div id="heroStats" class="hero-stats-grid mt-4 grid max-w-3xl grid-cols-3 gap-3">
                                 <article class="stat-card stat-card-lg js-card">
@@ -277,7 +275,7 @@
                     <div class="reveal js-card" style="--reveal-delay: 80ms">
                         <h3 class="text-sm font-semibold text-white">Tautan Cepat</h3>
                         <ul class="space-y-3 text-slate-600 list-disc pl-5 marker:text-white-600">
-                            <li><a href="#tentang" class="hover:text-white">Profil Sekolah</a></li>
+                            <!-- Profil Sekolah link removed -->
                             <li><a href="#visi-misi" class="hover:text-white">Visi & Misi</a></li>
                             <li><a href="#profil" class="hover:text-white">Prestasi</a></li>
                             <li><a href="#filosofi" class="hover:text-white">Filosofi Logo</a></li>
