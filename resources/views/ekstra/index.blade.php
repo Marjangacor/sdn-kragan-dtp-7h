@@ -38,7 +38,7 @@
                     </nav>
                 </div>
 
-                <div class="header-actions flex items-center gap-2">
+                <div class="header-actions flex items-center gap-3">
                     @if (Route::has('login'))
                         @auth
                             @if(auth()->user()->role === 'admin')

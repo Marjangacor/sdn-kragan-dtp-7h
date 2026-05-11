@@ -90,20 +90,25 @@
                 </nav>
                 </div>
 
-                <div class="header-actions flex items-center gap-2">
+                <div class="header-actions flex items-center gap-3">
                     @if (Route::has('login'))
                         @auth
                             @if(auth()->user()->role === 'admin')
-                                <a href="{{ url('/dashboard') }}" class="top-login-btn">Dashboard</a>
+                                <a href="{{ url('/dashboard') }}" class="top-login-btn hidden lg:inline-flex lg:px-6">Dashboard</a>
                             @endif
                             <form method="POST" action="{{ route('logout') }}" class="hidden lg:inline-flex">
                                 @csrf
                                 <button type="submit" class="top-login-btn lg:px-6">Logout</button>
                             </form>
                         @else
-                            <a href="{{ route('login') }}" class="top-login-btn">Login</a>
+                            <a href="{{ route('login') }}" class="top-login-btn hidden lg:inline-flex lg:px-6">Login</a>
                         @endauth
                     @endif
+                    <button id="menuToggle" class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 lg:hidden" aria-label="Buka menu">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-6 w-6 stroke-current">
+                            <path d="M4 7H20M4 12H20M4 17H20" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </button>
                 </div>
             </div>
             <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-4 py-3 lg:hidden">
