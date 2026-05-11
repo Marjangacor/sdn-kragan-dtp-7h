@@ -119,9 +119,6 @@
                     <div class="reveal" style="--reveal-delay: 160ms">
                         <div class="ekstra-hero-card js-card">
                             <img src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=1200&q=80" alt="Siswa mengikuti kegiatan ekstrakurikuler" class="h-full w-full object-cover" />
-                            <div class="ekstra-hero-card-overlay">
-                                <p>Aktif, kreatif, dan berkarakter</p>
-                            </div>
                         </div>
                     </div>
                 </div>

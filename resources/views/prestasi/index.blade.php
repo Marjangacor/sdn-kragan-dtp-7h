@@ -141,9 +141,6 @@
                     <div class="reveal" style="--reveal-delay: 160ms">
                         <div class="prestasi-hero-card js-card">
                             <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80" alt="Siswa menerima piala prestasi" class="h-full w-full object-cover" />
-                            <div class="prestasi-hero-card-overlay">
-                                <p>Prestasi dibangun dari proses yang disiplin dan dukungan yang berkelanjutan</p>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -70,20 +70,21 @@
                     </nav>
                 </div>
 
-                <div class="header-actions flex items-center gap-2">
-                    @if (Route::has('login'))
-                        @auth
-                            @if(auth()->user()->role === 'admin')
-                                <a href="{{ url('/dashboard') }}" class="top-login-btn hidden lg:inline-flex lg:px-6">Dashboard</a>
-                            @endif
-                            <form method="POST" action="{{ route('logout') }}" class="hidden lg:inline-flex">
-                                @csrf
-                                <button type="submit" class="top-login-btn lg:px-6">Logout</button>
-                            </form>
-                        @else
-                            <a href="{{ route('login') }}" class="top-login-btn hidden lg:inline-flex lg:px-6">Login</a>
-                        @endauth
-                    @endif
+              <div class="header-actions flex items-center ml-auto pl-12"> <div class="navbar-actions flex items-center gap-4 ml-10">
+                        @if (Route::has('login'))
+                            @auth
+                                @if(auth()->user()->role === 'admin')
+                                    <a href="{{ url('/dashboard') }}" class="top-login-btn hidden lg:inline-flex lg:px-6">Dashboard</a>
+                                @endif
+                                <form method="POST" action="{{ route('logout') }}" class="hidden lg:inline-flex">
+                                    @csrf
+                                    <button type="submit" class="top-login-btn lg:px-6">Logout</button>
+                                </form>
+                            @else
+                                <a href="{{ route('login') }}" class="top-login-btn hidden lg:inline-flex lg:px-6">Login</a>
+                            @endauth
+                        @endif
+                    </div>
                     <button id="menuToggle" class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 lg:hidden" aria-label="Buka menu">
                         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-6 w-6 stroke-current">
                             <path d="M4 7H20M4 12H20M4 17H20" stroke-width="2" stroke-linecap="round" />
@@ -149,16 +150,12 @@
                     </div>
 
                     <div class="reveal" style="--reveal-delay: 160ms">
-                        <div class="kontak-hero-card js-card">
+                        <div class="kontak-hero-image-container">
                             <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80" alt="Gedung sekolah dan lingkungan sekitarnya" class="h-full w-full object-cover" />
-                            <div class="kontak-hero-card-overlay">
-                                <p>Hubungan yang baik dimulai dari komunikasi yang mudah dijangkau</p>
-                            </div>
                         </div>
                     </div>
                 </div>
             </section>
-
             <section class="mx-auto max-w-7xl px-6 py-8 lg:px-8 lg:py-10">
                 <div class="kontak-highlight-grid">
                     <article class="kontak-info-card" data-kontak-fade>
