@@ -15,5 +15,17 @@ class Achievement extends Model
         'year',
         'description',
         'image_url',
+        'student_id',
+        'teacher_id',
     ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
+    }
 }

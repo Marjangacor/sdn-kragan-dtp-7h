@@ -214,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const mobileMenu = document.querySelector('#mobileMenu');
 	const header = document.querySelector('header');
 	const heroNoise = document.querySelector('.hero-noise');
+	const userMenus = Array.from(document.querySelectorAll('[data-user-menu]'));
 
 	if (menuToggle && mobileMenu) {
 		menuToggle.setAttribute('aria-expanded', 'false');
@@ -244,6 +245,58 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (event.key === 'Escape') {
 				mobileMenu.classList.add('hidden');
 				menuToggle.setAttribute('aria-expanded', 'false');
+			}
+		});
+	}
+
+	if (userMenus.length > 0) {
+		const closeUserMenus = () => {
+			userMenus.forEach((menu) => {
+				const toggle = menu.querySelector('[data-user-menu-toggle]');
+				const panel = menu.querySelector('[data-user-menu-panel]');
+
+				panel?.classList.add('hidden');
+				toggle?.setAttribute('aria-expanded', 'false');
+			});
+		};
+
+		userMenus.forEach((menu) => {
+			const toggle = menu.querySelector('[data-user-menu-toggle]');
+			const panel = menu.querySelector('[data-user-menu-panel]');
+
+			if (!(toggle instanceof HTMLButtonElement) || !(panel instanceof HTMLElement)) {
+				return;
+			}
+
+			toggle.setAttribute('aria-expanded', 'false');
+
+			toggle.addEventListener('click', (event) => {
+				event.stopPropagation();
+				const isOpen = !panel.classList.contains('hidden');
+
+				closeUserMenus();
+				if (!isOpen) {
+					panel.classList.remove('hidden');
+					toggle.setAttribute('aria-expanded', 'true');
+				}
+			});
+		});
+
+		document.addEventListener('click', (event) => {
+			if (!(event.target instanceof Node)) {
+				return;
+			}
+
+			if (userMenus.some((menu) => menu.contains(event.target))) {
+				return;
+			}
+
+			closeUserMenus();
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape') {
+				closeUserMenus();
 			}
 		});
 	}

@@ -620,6 +620,17 @@
     box-shadow: 0 8px 14px rgba(111, 14, 14, 0.22);
 }
 
+/* Ensure nav-chip active state shows white text site-wide (used outside navbar too) */
+.nav-chip.is-active,
+.nav-chip.is-active:hover,
+.nav-chip.is-active:active,
+.nav-chip.is-active:focus,
+.nav-chip.is-active:focus-visible {
+    background: var(--kragan-red-text);
+    color: #ffffff !important;
+    box-shadow: 0 8px 14px rgba(111, 14, 14, 0.22);
+}
+
 .nav-chip-login {
     background: var(--kragan-red-text);
     color: #ffffff;
@@ -792,7 +803,7 @@ form .top-login-btn {
     min-width: 0;
     align-items: center;
     gap: 0.6rem;
-    flex-shrink: 0;
+    flex-shrink: 1;
 }
 
 .header-brand-copy {
@@ -890,6 +901,8 @@ form .top-login-btn {
 
 .hero-wrap {
     background: linear-gradient(160deg, #9f1119 0%, #d71b26 52%, #fff3f4 100%);
+    overflow: hidden;
+    isolation: isolate;
 }
 
 .hero-grid {
@@ -1069,14 +1082,14 @@ form .top-login-btn {
     text-align: left;
     background: rgba(255, 250, 244, 0.14);
     border: 1px solid rgba(255, 244, 222, 0.38);
-    box-shadow: 0 12px 22px rgba(33, 33, 33, 0.16);
+    box-shadow: 0 8px 16px rgba(33, 33, 33, 0.11);
     transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
 }
 
 .stat-card-lg:hover {
     transform: translateY(-4px);
     border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.14);
+    box-shadow: 0 12px 22px rgba(15, 23, 42, 0.12);
 }
 
 .stat-number {

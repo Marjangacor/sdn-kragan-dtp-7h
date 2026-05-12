@@ -5,26 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Teacher extends Model
+class Student extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'type',
-        'subject',
-        'photo_url',
-        'user_id',
+        'email',
+        'class',
+        'student_id',
+        'address',
+        'phone',
+        'teacher_id',
     ];
 
-    public function user()
+    public function teacher()
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function students()
-    {
-        return $this->hasMany(Student::class);
+        return $this->belongsTo(Teacher::class);
     }
 
     public function achievements()

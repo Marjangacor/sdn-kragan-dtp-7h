@@ -13,6 +13,8 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\SPMBRegistrationController;
+use App\Http\Controllers\TeacherDashboardController;
+use App\Http\Controllers\TeacherAchievementController;
 use App\Models\Gallery;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -37,9 +39,14 @@ Route::middleware('guest')->group(function () {
 
         // Get user from database to determine role
         $user = User::where('email', $credentials['email'])->first();
-        $redirectTo = ($user && $user->role === 'admin') 
-            ? route('dashboard') 
-            : route('home');
+        
+        if ($user && $user->role === 'admin') {
+            $redirectTo = route('dashboard');
+        } elseif ($user && $user->role === 'guru') {
+            $redirectTo = route('teacher.dashboard');
+        } else {
+            $redirectTo = route('home');
+        }
 
         // Attempt authentication with email and password only
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
@@ -96,6 +103,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('guru', AdminTeacherController::class)->except(['show']);
     Route::resource('ekstra', AdminExtracurricularController::class)->except(['show']);
     Route::resource('prestasi', AdminAchievementController::class)->except(['show']);
+});
+
+// Teacher Routes
+Route::get('/teacher/dashboard', [TeacherDashboardController::class, 'index'])->middleware(['auth', 'guru'])->name('teacher.dashboard');
+
+Route::middleware(['auth', 'guru'])->prefix('teacher')->name('teacher.')->group(function () {
+    Route::resource('achievements', TeacherAchievementController::class)->except(['show']);
 });
 
 Route::get('/guru', [GuruController::class, 'index'])->name('guru.index');
