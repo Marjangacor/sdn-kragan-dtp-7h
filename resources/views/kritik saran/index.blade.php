@@ -14,12 +14,12 @@
                 [
                     'title' => 'Kontak Sekolah',
                     'desc' => 'Sampaikan masukan langsung melalui kontak resmi sekolah untuk tindak lanjut yang lebih cepat.',
-                    'value' => '(0298) 123-456',
+                    'value' => '+62 318913900',
                 ],
                 [
                     'title' => 'Email Sekolah',
                     'desc' => 'Cocok untuk saran yang lebih panjang, detail, atau bersifat administrasi.',
-                    'value' => 'info@sdnkragan.sch.id',
+                    'value' => '@sdnkragan.sch.id',
                 ],
                 [
                     'title' => 'Kunjungan Langsung',

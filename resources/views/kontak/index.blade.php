@@ -164,7 +164,7 @@
                             </div>
                             <div class="kontak-summary-item js-card">
                                 <strong>Email</strong>
-                                <span>@sdnkragan.sch.id</span>
+                                <span>info@sdnkragan.sch.id</span>
                             </div>
                             <div class="kontak-summary-item js-card">
                                 <strong>Jam Layanan</strong>

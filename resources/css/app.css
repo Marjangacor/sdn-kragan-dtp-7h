@@ -498,8 +498,9 @@
 }
 
 .school-logo-img--small {
-    width: 2.95rem;
-    height: 2.95rem;
+    width: min(4.25rem, 12vw);
+    height: min(4.25rem, 12vw);
+    max-height: 4.25rem;
 }
 
 .school-logo-img--hero {
@@ -521,8 +522,8 @@
 }
 
 .school-logo-img--footer {
-    width: 3.6rem;
-    height: 3.6rem;
+    width: 5.4rem;
+    height: 5.4rem;
 }
 
 .brand-badge-inner {
@@ -900,7 +901,9 @@ form .top-login-btn {
 }
 
 .hero-wrap {
-    background: linear-gradient(160deg, #9f1119 0%, #d71b26 52%, #fff3f4 100%);
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(255, 77, 109, 0.18), transparent 40%),
+        linear-gradient(135deg, #b3001b 0%, #d90429 45%, #c9184a 100%);
     overflow: hidden;
     isolation: isolate;
 }
@@ -933,9 +936,9 @@ form .top-login-btn {
     position: absolute;
     inset: 0;
     background-image:
-        radial-gradient(circle at 14% 20%, rgba(255, 255, 255, 0.2), transparent 28%),
-        radial-gradient(circle at 86% 88%, rgba(245, 194, 26, 0.24), transparent 24%),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 42%);
+        radial-gradient(circle at 14% 20%, rgba(255, 255, 255, 0.16), transparent 28%),
+        radial-gradient(circle at 86% 88%, rgba(255, 112, 133, 0.18), transparent 24%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 42%);
     pointer-events: none;
 }
 
@@ -965,7 +968,7 @@ form .top-login-btn {
     height: 180px;
     left: -30px;
     bottom: -42px;
-    background: radial-gradient(circle, rgba(245, 194, 26, 0.28), rgba(245, 194, 26, 0));
+    background: radial-gradient(circle, rgba(255, 112, 133, 0.24), rgba(255, 112, 133, 0));
     animation-delay: 1.3s;
 }
 
@@ -1149,7 +1152,8 @@ form .top-login-btn {
 }
 
 .feature-card-green {
-    border-left-color: #d24f58;
+    border-left-color: #16a34a;
+    box-shadow: 0 8px 18px rgba(34, 197, 94, 0.12);
 }
 
 .feature-card-gold {
@@ -1190,8 +1194,8 @@ form .top-login-btn {
     border-left-width: 0.5rem;
     padding: 1.45rem 1.35rem;
     background:
-        linear-gradient(135deg, rgba(194, 15, 26, 0.98), rgba(194, 15, 26, 0.88)),
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.12), transparent 38%);
+        radial-gradient(circle at top right, rgba(201, 24, 74, 0.14), transparent 34%),
+        linear-gradient(135deg, #8B0000 0%, #A00000 40%, #b22222 70%, #c9184a 100%);
     color: #ffffff;
     box-shadow: 0 14px 26px rgba(128, 17, 23, 0.2);
 }
@@ -1211,6 +1215,12 @@ form .top-login-btn {
     font-size: 1.02rem;
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.96);
+}
+
+.home-makna-card {
+    background:
+        radial-gradient(circle at top left, rgba(255, 86, 99, 0.18), transparent 30%),
+        linear-gradient(120deg, #58080e 0%, #9c1019 34%, #cd1f2d 64%, #e83f58 100%);
 }
 
 .sambutan-layout {
@@ -1994,7 +2004,8 @@ form .top-login-btn {
 
 .guru-cta-box {
     border-radius: 1.2rem;
-    background: linear-gradient(120deg, #8f1117, #bf1b27 56%, #ffdfe3);
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 24%),
+        linear-gradient(120deg, #6f0f16 0%, #b51622 38%, #cc2130 72%, #e74353 100%);
     color: #ffffff;
     padding: 1.4rem 1.5rem;
     display: flex;
@@ -2533,6 +2544,7 @@ form .top-login-btn {
 
 .galeri-page {
     font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+    background: transparent;
 }
 
 .galeri-intro-card {
@@ -2570,10 +2582,7 @@ form .top-login-btn {
 }
 
 .galeri-intro-points {
-    margin-top: 0.9rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    display: none;
 }
 
 .galeri-intro-points span {
@@ -2587,16 +2596,16 @@ form .top-login-btn {
 }
 
 .galeri-hero {
-    background: linear-gradient(140deg, #8f1117 0%, #cc1f2a 55%, rgba(255, 230, 232, 0.16) 100%);
+    background: linear-gradient(140deg, #b91c1c 0%, #dc2626 45%, #fbcfe8 100%);
 }
 
 .galeri-noise {
     position: absolute;
     inset: 0;
     background-image:
-        radial-gradient(circle at 16% 20%, rgba(255, 255, 255, 0.12), transparent 26%),
-        radial-gradient(circle at 84% 14%, rgba(255, 214, 217, 0.16), transparent 20%),
-        radial-gradient(circle at 82% 82%, rgba(245, 194, 26, 0.12), transparent 22%);
+        radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.12), transparent 24%),
+        radial-gradient(circle at 84% 20%, rgba(255, 255, 255, 0.08), transparent 18%),
+        radial-gradient(circle at 82% 82%, rgba(220, 38, 38, 0.12), transparent 22%);
     pointer-events: none;
 }
 
@@ -2611,9 +2620,9 @@ form .top-login-btn {
 .galeri-orb-1 {
     width: 150px;
     height: 150px;
-    right: 12px;
+    right: 16px;
     top: 10px;
-    background: radial-gradient(circle, rgba(255, 230, 232, 0.18), rgba(255, 230, 232, 0));
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0));
 }
 
 .galeri-orb-2 {
@@ -2621,7 +2630,7 @@ form .top-login-btn {
     height: 180px;
     left: 0;
     bottom: 0;
-    background: radial-gradient(circle, rgba(255, 214, 217, 0.16), rgba(255, 214, 217, 0));
+    background: radial-gradient(circle, rgba(220, 38, 38, 0.18), rgba(220, 38, 38, 0));
     animation-delay: 0.45s;
 }
 
@@ -2631,7 +2640,7 @@ form .top-login-btn {
     letter-spacing: 0.16em;
     text-transform: uppercase;
     font-weight: 700;
-    color: #ffd5db;
+    color: #991b1b;
 }
 
 .galeri-title {
@@ -2877,21 +2886,6 @@ form .top-login-btn {
     flex: 1;
 }
 
-.galeri-card-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.36rem;
-}
-
-.galeri-card-meta span {
-    border-radius: 999px;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    color: #475569;
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding: 0.2rem 0.48rem;
-}
 
 .galeri-card-body h3 {
     margin-top: 0.65rem;
@@ -2918,29 +2912,37 @@ form .top-login-btn {
     margin-top: 0.8rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: #c31925;
+    justify-content: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: #B91C1C;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 200ms ease;
 }
 
 .galeri-detail-hint::after {
-    content: 'lihat';
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    content: '';
+}
+
+.galeri-detail-hint:hover {
+    background: #991B1B;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(185, 28, 28, 0.18);
 }
 
 .galeri-cta-box {
     border-radius: 1.2rem;
-    background: linear-gradient(120deg, #8f1117, #bf1b27 56%, #ffdfe3);
+    background: linear-gradient(120deg, #991B1B 0%, #B91C1C 38%, #DC2626 72%, #EF4444 100%);
     color: #ffffff;
     padding: 1.4rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    box-shadow: 0 18px 32px rgba(128, 17, 23, 0.24);
+    box-shadow: 0 18px 32px rgba(185, 28, 28, 0.20);
 }
 
 .galeri-cta-box h3 {
@@ -2961,18 +2963,23 @@ form .top-login-btn {
     align-items: center;
     justify-content: center;
     border-radius: 0.8rem;
-    border: 1px solid rgba(255, 255, 255, 0.45);
-    background: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
     font-weight: 700;
     padding: 0.68rem 1rem;
     white-space: nowrap;
-    transition: background-color 180ms ease, transform 180ms ease;
+    transition: background-color 250ms ease, transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+    box-shadow: 0 16px 28px rgba(15, 23, 42, 0.14) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .galeri-cta-link:hover {
-    background: rgba(255, 255, 255, 0.32);
+    background: rgba(255, 255, 255, 0.18) !important;
+    border-color: rgba(255, 255, 255, 0.55) !important;
     transform: translateY(-1px);
+    box-shadow: 0 20px 32px rgba(15, 23, 42, 0.18) !important;
 }
 
 [data-galeri-fade] {
@@ -3341,15 +3348,26 @@ form .top-login-btn {
     border-radius: 999px;
     padding: 0.45rem 0.95rem;
     background: transparent;
-    color: #475569;
+    color: #64748b;
     font-size: 0.9rem;
     font-weight: 600;
     transition: all 180ms ease;
 }
 
+.ekstra-filter-btn:hover,
+.ekstra-filter-btn:focus,
+.ekstra-filter-btn:focus-visible,
+.ekstra-filter-btn:active,
+.ekstra-filter-btn.is-active,
+.ekstra-filter-btn.is-active:hover,
+.ekstra-filter-btn.is-active:focus,
+.ekstra-filter-btn.is-active:focus-visible,
+.ekstra-filter-btn.is-active:active {
+    color: #ffffff !important;
+}
+
 .ekstra-filter-btn:hover {
     background: #e2e8f0;
-    color: #1e293b;
 }
 
 .ekstra-filter-btn.is-active {

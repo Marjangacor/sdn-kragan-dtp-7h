@@ -29,7 +29,7 @@
 
                     <div class="mt-7 grid gap-4 md:grid-cols-3">
                         <article class="guru-summary-card" data-guru-card>
-                            <p class="guru-summary-number" data-counter-target="{{ $guruCount }}">0</p>
+                            <p class="guru-summary-number" data-counter-target="{{ $guruCount }}">30+</p>
                             <p class="guru-summary-label">Jumlah Guru</p>
                         </article>
                         <article class="guru-summary-card" data-guru-card>
@@ -37,7 +37,7 @@
                             <p class="guru-summary-label">Jumlah Karyawan</p>
                         </article>
                         <article class="guru-summary-card" data-guru-card>
-                            <p class="guru-summary-number" data-counter-target="{{ $mapelCount }}">0</p>
+                            <p class="guru-summary-number" data-counter-target="{{ $mapelCount }}">6</p>
                             <p class="guru-summary-label">Mapel Aktif</p>
                         </article>
                     </div>

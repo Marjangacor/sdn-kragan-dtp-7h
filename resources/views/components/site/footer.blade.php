@@ -40,7 +40,7 @@
                 <h3 class="text-sm font-semibold text-white">Kontak</h3>
                 <div class="mt-3 space-y-2 text-sm text-blue-100/80">
                     <p>Jl. Pendidikan No. 12, Kragan, Rembang</p>
-                    <p>(0298) 123-456</p>
+                    <p>+62 318913900</p>
                     <p>info@sdnkragan.sch.id</p>
                 </div>
             </div>

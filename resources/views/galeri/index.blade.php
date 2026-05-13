@@ -32,7 +32,7 @@
                         'title' => 'Lomba Siswa',
                         'category' => 'Prestasi',
                         'description' => 'Momen siswa tampil percaya diri dalam berbagai ajang lomba akademik dan nonakademik.',
-                        'image_url' => 'https://images.unsplash.com/photo-1527600478564-488952effedb?auto=format&fit=crop&w=900&q=80',
+                        'image_url' => asset('images/lomba-siswa-sdn-kragan.jpg'),
                         'event_date' => null,
                     ],
                     [
@@ -69,16 +69,14 @@
         <x-site.navbar active="galeri" subtitle="Galeri Kegiatan" />
 
         <main class="galeri-page">
-            <section class="mx-auto max-w-7xl px-6 pt-8 lg:px-8 lg:pt-10">
-                <div class="galeri-intro-card">
-                    <p class="galeri-intro-kicker">Galeri Kegiatan</p>
-                    <h1>Cerita Kegiatan SDN Kragan</h1>
-                    <p>Di sini kamu bisa melihat berbagai momen sekolah, dari belajar di kelas sampai kegiatan kebersamaan. Klik foto mana saja untuk membuka detail kegiatan secara lengkap.</p>
-                    <div class="galeri-intro-points">
-                        <span>Foto terbaru</span>
-                        <span>Informasi ringkas</span>
-                        <span>Detail bisa dibuka</span>
-                    </div>
+            <section class="galeri-hero relative overflow-hidden text-white">
+                <div class="galeri-noise" aria-hidden="true"></div>
+                <div class="galeri-orb galeri-orb-1" aria-hidden="true"></div>
+                <div class="galeri-orb galeri-orb-2" aria-hidden="true"></div>
+                <div class="relative mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
+                    <p class="galeri-kicker">Galeri Kegiatan</p>
+                    <h1 class="galeri-title">Cerita Kegiatan SDN Kragan</h1>
+                    <p class="galeri-description">Di sini kamu bisa melihat berbagai momen sekolah, dari belajar di kelas sampai kegiatan kebersamaan. Klik foto mana saja untuk membuka detail kegiatan secara lengkap.</p>
                 </div>
             </section>
 
@@ -111,13 +109,9 @@
                                 <span class="galeri-badge">{{ data_get($item, 'category') }}</span>
                             </div>
                             <div class="galeri-card-body">
-                                <div class="galeri-card-meta">
-                                    <span>{{ data_get($item, 'category') }}</span>
-                                    <span>{{ $formattedDate }}</span>
-                                </div>
                                 <h3>{{ data_get($item, 'title') }}</h3>
                                 <p>{{ data_get($item, 'description') }}</p>
-                                <span class="galeri-detail-hint">Lihat detail kegiatan</span>
+                                <span class="galeri-detail-hint">Lihat Detail</span>
                             </div>
                         </button>
                     @endforeach
@@ -153,16 +147,6 @@
                 </div>
             </div>
         </main>
-
-        <x-site.footer
-            subtitle="Galeri Kegiatan Sekolah"
-            description="Dokumentasi kegiatan sekolah sebagai media informasi dan arsip visual untuk siswa, orang tua, dan masyarakat."
-            :quickLinks="[
-                ['label' => 'Guru & Karyawan', 'href' => route('guru.index')],
-                ['label' => 'Prestasi', 'href' => route('prestasi.index')],
-                ['label' => 'Ekstrakurikuler', 'href' => route('ekstra.index')],
-            ]"
-        />
 
         <button id="accessibilityToggle" class="acc-toggle-btn" type="button" aria-label="Buka aksesibilitas" aria-expanded="false" aria-controls="accessibilityPanel">
             <svg viewBox="0 0 24 24" fill="none" class="h-6 w-6" aria-hidden="true">
