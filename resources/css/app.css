@@ -3348,32 +3348,28 @@ form .top-login-btn {
     border-radius: 999px;
     padding: 0.45rem 0.95rem;
     background: transparent;
-    color: #64748b;
+    color: #334155;
     font-size: 0.9rem;
     font-weight: 600;
     transition: all 180ms ease;
+    cursor: pointer;
 }
 
-.ekstra-filter-btn:hover,
-.ekstra-filter-btn:focus,
-.ekstra-filter-btn:focus-visible,
-.ekstra-filter-btn:active,
-.ekstra-filter-btn.is-active,
-.ekstra-filter-btn.is-active:hover,
-.ekstra-filter-btn.is-active:focus,
-.ekstra-filter-btn.is-active:focus-visible,
-.ekstra-filter-btn.is-active:active {
-    color: #ffffff !important;
-}
-
-.ekstra-filter-btn:hover {
-    background: #e2e8f0;
+.ekstra-filter-btn:hover:not(.is-active) {
+    background: rgba(185, 28, 28, 0.08);
+    color: #b91c1c;
 }
 
 .ekstra-filter-btn.is-active {
-    background: #1d4ed8;
-    color: #ffffff;
-    box-shadow: 0 8px 15px rgba(29, 78, 216, 0.22);
+    background: #b91c1c !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 15px rgba(185, 28, 28, 0.28);
+}
+
+.ekstra-filter-btn.is-active:hover {
+    background: #a71818 !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 20px rgba(185, 28, 28, 0.35);
 }
 
 .ekstra-grid {
