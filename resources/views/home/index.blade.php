@@ -134,14 +134,33 @@
                                 </div>
                             </div>
                         </article>
+<div class="grid grid-cols-2 gap-3 reveal" style="--reveal-delay: 180ms">
+    
+    <div class="overflow-hidden rounded-2xl bg-white shadow-md js-card h-72">
+        <img src="{{ asset('images/Dok Sekol 11.jpeg') }}" 
+             alt="Aktivitas belajar 1" 
+             class="w-full h-full object-cover" />
+    </div>
 
-                        <div class="grid grid-cols-2 gap-3 reveal" style="--reveal-delay: 180ms">
-                            <div class="overflow-hidden rounded-2xl bg-white shadow-md js-card"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=700&q=80" alt="Aktivitas belajar 1" class="h-full w-full object-cover" /></div>
-                            <div class="overflow-hidden rounded-2xl bg-white shadow-md js-card"><img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=700&q=80" alt="Aktivitas belajar 2" class="h-full w-full object-cover" /></div>
-                            <div class="overflow-hidden rounded-2xl bg-white shadow-md js-card"><img src="https://images.unsplash.com/photo-1564429097439-e4003821ea40?auto=format&fit=crop&w=700&q=80" alt="Aktivitas belajar 3" class="h-full w-full object-cover" /></div>
-                            <div class="overflow-hidden rounded-2xl bg-white shadow-md js-card"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=700&q=80" alt="Aktivitas belajar 4" class="h-full w-full object-cover" /></div>
-                        </div>
-                    </div>
+    <div class="overflow-hidden rounded-2xl bg-white shadow-md js-card h-72">
+        <img src="{{ asset('images/Prestasi 2.jpeg') }}" 
+             alt="Aktivitas belajar 2" 
+             class="w-full h-full object-cover" />
+    </div>
+
+    <div class="overflow-hidden rounded-2xl bg-white shadow-md js-card h-72">
+        <img src="{{ asset('images/Prestasi 6.jpeg') }}" 
+             alt="Aktivitas belajar 3" 
+             class="w-full h-full object-cover" />
+    </div>
+
+    <div class="overflow-hidden rounded-2xl bg-white shadow-md js-card h-72">
+        <img src="{{ asset('images/Prestasi 9.jpeg') }}" 
+             alt="Aktivitas belajar 4" 
+             class="w-full h-full object-cover" />
+    </div>
+
+</div>
                 </div>
             </section>
 

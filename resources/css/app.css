@@ -2640,23 +2640,23 @@ form .top-login-btn {
     letter-spacing: 0.16em;
     text-transform: uppercase;
     font-weight: 700;
-    color: #991b1b;
+    color: #c7d2fe;
 }
 
 .galeri-title {
-    max-width: 42rem;
-    font-size: clamp(2.8rem, 5vw, 4.8rem);
-    line-height: 1.05;
+    max-width: 44rem;
+    font-size: clamp(2.6rem, 4.9vw, 4.5rem);
+    line-height: 1.06;
     letter-spacing: -0.03em;
     font-weight: 800;
     color: #ffffff;
 }
 
 .galeri-description {
-    max-width: 39rem;
-    font-size: 1.06rem;
-    line-height: 1.62;
-    color: rgba(255, 245, 246, 0.97);
+    max-width: 38rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(224, 231, 255, 0.95);
 }
 
 .galeri-stats-grid {
@@ -2691,24 +2691,23 @@ form .top-login-btn {
 .galeri-hero-card {
     position: relative;
     overflow: hidden;
-    border-radius: 1.5rem;
-    min-height: 28rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2rem;
+    min-height: 0;
+    height: fit-content;
     box-shadow: 0 24px 40px rgba(2, 6, 23, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.galeri-hero-card img {
+    display: block;
+    width: 100%;
+    height: auto !important;
+    object-fit: cover;
+    border-radius: inherit;
 }
 
 .galeri-hero-card-overlay {
-    position: absolute;
-    left: 1rem;
-    right: 1rem;
-    bottom: 1rem;
-    border-radius: 1rem;
-    background: rgba(15, 23, 42, 0.56);
-    color: #ffffff;
-    padding: 0.8rem 1rem;
-    font-size: 0.95rem;
-    font-weight: 600;
-    backdrop-filter: blur(5px);
+    display: none;
 }
 
 .galeri-highlight-grid {
@@ -3992,7 +3991,7 @@ form .top-login-btn {
 }
 
 .prestasi-hero {
-    background: linear-gradient(140deg, #203aa8 0%, #2542b2 54%, #1f3a8a 100%);
+    background: linear-gradient(140deg, #b91c1c 0%, #dc2626 45%, #fbcfe8 100%);
 }
 
 .prestasi-noise {
@@ -4001,7 +4000,7 @@ form .top-login-btn {
     background-image:
         radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.12), transparent 24%),
         radial-gradient(circle at 84% 20%, rgba(255, 255, 255, 0.08), transparent 18%),
-        radial-gradient(circle at 82% 82%, rgba(251, 146, 60, 0.12), transparent 22%);
+        radial-gradient(circle at 82% 82%, rgba(220, 38, 38, 0.12), transparent 22%);
     pointer-events: none;
 }
 
@@ -4026,7 +4025,7 @@ form .top-login-btn {
     height: 180px;
     left: 0;
     bottom: 0;
-    background: radial-gradient(circle, rgba(251, 146, 60, 0.18), rgba(251, 146, 60, 0));
+    background: radial-gradient(circle, rgba(220, 38, 38, 0.18), rgba(220, 38, 38, 0));
     animation-delay: 0.45s;
 }
 
