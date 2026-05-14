@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Guru & Karyawan | SDN Kragan</title>
         <link rel="preconnect" href="https://fonts.bunny.net" />
-        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700|cormorant-garamond:600,700" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700|lora:600,700" rel="stylesheet" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="guru-page school-page bg-slate-100 text-slate-900">
@@ -93,7 +93,7 @@
                             <div class="p-4">
                                 <h3 class="text-lg font-semibold leading-snug text-slate-900">{{ $member['name'] }}</h3>
                                 <p class="mt-2 text-sm font-medium text-red-700">{{ $member['type'] === 'Guru' ? 'Mapel' : 'Bidang Tugas' }}: {{ $member['subject'] }}</p>
-                                <a href="{{ route('guru.show', $member) }}" class="mt-4 inline-flex items-center rounded-xl border border-red-200 bg-red-50 px-4 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-100">Lihat Detail</a>
+                                <a href="{{ route('guru.show', $member) }}" class="guru-detail-hint">Lihat Detail</a>
                             </div>
                         </article>
                     @endforeach
