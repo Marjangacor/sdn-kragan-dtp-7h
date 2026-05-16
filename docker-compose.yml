@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app-kragan
+    restart: unless-stopped
+    volumes:
+      - .:/var/www
+    networks:
+      - kragan-network
+
+  webserver:
+    image: nginx:alpine
+    container_name: web-kragan
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - kragan-network
+
+  db:
+    image: mysql:8.0
+    container_name: kragan_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - kragan-network
+
+networks:
+  kragan-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
