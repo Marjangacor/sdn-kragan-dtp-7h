@@ -10,7 +10,7 @@ class AdminExtracurricularController extends AdminController
 {
     public function index(Request $request)
     {
-        $this->authorizeAdmin($request);
+        $this->authorizePanelManager($request);
 
         return view('admin.ekstra.index', [
             'activities' => Extracurricular::orderBy('title')->get(),
@@ -19,14 +19,14 @@ class AdminExtracurricularController extends AdminController
 
     public function create(Request $request)
     {
-        $this->authorizeAdmin($request);
+        $this->authorizePanelManager($request);
 
         return view('admin.ekstra.create');
     }
 
     public function store(Request $request)
     {
-        $this->authorizeAdmin($request);
+        $this->authorizePanelManager($request);
 
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
@@ -49,7 +49,7 @@ class AdminExtracurricularController extends AdminController
 
     public function edit(Request $request, Extracurricular $ekstra)
     {
-        $this->authorizeAdmin($request);
+        $this->authorizePanelManager($request);
 
         return view('admin.ekstra.edit', [
             'activity' => $ekstra,
@@ -58,7 +58,7 @@ class AdminExtracurricularController extends AdminController
 
     public function update(Request $request, Extracurricular $ekstra)
     {
-        $this->authorizeAdmin($request);
+        $this->authorizePanelManager($request);
 
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
@@ -85,7 +85,7 @@ class AdminExtracurricularController extends AdminController
 
     public function destroy(Request $request, Extracurricular $ekstra)
     {
-        $this->authorizeAdmin($request);
+        $this->authorizePanelManager($request);
 
         $ekstra->delete();
 

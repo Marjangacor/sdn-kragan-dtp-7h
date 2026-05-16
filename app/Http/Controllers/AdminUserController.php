@@ -30,7 +30,7 @@ class AdminUserController extends AdminController
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users,email'],
-            'role' => ['required', 'in:admin,user'],
+            'role' => ['required', 'in:admin,user,pembina-ekstra'],
             'password' => ['required', 'confirmed', 'min:8'],
         ]);
 
@@ -60,7 +60,7 @@ class AdminUserController extends AdminController
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users,email,' . $user->id],
-            'role' => ['required', 'in:admin,user'],
+            'role' => ['required', 'in:admin,user,pembina-ekstra'],
             'password' => ['nullable', 'confirmed', 'min:8'],
         ]);
 

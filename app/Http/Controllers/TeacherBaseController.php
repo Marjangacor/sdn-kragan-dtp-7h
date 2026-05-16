@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-abstract class TeacherController extends Controller
+abstract class TeacherBaseController extends Controller
 {
     protected function authorizeTeacher(Request $request): void
     {

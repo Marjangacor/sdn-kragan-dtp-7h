@@ -10,7 +10,7 @@ class AdminAchievementController extends AdminController
 {
     public function index(Request $request)
     {
-        $this->authorizeAdmin($request);
+        $this->authorizePanelManager($request);
 
         return view('admin.prestasi.index', [
             'achievements' => Achievement::orderByDesc('year')->get(),
@@ -19,14 +19,14 @@ class AdminAchievementController extends AdminController
 
     public function create(Request $request)
     {
-        $this->authorizeAdmin($request);
+        $this->authorizePanelManager($request);
 
         return view('admin.prestasi.create');
     }
 
     public function store(Request $request)
     {
-        $this->authorizeAdmin($request);
+        $this->authorizePanelManager($request);
 
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
@@ -50,7 +50,7 @@ class AdminAchievementController extends AdminController
 
     public function edit(Request $request, Achievement $prestasi)
     {
-        $this->authorizeAdmin($request);
+        $this->authorizePanelManager($request);
 
         return view('admin.prestasi.edit', [
             'achievement' => $prestasi,
@@ -59,7 +59,7 @@ class AdminAchievementController extends AdminController
 
     public function update(Request $request, Achievement $prestasi)
     {
-        $this->authorizeAdmin($request);
+        $this->authorizePanelManager($request);
 
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
@@ -87,7 +87,7 @@ class AdminAchievementController extends AdminController
 
     public function destroy(Request $request, Achievement $prestasi)
     {
-        $this->authorizeAdmin($request);
+        $this->authorizePanelManager($request);
 
         $prestasi->delete();
 

@@ -14,4 +14,13 @@ abstract class AdminController extends Controller
             abort(403, 'Akses admin diperlukan.');
         }
     }
+
+    protected function authorizePanelManager(Request $request): void
+    {
+        $user = $request->user();
+
+        if (! $user || ! in_array($user->role, ['admin', 'pembina-ekstra'], true)) {
+            abort(403, 'Akses panel pembina diperlukan.');
+        }
+    }
 }

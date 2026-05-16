@@ -34,5 +34,14 @@ class DatabaseSeeder extends Seeder
                 'password' => 'password',
             ]
         );
+
+        User::query()->updateOrCreate(
+            ['email' => 'pembina.ekstra@example.com'],
+            [
+                'name' => 'Pembina Ekstra SDN Kragan',
+                'role' => 'pembina-ekstra',
+                'password' => 'password',
+            ]
+        );
     }
 }

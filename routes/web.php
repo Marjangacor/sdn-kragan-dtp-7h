@@ -40,7 +40,7 @@ Route::middleware('guest')->group(function () {
         // Get user from database to determine role
         $user = User::where('email', $credentials['email'])->first();
         
-        if ($user && $user->role === 'admin') {
+        if ($user && in_array($user->role, ['admin', 'pembina-ekstra'], true)) {
             $redirectTo = route('dashboard');
         } elseif ($user && $user->role === 'guru') {
             $redirectTo = route('teacher.dashboard');
@@ -93,7 +93,7 @@ Route::post('/logout', function (Request $request) {
     return redirect()->route('login');
 })->middleware('auth')->name('logout');
 
-Route::get('/dashboard', [AdminDashboardController::class, 'index'])->middleware(['auth', 'admin'])->name('dashboard');
+Route::get('/dashboard', [AdminDashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('users', AdminUserController::class)->except(['show']);
@@ -101,6 +101,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('galeri', AdminGalleryController::class)->except(['show']);
     Route::resource('spmb', AdminSPMBRegistrationController::class)->parameters(['spmb' => 'registration'])->except(['show']);
     Route::resource('guru', AdminTeacherController::class)->except(['show']);
+});
+
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('ekstra', AdminExtracurricularController::class)->except(['show']);
     Route::resource('prestasi', AdminAchievementController::class)->except(['show']);
 });

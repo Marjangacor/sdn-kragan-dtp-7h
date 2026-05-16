@@ -12,7 +12,7 @@
         <main class="mx-auto max-w-3xl p-6">
             <header class="mb-8 rounded-3xl bg-white p-6 shadow-lg">
                 <h1 class="text-3xl font-semibold text-slate-900">Edit Pengguna</h1>
-                <p class="mt-2 text-sm text-slate-600">Perbarui informasi akun dan perannya.</p>
+                <p class="mt-2 text-sm text-slate-600">Perbarui informasi akun dan perannya, termasuk pembina ekstra.</p>
             </header>
 
             <form action="{{ route('admin.users.update', $user) }}" method="POST" class="space-y-6 rounded-3xl bg-white p-6 shadow-lg">
@@ -35,6 +35,7 @@
                     <label class="block text-sm font-semibold text-slate-700" for="role">Peran</label>
                     <select id="role" name="role" required class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 outline-none focus:border-[#c20f1a] focus:ring-2 focus:ring-[#c20f1a]/20">
                         <option value="user" @selected(old('role', $user->role) === 'user')>User</option>
+                        <option value="pembina-ekstra" @selected(old('role', $user->role) === 'pembina-ekstra')>Pembina Ekstra</option>
                         <option value="admin" @selected(old('role', $user->role) === 'admin')>Admin</option>
                     </select>
                     @error('role')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror

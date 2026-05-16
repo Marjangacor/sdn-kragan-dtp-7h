@@ -13,11 +13,14 @@ class AdminDashboardController extends AdminController
 {
     public function index(Request $request)
     {
-        $this->authorizeAdmin($request);
+        $this->authorizePanelManager($request);
+
+        $isPembinaEkstra = $request->user()->role === 'pembina-ekstra';
 
         // Admin dashboard - User statistics
         $totalUsers = User::count();
         $totalAdmins = User::where('role', 'admin')->count();
+        $totalPembinaEkstra = User::where('role', 'pembina-ekstra')->count();
         $totalRegularUsers = User::where('role', 'user')->count();
         $recentUsers = User::orderByDesc('created_at')->limit(5)->get();
 
@@ -37,8 +40,10 @@ class AdminDashboardController extends AdminController
         $recentAchievements = Achievement::orderByDesc('created_at')->limit(5)->get();
         
         return view('admin.dashboard', [
+            'isPembinaEkstra' => $isPembinaEkstra,
             'totalUsers' => $totalUsers,
             'totalAdmins' => $totalAdmins,
+            'totalPembinaEkstra' => $totalPembinaEkstra,
             'totalRegularUsers' => $totalRegularUsers,
             'recentUsers' => $recentUsers,
             'totalFeedbacks' => $totalFeedbacks,

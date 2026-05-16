@@ -3,12 +3,15 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Dashboard Admin | SDN Kragan</title>
+        <title>Dashboard {{ auth()->user()->role === 'pembina-ekstra' ? 'Pembina Ekstra' : 'Admin' }} | SDN Kragan</title>
         <link rel="preconnect" href="https://fonts.bunny.net" />
         <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700" rel="stylesheet" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="min-h-screen bg-slate-100 text-slate-900">
+        @php
+            $roleLabel = ucwords(str_replace('-', ' ', auth()->user()->role));
+        @endphp
         <main class="mx-auto max-w-7xl p-6 grid gap-6 lg:grid-cols-[280px_1fr]">
             @include('components.admin-sidebar')
 
@@ -16,9 +19,15 @@
                 <header class="rounded-3xl bg-white p-6 shadow-lg">
                     <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                         <div>
-                            <p class="text-sm uppercase tracking-[0.25em] text-orange-500">Dashboard Admin</p>
+                            <p class="text-sm uppercase tracking-[0.25em] text-orange-500">Dashboard {{ $roleLabel }}</p>
                             <h1 class="mt-2 text-3xl font-semibold text-slate-900">Selamat datang, {{ auth()->user()->name }}</h1>
-                            <p class="mt-2 text-sm text-slate-600">Pantau pengguna, feedback, data guru, ekstrakurikuler, dan galeri kegiatan.</p>
+                            <p class="mt-2 text-sm text-slate-600">
+                                @if($isPembinaEkstra)
+                                    Kelola data ekstrakurikuler dan prestasi dari panel pembina ekstra.
+                                @else
+                                    Pantau pengguna, feedback, data guru, ekstrakurikuler, dan galeri kegiatan.
+                                @endif
+                            </p>
                         </div>
                         <div class="flex flex-wrap items-center gap-3">
                             <a href="{{ route('home') }}" class="inline-flex items-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">Beranda</a>
@@ -30,152 +39,238 @@
                     </div>
                 </header>
 
-            <section class="mb-8 grid gap-4 sm:grid-cols-3">
-                <a href="{{ route('admin.users.index') }}" class="rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5">
-                    <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Kelola Pengguna</p>
-                    <p class="mt-4 text-xl font-semibold text-slate-900">User & Admin</p>
-                </a>
-                <a href="{{ route('admin.feedback.index') }}" class="rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5">
-                    <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Kelola Feedback</p>
-                    <p class="mt-4 text-xl font-semibold text-slate-900">Kritik & Saran</p>
-                </a>
-                <a href="{{ route('admin.galeri.index') }}" class="rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5">
-                    <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Kelola Galeri</p>
-                    <p class="mt-4 text-xl font-semibold text-slate-900">Dokumentasi Kegiatan</p>
-                </a>
-                {{-- <a href="{{ route('admin.spmb.index') }}" class="rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5">
-                    <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Kelola SPMB</p>
-                    <p class="mt-4 text-xl font-semibold text-slate-900">Pendaftar SPMB</p>
-                </a> --}}
+            <section class="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                @if($isPembinaEkstra)
+                    <a href="{{ route('admin.ekstra.index') }}" class="rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5">
+                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Kelola Ekstrakurikuler</p>
+                        <p class="mt-4 text-xl font-semibold text-slate-900">Data Ekstra</p>
+                    </a>
+                    <a href="{{ route('admin.prestasi.index') }}" class="rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5">
+                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Kelola Prestasi</p>
+                        <p class="mt-4 text-xl font-semibold text-slate-900">Data Prestasi</p>
+                    </a>
+                @else
+                    <a href="{{ route('admin.users.index') }}" class="rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5">
+                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Kelola Pengguna</p>
+                        <p class="mt-4 text-xl font-semibold text-slate-900">User & Admin</p>
+                    </a>
+                    <a href="{{ route('admin.feedback.index') }}" class="rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5">
+                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Kelola Feedback</p>
+                        <p class="mt-4 text-xl font-semibold text-slate-900">Kritik & Saran</p>
+                    </a>
+                    <a href="{{ route('admin.galeri.index') }}" class="rounded-3xl bg-white p-6 shadow-lg transition hover:-translate-y-0.5">
+                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Kelola Galeri</p>
+                        <p class="mt-4 text-xl font-semibold text-slate-900">Dokumentasi Kegiatan</p>
+                    </a>
+                @endif
             </section>
 
-            <!-- User Statistics -->
-            <section class="mb-8">
-                <h2 class="mb-4 text-2xl font-semibold text-slate-900">Statistik Pengguna</h2>
-                <div class="grid gap-6 lg:grid-cols-4">
-                    <article class="rounded-3xl bg-white p-6 shadow-lg">
-                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Total Akun</p>
-                        <p class="mt-4 text-5xl font-bold text-slate-900">{{ $totalUsers }}</p>
-                        <p class="mt-2 text-sm text-slate-600">Jumlah akun terdaftar</p>
-                    </article>
-                    <article class="rounded-3xl bg-white p-6 shadow-lg">
-                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Admin</p>
-                        <p class="mt-4 text-5xl font-bold text-orange-600">{{ $totalAdmins }}</p>
-                        <p class="mt-2 text-sm text-slate-600">Akun dengan peran admin</p>
-                    </article>
-                    <article class="rounded-3xl bg-white p-6 shadow-lg">
-                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Pengguna Biasa</p>
-                        <p class="mt-4 text-5xl font-bold text-blue-600">{{ $totalRegularUsers }}</p>
-                        <p class="mt-2 text-sm text-slate-600">Akun dengan peran user</p>
-                    </article>
-                    <article class="rounded-3xl bg-white p-6 shadow-lg">
-                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Bulan Ini</p>
-                        <p class="mt-4 text-5xl font-bold text-green-600">{{ $recentUsers->count() }}</p>
-                        <p class="mt-2 text-sm text-slate-600">Akun terbaru</p>
-                    </article>
-                </div>
-            </section>
+            @if($isPembinaEkstra)
+                <section class="mb-8">
+                    <h2 class="mb-4 text-2xl font-semibold text-slate-900">Statistik Panel Pembina</h2>
+                    <div class="grid gap-6 lg:grid-cols-2">
+                        <article class="rounded-3xl bg-white p-6 shadow-lg">
+                            <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Total Ekstrakurikuler</p>
+                            <p class="mt-4 text-5xl font-bold text-slate-900">{{ $totalExtracurriculars }}</p>
+                            <p class="mt-2 text-sm text-slate-600">Data kegiatan yang sudah tersimpan</p>
+                        </article>
+                        <article class="rounded-3xl bg-white p-6 shadow-lg">
+                            <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Total Prestasi</p>
+                            <p class="mt-4 text-5xl font-bold text-slate-900">{{ $totalAchievements }}</p>
+                            <p class="mt-2 text-sm text-slate-600">Prestasi yang sudah dicatat</p>
+                        </article>
+                    </div>
+                </section>
+            @else
+                <!-- User Statistics -->
+                <section class="mb-8">
+                    <h2 class="mb-4 text-2xl font-semibold text-slate-900">Statistik Pengguna</h2>
+                    <div class="grid gap-6 lg:grid-cols-4">
+                        <article class="rounded-3xl bg-white p-6 shadow-lg">
+                            <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Total Akun</p>
+                            <p class="mt-4 text-5xl font-bold text-slate-900">{{ $totalUsers }}</p>
+                            <p class="mt-2 text-sm text-slate-600">Jumlah akun terdaftar</p>
+                        </article>
+                        <article class="rounded-3xl bg-white p-6 shadow-lg">
+                            <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Admin</p>
+                            <p class="mt-4 text-5xl font-bold text-orange-600">{{ $totalAdmins }}</p>
+                            <p class="mt-2 text-sm text-slate-600">Akun dengan peran admin</p>
+                        </article>
+                        <article class="rounded-3xl bg-white p-6 shadow-lg">
+                            <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Pembina Ekstra</p>
+                            <p class="mt-4 text-5xl font-bold text-rose-600">{{ $totalPembinaEkstra }}</p>
+                            <p class="mt-2 text-sm text-slate-600">Akun dengan peran pembina ekstra</p>
+                        </article>
+                        <article class="rounded-3xl bg-white p-6 shadow-lg">
+                            <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Pengguna Biasa</p>
+                            <p class="mt-4 text-5xl font-bold text-blue-600">{{ $totalRegularUsers }}</p>
+                            <p class="mt-2 text-sm text-slate-600">Akun dengan peran user</p>
+                        </article>
+                    </div>
+                </section>
+            @endif
 
-            <!-- Feedback Statistics -->
-            <section class="mb-8">
-                <h2 class="mb-4 text-2xl font-semibold text-slate-900">Statistik Kritik & Saran</h2>
-                <div class="grid gap-6 lg:grid-cols-3">
+            @unless($isPembinaEkstra)
+                <!-- Feedback Statistics -->
+                <section class="mb-8">
+                    <h2 class="mb-4 text-2xl font-semibold text-slate-900">Statistik Kritik & Saran</h2>
+                    <div class="grid gap-6 lg:grid-cols-3">
+                        <article class="rounded-3xl bg-white p-6 shadow-lg">
+                            <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Total Feedback</p>
+                            <p class="mt-4 text-5xl font-bold text-slate-900">{{ $totalFeedbacks }}</p>
+                            <p class="mt-2 text-sm text-slate-600">Kritik, saran, dan pujian</p>
+                        </article>
+                        <article class="rounded-3xl bg-white p-6 shadow-lg">
+                            <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Belum Dibaca</p>
+                            <p class="mt-4 text-5xl font-bold text-red-600">{{ $feedbackPending }}</p>
+                            <p class="mt-2 text-sm text-slate-600">Status pending</p>
+                        </article>
+                        <article class="rounded-3xl bg-white p-6 shadow-lg">
+                            <div class="space-y-2">
+                                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Tipe Feedback</p>
+                                @foreach($feedbackByType as $item)
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-slate-700">{{ ucfirst($item->type) }}</span>
+                                        <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold text-slate-900">{{ $item->total }}</span>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            @endunless
+
+
+
+            @if($isPembinaEkstra)
+                <section class="grid gap-6 lg:grid-cols-2">
                     <article class="rounded-3xl bg-white p-6 shadow-lg">
-                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Total Feedback</p>
-                        <p class="mt-4 text-5xl font-bold text-slate-900">{{ $totalFeedbacks }}</p>
-                        <p class="mt-2 text-sm text-slate-600">Kritik, saran, dan pujian</p>
-                    </article>
-                    <article class="rounded-3xl bg-white p-6 shadow-lg">
-                        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Belum Dibaca</p>
-                        <p class="mt-4 text-5xl font-bold text-red-600">{{ $feedbackPending }}</p>
-                        <p class="mt-2 text-sm text-slate-600">Status pending</p>
-                    </article>
-                    <article class="rounded-3xl bg-white p-6 shadow-lg">
-                        <div class="space-y-2">
-                            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Tipe Feedback</p>
-                            @foreach($feedbackByType as $item)
-                                <div class="flex items-center justify-between">
-                                    <span class="text-sm text-slate-700">{{ ucfirst($item->type) }}</span>
-                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold text-slate-900">{{ $item->total }}</span>
-                                </div>
-                            @endforeach
+                        <h3 class="mb-4 text-xl font-semibold text-slate-900">Ekstrakurikuler Terbaru</h3>
+                        <div class="overflow-hidden rounded-2xl border border-slate-200">
+                            <table class="w-full divide-y divide-slate-200 text-left text-sm">
+                                <thead class="bg-slate-50 text-slate-700">
+                                    <tr>
+                                        <th class="px-4 py-3 font-medium">Nama</th>
+                                        <th class="px-4 py-3 font-medium">Kategori</th>
+                                        <th class="px-4 py-3 font-medium">Terdaftar</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 bg-white">
+                                    @forelse ($recentExtracurriculars as $activity)
+                                        <tr>
+                                            <td class="px-4 py-3 text-slate-900">{{ $activity->title }}</td>
+                                            <td class="px-4 py-3 text-slate-600">{{ $activity->category }}</td>
+                                            <td class="px-4 py-3 text-slate-600">{{ $activity->created_at->format('d M Y') }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="3" class="px-4 py-6 text-center text-slate-500">Belum ada data ekstra</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
                         </div>
                     </article>
-                </div>
-            </section>
 
+                    <article class="rounded-3xl bg-white p-6 shadow-lg">
+                        <h3 class="mb-4 text-xl font-semibold text-slate-900">Prestasi Terbaru</h3>
+                        <div class="overflow-hidden rounded-2xl border border-slate-200">
+                            <table class="w-full divide-y divide-slate-200 text-left text-sm">
+                                <thead class="bg-slate-50 text-slate-700">
+                                    <tr>
+                                        <th class="px-4 py-3 font-medium">Judul</th>
+                                        <th class="px-4 py-3 font-medium">Tahun</th>
+                                        <th class="px-4 py-3 font-medium">Terdaftar</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 bg-white">
+                                    @forelse ($recentAchievements as $achievement)
+                                        <tr>
+                                            <td class="px-4 py-3 text-slate-900">{{ $achievement->title }}</td>
+                                            <td class="px-4 py-3 text-slate-600">{{ $achievement->year }}</td>
+                                            <td class="px-4 py-3 text-slate-600">{{ $achievement->created_at->format('d M Y') }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="3" class="px-4 py-6 text-center text-slate-500">Belum ada data prestasi</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </section>
+            @else
+                <section class="grid gap-6 lg:grid-cols-2">
+                    <!-- Recent Users -->
+                    <article class="rounded-3xl bg-white p-6 shadow-lg">
+                        <h3 class="mb-4 text-xl font-semibold text-slate-900">Pengguna Terbaru</h3>
+                        <div class="overflow-hidden rounded-2xl border border-slate-200">
+                            <table class="w-full divide-y divide-slate-200 text-left text-sm">
+                                <thead class="bg-slate-50 text-slate-700">
+                                    <tr>
+                                        <th class="px-4 py-3 font-medium">Nama</th>
+                                        <th class="px-4 py-3 font-medium">Peran</th>
+                                        <th class="px-4 py-3 font-medium">Terdaftar</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 bg-white">
+                                    @forelse ($recentUsers as $user)
+                                        <tr>
+                                            <td class="px-4 py-3 text-slate-900">{{ $user->name }}</td>
+                                            <td class="px-4 py-3 text-slate-600">{{ ucwords(str_replace('-', ' ', $user->role)) }}</td>
+                                            <td class="px-4 py-3 text-slate-600">{{ $user->created_at->format('d M Y') }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="3" class="px-4 py-6 text-center text-slate-500">Belum ada akun</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
 
-
-            <!-- Recent Data Tables -->
-            <section class="grid gap-6 lg:grid-cols-2">
-                <!-- Recent Users -->
-                <article class="rounded-3xl bg-white p-6 shadow-lg">
-                    <h3 class="mb-4 text-xl font-semibold text-slate-900">Pengguna Terbaru</h3>
-                    <div class="overflow-hidden rounded-2xl border border-slate-200">
-                        <table class="w-full divide-y divide-slate-200 text-left text-sm">
-                            <thead class="bg-slate-50 text-slate-700">
-                                <tr>
-                                    <th class="px-4 py-3 font-medium">Nama</th>
-                                    <th class="px-4 py-3 font-medium">Peran</th>
-                                    <th class="px-4 py-3 font-medium">Terdaftar</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-200 bg-white">
-                                @forelse ($recentUsers as $user)
+                    <!-- Recent Feedback -->
+                    <article class="rounded-3xl bg-white p-6 shadow-lg">
+                        <h3 class="mb-4 text-xl font-semibold text-slate-900">Feedback Terbaru</h3>
+                        <div class="overflow-hidden rounded-2xl border border-slate-200">
+                            <table class="w-full divide-y divide-slate-200 text-left text-sm">
+                                <thead class="bg-slate-50 text-slate-700">
                                     <tr>
-                                        <td class="px-4 py-3 text-slate-900">{{ $user->name }}</td>
-                                        <td class="px-4 py-3 text-slate-600">{{ ucfirst($user->role) }}</td>
-                                        <td class="px-4 py-3 text-slate-600">{{ $user->created_at->format('d M Y') }}</td>
+                                        <th class="px-4 py-3 font-medium">Nama</th>
+                                        <th class="px-4 py-3 font-medium">Pesan</th>
+                                        <th class="px-4 py-3 font-medium">Tipe</th>
+                                        <th class="px-4 py-3 font-medium">Status</th>
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="3" class="px-4 py-6 text-center text-slate-500">Belum ada akun</td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                </article>
-
-                <!-- Recent Feedback -->
-                <article class="rounded-3xl bg-white p-6 shadow-lg">
-                    <h3 class="mb-4 text-xl font-semibold text-slate-900">Feedback Terbaru</h3>
-                    <div class="overflow-hidden rounded-2xl border border-slate-200">
-                        <table class="w-full divide-y divide-slate-200 text-left text-sm">
-                            <thead class="bg-slate-50 text-slate-700">
-                                <tr>
-                                    <th class="px-4 py-3 font-medium">Nama</th>
-                                    <th class="px-4 py-3 font-medium">Pesan</th>
-                                    <th class="px-4 py-3 font-medium">Tipe</th>
-                                    <th class="px-4 py-3 font-medium">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-200 bg-white">
-                                @forelse ($recentFeedbacks as $feedback)
-                                    <tr>
-                                        <td class="px-4 py-3 text-slate-900">{{ $feedback->name }}</td>
-                                        <td class="px-4 py-3 text-slate-600">{{ \Illuminate\Support\Str::limit($feedback->message, 80) }}</td>
-                                        <td class="px-4 py-3 text-slate-600">{{ ucfirst($feedback->type) }}</td>
-                                        <td class="px-4 py-3">
-                                            @if($feedback->status === 'pending')
-                                                <span class="inline-flex rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-semibold text-yellow-800">Pending</span>
-                                            @elseif($feedback->status === 'read')
-                                                <span class="inline-flex rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800">Dibaca</span>
-                                            @else
-                                                <span class="inline-flex rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-800">Dibalas</span>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="4" class="px-4 py-6 text-center text-slate-500">Belum ada feedback</td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                </article>
-            </section>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 bg-white">
+                                    @forelse ($recentFeedbacks as $feedback)
+                                        <tr>
+                                            <td class="px-4 py-3 text-slate-900">{{ $feedback->name }}</td>
+                                            <td class="px-4 py-3 text-slate-600">{{ \Illuminate\Support\Str::limit($feedback->message, 80) }}</td>
+                                            <td class="px-4 py-3 text-slate-600">{{ ucfirst($feedback->type) }}</td>
+                                            <td class="px-4 py-3">
+                                                @if($feedback->status === 'pending')
+                                                    <span class="inline-flex rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-semibold text-yellow-800">Pending</span>
+                                                @elseif($feedback->status === 'read')
+                                                    <span class="inline-flex rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800">Dibaca</span>
+                                                @else
+                                                    <span class="inline-flex rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-800">Dibalas</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="4" class="px-4 py-6 text-center text-slate-500">Belum ada feedback</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </section>
+            @endif
 
 
         </main>

@@ -50,7 +50,7 @@
                             <tr>
                                 <td class="px-6 py-4 text-slate-900">{{ $user->name }}</td>
                                 <td class="px-6 py-4 text-slate-600">{{ $user->email }}</td>
-                                <td class="px-6 py-4 text-slate-900">{{ ucfirst($user->role) }}</td>
+                                <td class="px-6 py-4 text-slate-900">{{ ucwords(str_replace('-', ' ', $user->role)) }}</td>
                                 <td class="px-6 py-4 text-slate-600">{{ $user->created_at->format('d M Y') }}</td>
                                 <td class="px-6 py-4 text-slate-900">
                                     <div class="flex flex-wrap gap-2">
