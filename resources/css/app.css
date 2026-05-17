@@ -533,8 +533,8 @@
 }
 
 .header-left {
-    min-width: 0;
-    flex: 0 1 auto;
+    min-width: auto;
+    flex: 1 1 auto;
     justify-content: flex-start;
     margin-left: 0;
     margin-right: 0;
@@ -792,34 +792,36 @@ form .top-login-btn {
 
 .header-brand {
     display: flex;
-    min-width: 0;
+    min-width: auto;
     align-items: center;
     gap: 0.6rem;
-    flex-shrink: 1;
+    flex-shrink: 0;
 }
 
 .header-brand-copy {
     display: flex;
-    min-width: 0;
+    min-width: auto;
     flex-direction: column;
     justify-content: center;
     gap: 0;
     line-height: 1.08;
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    max-width: none;
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
 }
 
 .app-navbar .header-brand-copy p {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    word-wrap: break-word;
 }
 
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1.5rem;
     margin-left: auto;
     padding-left: 0;
     flex-shrink: 0;
@@ -835,11 +837,7 @@ form .top-login-btn {
 }
 
 .app-navbar .nav-list {
-    margin-right: 0;
-}
-
-.app-navbar .nav-list {
-    margin-right: 0;
+    margin-right: 1.5rem;
 }
 
 /* Fix untuk halaman Kritik & Saran dan Kontak - kurangi margin-right pada nav-list agar menu tidak tertutupi */
@@ -1374,7 +1372,7 @@ form .top-login-btn {
 }
 
 .footer-wrap {
-    background: var(--kragan-red-text);
+    background: #c41e3a;
     --footer-fg: var(--footer-text-on-red);
 }
 
@@ -1747,11 +1745,11 @@ form .top-login-btn {
 
 .guru-section-title {
     margin: 0;
-    font-family: 'Lora', 'Times New Roman', serif;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
     font-size: clamp(2.1rem, 2.8vw, 3.25rem);
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1;
-    letter-spacing: 0.01em;
+    letter-spacing: -0.02em;
     color: #0f172a;
 }
 
@@ -1776,11 +1774,7 @@ form .top-login-btn {
 .guru-hero {
     position: relative;
     overflow: hidden;
-    background:
-        radial-gradient(circle at 84% 16%, rgba(255, 255, 255, 0.16), transparent 20%),
-        radial-gradient(circle at 14% 82%, rgba(255, 214, 217, 0.12), transparent 16%),
-        radial-gradient(circle at 56% 20%, rgba(255, 255, 255, 0.08), transparent 22%),
-        linear-gradient(135deg, #6f0b12 0%, #a8131d 34%, #c51925 62%, #da3e48 100%);
+    background: #c41e3a;
 }
 
 .guru-hero::before {
@@ -1995,8 +1989,7 @@ form .top-login-btn {
 
 .guru-cta-box {
     border-radius: 1.2rem;
-    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 24%),
-        linear-gradient(120deg, #6f0f16 0%, #b51622 38%, #cc2130 72%, #e74353 100%);
+    background: linear-gradient(120deg, #6f0f16 0%, #b51622 38%, #cc2130 72%, #e74353 100%);
     color: #ffffff;
     padding: 1.4rem 1.5rem;
     display: flex;
@@ -2091,7 +2084,7 @@ form .top-login-btn {
     left: 0.7rem;
     top: 0.7rem;
     border-radius: 999px;
-    background: rgba(0, 0, 0, 0.78);
+    background: rgba(15, 23, 42, 0.72);
     color: #ffffff !important;
     font-size: 0.74rem;
     font-weight: 700;
@@ -2188,7 +2181,7 @@ form .top-login-btn {
 }
 
 .spmb-hero {
-    background: linear-gradient(140deg, #203aa8 0%, #2542b2 54%, #1f3a8a 100%);
+    background: #c41e3a;
 }
 
 .spmb-noise {
@@ -2586,16 +2579,16 @@ form .top-login-btn {
 }
 
 .galeri-hero {
-    background: linear-gradient(140deg, #b91c1c 0%, #dc2626 45%, #fbcfe8 100%);
+    background: #c41e3a;
 }
 
 .galeri-noise {
     position: absolute;
     inset: 0;
     background-image:
-        radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.12), transparent 24%),
-        radial-gradient(circle at 84% 20%, rgba(255, 255, 255, 0.08), transparent 18%),
-        radial-gradient(circle at 82% 82%, rgba(220, 38, 38, 0.12), transparent 22%);
+        radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.24), transparent 24%),
+        radial-gradient(circle at 84% 20%, rgba(255, 255, 255, 0.16), transparent 18%),
+        radial-gradient(circle at 82% 82%, rgba(255, 214, 217, 0.28), transparent 24%);
     pointer-events: none;
 }
 
@@ -2624,13 +2617,20 @@ form .top-login-btn {
     animation-delay: 0.45s;
 }
 
-.galeri-kicker,
+.galeri-kicker {
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #ffffff;
+}
+
 .galeri-info-kicker {
     font-size: 0.75rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     font-weight: 700;
-    color: #c7d2fe;
+    color: #c31925;
 }
 
 .galeri-title {
@@ -3194,7 +3194,7 @@ form .top-login-btn {
 }
 
 .ekstra-hero {
-    background: linear-gradient(140deg, #203aa8 0%, #2542b2 54%, #1f3a8a 100%);
+    background: #c41e3a;
 }
 
 .ekstra-noise {
@@ -3573,7 +3573,7 @@ form .top-login-btn {
 }
 
 .kritik-hero {
-    background: linear-gradient(140deg, #203aa8 0%, #2542b2 54%, #1f3a8a 100%);
+    background: #c41e3a;
 }
 
 .kritik-noise {
@@ -3702,6 +3702,10 @@ form .top-login-btn {
     background: linear-gradient(135deg, #ffffff, #f8fbff);
     padding: 1.2rem 1.25rem;
     box-shadow: 0 10px 20px rgba(15, 23, 42, 0.07);
+}
+
+.kritik-info-card {
+    margin-top: 24px;
 }
 
 .kritik-info-card-accent,
@@ -3960,6 +3964,7 @@ form .top-login-btn {
 
     .kritik-highlight-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
     .kritik-stats-grid {
@@ -3999,7 +4004,7 @@ form .top-login-btn {
 }
 
 .prestasi-hero {
-    background: linear-gradient(140deg, #b91c1c 0%, #dc2626 45%, #fbcfe8 100%);
+    background: #c41e3a;
 }
 
 .prestasi-noise {
@@ -4386,18 +4391,16 @@ form .top-login-btn {
 }
 
 .kontak-hero {
-    /* Removed background gradient */
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        #991b1b 0%,
+        #b91c1c 50%,
+        #7f1d1d 100%
+    );
 }
 
-.kontak-noise {
-    position: absolute;
-    inset: 0;
-    background-image:
-        radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.12), transparent 24%),
-        radial-gradient(circle at 84% 20%, rgba(255, 255, 255, 0.08), transparent 18%),
-        radial-gradient(circle at 82% 82%, rgba(251, 146, 60, 0.12), transparent 22%);
-    pointer-events: none;
-}
 
 .kontak-orb {
     position: absolute;
@@ -4828,11 +4831,9 @@ form .top-login-btn {
     }
 }
 
-/* Red-white palette override for non-home pages requested by user */
-:is(.spmb-hero, .ekstra-hero, .kritik-hero, .prestasi-hero, .kontak-hero) {
-    background: linear-gradient(140deg, #8f1117 0%, #cb1f2a 52%, #ffe3e5 100%);
+:is(.spmb-hero, .ekstra-hero, .kritik-hero, .prestasi-hero, .kontak-hero, .galeri-hero, .guru-hero) {
+    background: linear-gradient(140deg, #8f1117 0%, #cb1f2a 52%, #a7151f 100%);
 }
-
 :is(.spmb-noise, .ekstra-noise, .kritik-noise, .prestasi-noise, .kontak-noise) {
     background-image:
         radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.24), transparent 24%),
@@ -4849,7 +4850,7 @@ form .top-login-btn {
 }
 
 /* Ensure card labels/badges use high-contrast dark red on light backgrounds. */
-:is(.spmb-info-kicker, .ekstra-info-kicker, .kritik-info-kicker, .prestasi-info-kicker, .kontak-info-kicker, .guru-info-kicker, .guru-type-badge, .ekstra-category-badge, .kontak-chip, .kritik-chip, .prestasi-badge, .spmb-step-number, .login-badge, .login-help-link, .login-password-toggle) {
+:is(.spmb-info-kicker, .ekstra-info-kicker, .kritik-info-kicker, .prestasi-info-kicker, .kontak-info-kicker, .guru-info-kicker, .ekstra-category-badge, .kontak-chip, .kritik-chip, .prestasi-badge, .spmb-step-number, .login-badge, .login-help-link, .login-password-toggle) {
     color: var(--kragan-red-text) !important;
 }
 
@@ -5464,4 +5465,20 @@ form .top-login-btn {
     .login-submit-spinner {
         animation: none !important;
     }
+}
+
+.kontak-cta-box {
+    background: #b91c1c !important;
+}
+
+:is(.spmb-cta-box, .ekstra-cta-box, .kritik-cta-box, .prestasi-cta-box, .kontak-cta-box, .guru-cta-box, .galeri-cta-box ) {
+    background: #b91c1c !important;
+}
+
+.kritik-form-card {
+    margin-bottom: 24px !important;
+}
+
+:is(.spmb-cta-box, .ekstra-cta-box, .kritik-cta-box, .prestasi-cta-box, .kontak-cta-box, .guru-cta-box)::after {
+    display: none !important;
 }

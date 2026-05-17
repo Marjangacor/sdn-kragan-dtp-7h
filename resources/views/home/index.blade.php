@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>SDN Kragan | Sekolah Dasar Negeri</title>
         <link rel="preconnect" href="https://fonts.bunny.net" />
-        <link href="https://fonts.bunny.net/css?family=inter:400,500,600" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700" rel="stylesheet" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="bg-slate-100 text-slate-900">
@@ -187,19 +187,23 @@
                         <div class="space-y-3 reveal" style="--reveal-delay: 180ms">
                             <article class="feature-card feature-card-red js-card">
                                 <h3>Merah Putih</h3>
-                                <p>Mencerminkan semangat kebangsaan, keberanian untuk belajar, dan karakter cinta tanah air pada setiap siswa.</p>
+                                <p>Melambangkan bendera Indonesia.</p>
                             </article>
                             <article class="feature-card feature-card-green js-card">
                                 <h3>Lingkar Hijau</h3>
-                                <p>Melambangkan pertumbuhan, harmoni, dan lingkungan belajar yang sehat serta penuh kepedulian.</p>
+                                <p>Melambangkan  persaudaraan, pertumbuhan dan lingkungan yang sehat.</p>
                             </article>
                             <article class="feature-card feature-card-gold js-card">
-                                <h3>Warna Kuning Emas</h3>
-                                <p>Simbol cita-cita tinggi, prestasi, dan optimisme bahwa setiap anak mampu meraih masa depan terbaik.</p>
+                                <h3>Bintang Emas</h3>
+                                <p>Melambangkan Ketuhanan.</p>
+                            </article>
+                             <article class="feature-card feature-card-neutral js-card">
+                                <h3>Al Quran</h3>
+                                <p>Melambangkan religiusitas dan pondasi pendidikan adalah  agama.</p>
                             </article>
                             <article class="feature-card feature-card-neutral js-card">
                                 <h3>Figur Siswa</h3>
-                                <p>Menggambarkan keceriaan, kolaborasi, dan dunia belajar yang inklusif, ramah, serta menyenangkan.</p>
+                                <p>Melambangkan jenjang sekolah dasar.</p>
                             </article>
                             <article class="rounded-2xl home-makna-card p-6 text-white shadow-lg shadow-slate-900/20 js-card">
                                 <h3 class="text-lg font-semibold">Makna Keseluruhan</h3>
