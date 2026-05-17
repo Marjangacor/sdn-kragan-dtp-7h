@@ -31,7 +31,7 @@
                     <div class="relative hidden lg:block" data-user-menu>
                         <button
                             type="button"
-                            class="top-login-btn inline-flex items-center gap-2 lg:px-5"
+                            class="top-login-btn inline-flex items-center gap-2 lg:px-5 ml-4 lg:ml-6"
                             aria-haspopup="true"
                             aria-expanded="false"
                             aria-controls="userMenuDesktop"
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 @else
-                    <a href="{{ route('login') }}" class="top-login-btn hidden lg:inline-flex lg:px-6">Login</a>
+                    <a href="{{ route('login') }}" class="top-login-btn hidden lg:inline-flex lg:px-6 ml-4 lg:ml-6">Login</a>
                 @endauth
             @endif
             <button id="menuToggle" class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 lg:hidden" aria-label="Buka menu">

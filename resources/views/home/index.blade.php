@@ -58,11 +58,11 @@
             </section>
 
             <section id="tentang" class="bg-slate-100 py-14 lg:py-18">
-                <div class="mx-auto grid max-w-7xl gap-6 px-6 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:px-8">
-                    <div class="overflow-hidden rounded-3xl bg-white shadow-xl shadow-slate-900/10 reveal js-card">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="Kepala sekolah SDN Kragan" class="h-full w-full object-cover" />
+                <div class="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch lg:px-8">
+                    <div class="overflow-hidden rounded-3xl bg-white shadow-xl shadow-slate-900/10 reveal js-card lg:max-w-[40rem] lg:mx-0 mx-auto lg:h-full">
+                        <img src="{{ asset('images/BU ARIYANI .jpeg') }}" alt="Kepala sekolah SDN Kragan" class="h-full w-full object-cover" />
                     </div>
-                    <article class="rounded-3xl bg-white p-8 shadow-xl shadow-slate-900/8 reveal js-card" style="--reveal-delay: 140ms">
+                    <article class="rounded-3xl bg-white p-8 shadow-xl shadow-slate-900/8 reveal js-card lg:h-full" style="--reveal-delay: 140ms">
                         <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white-500">Sambutan Kepala Sekolah</p>
                         <h2 class="mt-3 text-3xl font-semibold leading-tight text-slate-900">Membangun Masa Depan Bangsa Dimulai dari Pendidikan</h2>
                         <p class="mt-5 text-sm leading-7 text-slate-600">Assalamualaikum warahmatullahi wabarakatuh. Puji syukur kita panjatkan kepada Tuhan Yang Maha Esa atas segala rahmat-Nya, sehingga SDN Kragan terus berkembang menjadi sekolah yang berkomitmen mencetak generasi unggul, berkarakter, dan kreatif.</p>

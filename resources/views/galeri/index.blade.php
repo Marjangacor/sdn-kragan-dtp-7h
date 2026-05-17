@@ -76,7 +76,7 @@
 
                 <div class="relative mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-14">
                     <div class="space-y-5">
-                        <p class="galeri-kicker reveal">Galeri Kegiatan</p>
+                        <p class="galeri-kicker reveal text-white">Galeri Kegiatan</p>
                         <div class="space-y-4 reveal" style="--reveal-delay: 90ms">
                             <h1 class="galeri-title">Cerita Kegiatan SDN Kragan</h1>
                             <p class="galeri-description">Di sini kamu bisa melihat berbagai momen sekolah, dari belajar di kelas sampai kegiatan kebersamaan. Klik foto mana saja untuk membuka detail kegiatan secara lengkap.</p>
@@ -85,7 +85,7 @@
 
                     <div class="reveal" style="--reveal-delay: 160ms">
                         <div class="galeri-hero-card js-card">
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Kegiatan sekolah SDN Kragan" class="h-full w-full object-cover" />
+                            <img src="{{ asset('images/Dok Sekol 1.jpeg') }}" alt="Kegiatan sekolah SDN Kragan" class="h-full w-full object-cover" />
                         </div>
                     </div>
                 </div>

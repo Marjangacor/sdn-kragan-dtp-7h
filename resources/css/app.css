@@ -836,6 +836,19 @@ form .top-login-btn {
     flex-shrink: 0;
 }
 
+/* Force spacing for right-side navbar (Kontak -> Admin button separation) */
+.header-actions {
+    gap: 1.5rem !important; /* ~24px for comfortable spacing */
+}
+
+.app-navbar .nav-list {
+    margin-right: 2rem !important; /* ensure nav items have breathing room before right actions */
+}
+
+.top-login-btn {
+    margin-left: 1.5rem !important; /* extra safeguard if utility classes are overridden */
+}
+
 .app-navbar .nav-list {
     margin-right: 1.5rem;
 }
@@ -1207,9 +1220,9 @@ form .top-login-btn {
 }
 
 .home-makna-card {
-    background:
-        radial-gradient(circle at top left, rgba(255, 86, 99, 0.18), transparent 30%),
-        linear-gradient(120deg, #58080e 0%, #9c1019 34%, #cd1f2d 64%, #e83f58 100%);
+    background: #E11D48 !important;
+    background-image: none !important;
+    opacity: 1 !important;
 }
 
 .sambutan-layout {
@@ -1435,6 +1448,58 @@ form .top-login-btn {
 .footer-wrap,
 .footer-wrap * {
     color: #ffffff !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: none !important;
+    mix-blend-mode: normal !important;
+    filter: none !important;
+    background-image: none !important;
+    -webkit-background-clip: unset !important;
+}
+
+.footer-wrap *::before,
+.footer-wrap *::after {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    mix-blend-mode: normal !important;
+    filter: none !important;
+    background-image: none !important;
+}
+
+.footer-wrap::after {
+    z-index: -1 !important;
+}
+
+.footer-wrap > * {
+    position: relative;
+    z-index: 1 !important;
+}
+
+.footer-wrap,
+.footer-wrap p,
+.footer-wrap a,
+.footer-wrap li,
+.footer-wrap span,
+.footer-wrap h1,
+.footer-wrap h2,
+.footer-wrap h3,
+.footer-wrap h4,
+.footer-wrap h5,
+.footer-wrap h6,
+.footer-wrap strong,
+.footer-wrap small {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #ffffff !important;
+    filter: none !important;
+    background-image: none !important;
+    -webkit-background-clip: unset !important;
+    text-shadow: none !important;
+}
+
+.footer-wrap .reveal,
+.footer-wrap .reveal.is-visible {
+    opacity: 1 !important;
 }
 
 .footer-wrap {
@@ -2622,7 +2687,13 @@ form .top-login-btn {
     letter-spacing: 0.16em;
     text-transform: uppercase;
     font-weight: 700;
-    color: #ffffff;
+    color: #ffffff !important;
+}
+
+.galeri-hero .galeri-kicker {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 .galeri-info-kicker {

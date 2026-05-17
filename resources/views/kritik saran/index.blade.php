@@ -102,7 +102,7 @@
 
                     <div class="reveal" style="--reveal-delay: 160ms">
                         <div class="kritik-hero-card js-card kritik-hero-image-container">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="Diskusi antara orang tua dan pihak sekolah" class="h-full w-full object-cover" />
+                            <img src="{{ asset('images/Prestasi 8.jpeg') }}" alt="Diskusi antara orang tua dan pihak sekolah" class="h-full w-full object-cover" />
                         </div>
                     </div>
                 </div>
