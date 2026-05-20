@@ -57,21 +57,68 @@
                 </div>
             </section>
 
-            <section id="tentang" class="bg-slate-100 py-14 lg:py-18">
-                <div class="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch lg:px-8">
-                    <div class="overflow-hidden rounded-3xl bg-white shadow-xl shadow-slate-900/10 reveal js-card lg:max-w-[40rem] lg:mx-0 mx-auto lg:h-full">
-                        <img src="{{ asset('images/BU ARIYANI .jpeg') }}" alt="Kepala sekolah SDN Kragan" class="h-full w-full object-cover" />
-                    </div>
-                    <article class="rounded-3xl bg-white p-8 shadow-xl shadow-slate-900/8 reveal js-card lg:h-full" style="--reveal-delay: 140ms">
-                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white-500">Sambutan Kepala Sekolah</p>
-                        <h2 class="mt-3 text-3xl font-semibold leading-tight text-slate-900">Membangun Masa Depan Bangsa Dimulai dari Pendidikan</h2>
-                        <p class="mt-5 text-sm leading-7 text-slate-600">Assalamualaikum warahmatullahi wabarakatuh. Puji syukur kita panjatkan kepada Tuhan Yang Maha Esa atas segala rahmat-Nya, sehingga SDN Kragan terus berkembang menjadi sekolah yang berkomitmen mencetak generasi unggul, berkarakter, dan kreatif.</p>
-                        <p class="mt-4 text-sm leading-7 text-slate-600">Kami percaya bahwa setiap anak memiliki potensi luar biasa yang perlu didampingi dengan pendidikan yang tepat. Melalui metode pembelajaran inovatif dan lingkungan belajar yang sehat, kami berupaya memfasilitasi perkembangan peserta didik secara optimal.</p>
-                        <div class="mt-6 text-sm text-slate-700">
-                            <p class="font-semibold">Ariyani Purwaningsih, S.pd</p>
-                            <p class="text-slate-500">Kepala Sekolah SDN Kragan</p>
+            <section id="tentang" class="bg-slate-50 py-10 lg:py-12">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div class="grid gap-10 lg:grid-cols-[1.05fr_1.25fr] lg:items-center">
+                        <div class="reveal order-1 lg:order-1 flex justify-center lg:justify-end">
+                            <div class="relative flex h-[22rem] w-full max-w-[18.5rem] items-end justify-center lg:h-[23rem] lg:max-w-[20rem]">
+                                <!-- Red blob background besar -->
+                                <span class="pointer-events-none absolute right-0 top-12 h-56 w-56 rounded-full bg-red-600/20"></span>
+                                
+                                <!-- Lingkaran outline abu di belakang kepala -->
+                                <span class="pointer-events-none absolute top-0 left-6 h-40 w-40 rounded-full border-2 border-slate-400/25"></span>
+                                
+                                <!-- Blur soft circle -->
+                                <span class="pointer-events-none absolute right-2 top-16 h-48 w-48 rounded-full bg-red-600/10 blur-3xl"></span>
+                                
+                                <!-- Lingkaran merah kecil solid di kiri atas -->
+                                <span class="pointer-events-none absolute -left-4 top-6 h-10 w-10 rounded-full bg-red-600/70"></span>
+                                
+                                <!-- Garis lengkung tipis dari lingkaran -->
+                                <span class="pointer-events-none absolute left-2 top-8 h-16 border-l-2 border-red-600/30"></span>
+                                
+                                <!-- Dotted grid merah di kiri bawah -->
+                                <span class="pointer-events-none absolute left-0 bottom-3 grid h-20 w-20 grid-cols-5 gap-1.5 opacity-70">
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-red-600/50"></span>
+                                </span>
+                                
+                                <!-- Foto -->
+                                <div class="relative z-10 h-[90%] w-[90%] overflow-hidden">
+                                    <img src="{{ asset('images/Edit bu ari.png') }}" alt="Kepala sekolah SDN Kragan" class="h-full w-full object-contain" />
+                                </div>
+                            </div>
                         </div>
-                    </article>
+
+                        <article class="reveal order-2 max-w-full rounded-2xl border border-white bg-white p-7 shadow-sm shadow-slate-900/5 lg:p-7" style="--reveal-delay: 140ms">
+                            <p class="text-[0.67rem] font-semibold uppercase tracking-[0.32em] text-red-600">Sambutan Kepala Sekolah</p>
+                            <h2 class="mt-3 text-lg font-bold leading-snug text-slate-950">Membangun Masa Depan Bangsa Dimulai dari Pendidikan</h2>
+                            <p class="mt-4 text-sm leading-7 text-slate-600">Assalamualaikum warahmatullahi wabarakatuh. Puji syukur kita panjatkan kepada Tuhan Yang Maha Esa atas segala rahmat-Nya, sehingga SDN Kragan terus berkembang menjadi sekolah yang berkomitmen mencetak generasi unggul, berkarakter, dan kreatif.</p>
+                            <p class="mt-3 text-sm leading-7 text-slate-600">Kami percaya bahwa setiap anak memiliki potensi luar biasa yang perlu didampingi dengan pendidikan yang tepat. Melalui metode pembelajaran inovatif dan lingkungan belajar yang sehat, kami berupaya memfasilitasi perkembangan peserta didik secara optimal.</p>
+                            <div class="mt-6 text-sm text-slate-700">
+                                <p class="font-semibold text-slate-950">Ariyani Purwaningsih, S.pd</p>
+                                <p class="mt-0.5 text-[0.77rem] text-slate-500">Kepala Sekolah SDN Kragan</p>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </section>
 
