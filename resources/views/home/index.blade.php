@@ -207,7 +207,7 @@
                             </article>
                             <article class="rounded-2xl home-makna-card p-6 text-white shadow-lg shadow-slate-900/20 js-card">
                                 <h3 class="text-lg font-semibold">Makna Keseluruhan</h3>
-                                <p class="mt-2 text-sm leading-7 text-red-50">Logo SDN Kragan menegaskan komitmen sekolah untuk membentuk generasi cerdas, berkarakter, cinta Indonesia, dan siap berprestasi.</p>
+                                <p class="mt-2 text-sm leading-7 text-white">Logo SDN Kragan menegaskan komitmen sekolah untuk membentuk generasi cerdas, berkarakter, cinta Indonesia, dan siap berprestasi.</p>
                             </article>
                         </div>
                     </div>

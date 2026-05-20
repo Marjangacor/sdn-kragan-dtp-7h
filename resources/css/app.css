@@ -1220,9 +1220,17 @@ form .top-login-btn {
 }
 
 .home-makna-card {
-    background: #E11D48 !important;
+    /* use site primary red so it matches other red elements */
+    background: var(--kragan-red) !important;
     background-image: none !important;
+    color: #ffffff !important;
     opacity: 1 !important;
+    box-shadow: 0 12px 24px rgba(15,23,42,0.12);
+    border-radius: 0.75rem;
+}
+
+.home-makna-card p {
+    color: #ffffff !important;
 }
 
 .sambutan-layout {
@@ -1500,6 +1508,26 @@ form .top-login-btn {
 .footer-wrap .reveal,
 .footer-wrap .reveal.is-visible {
     opacity: 1 !important;
+}
+
+/* Disable JS-driven reveal/tilt/animation effects inside the footer to keep it static */
+.footer-wrap .reveal,
+.footer-wrap .js-card,
+.footer-wrap .card-animated,
+.footer-wrap .card-animated:hover {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+/* Footer inner layout tweaks */
+.footer-wrap .footer-inner {
+    display: block;
+}
+
+.footer-wrap .mx-auto {
+    gap: 1.15rem;
 }
 
 .footer-wrap {
