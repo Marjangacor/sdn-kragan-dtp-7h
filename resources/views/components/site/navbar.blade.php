@@ -3,7 +3,7 @@
     'subtitle' => 'Sekolah Dasar',
 ])
 
-<header class="site-header app-navbar sticky top-0 z-40">
+<header class="site-header app-navbar z-40">
     <div class="navbar-inner mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-4 lg:px-8">
         <div class="header-left flex min-w-0 items-center gap-2 lg:gap-3">
             <div class="header-brand">

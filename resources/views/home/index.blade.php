@@ -10,7 +10,7 @@
     </head>
     <body class="bg-slate-100 text-slate-900">
         <div class="school-page">
-        <x-site.navbar active="beranda" subtitle="Kragan Gedangan Sidoarjo" />
+        <x-site.navbar active="beranda" subtitle="Gedangan Sidoarjo" />
 
         <main class="overflow-hidden">
             <section id="beranda" class="hero-wrap relative text-white">
@@ -20,10 +20,10 @@
                     <span class="hero-orb hero-orb-b"></span>
                     <span class="hero-orb hero-orb-c"></span>
                 </div>
-                <div class="hero-grid relative mx-auto grid max-w-7xl gap-8 px-6 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-14">
-                    <div class="hero-copy space-y-5">
+                <div class="hero-grid relative mx-auto grid max-w-7xl gap-6 px-6 py-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-10">
+                    <div class="hero-copy space-y-3">
                         <span class="hero-pill reveal">Selamat Datang di SDN Kragan Gedangan</span>
-                        <div class="space-y-5 reveal" style="--reveal-delay: 120ms">
+                        <div class="space-y-3 reveal" style="--reveal-delay: 120ms">
                             <h1 class="hero-title">Mewujudkan Generasi Cerdas, Berkarakter, dan Berprestasi</h1>
                             <p class="hero-description">Memberikan pendidikan berkualitas dengan pendekatan holistik untuk mengembangkan potensi siswa secara akademis, karakter, dan kreativitas.</p>
                         </div>

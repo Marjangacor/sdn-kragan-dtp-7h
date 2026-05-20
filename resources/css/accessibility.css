@@ -1,0 +1,169 @@
+/* Accessibility Features */
+
+.school-page.accessibility-underline a,
+.school-page.accessibility-underline span,
+.school-page.accessibility-underline p,
+.school-page.accessibility-underline li {
+    text-decoration: underline !important;
+    text-underline-offset: 4px;
+}
+
+.school-page.accessibility-big-cursor,
+.school-page.accessibility-big-cursor * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 24 24'%3E%3Cpath fill='%230f172a' d='M3 2l7.4 18l2.3-6.8l6.8-2.3z'/%3E%3C/svg%3E") 2 2, auto !important;
+}
+
+.school-page.accessibility-reduce-motion *,
+.school-page.accessibility-reduce-motion *::before,
+.school-page.accessibility-reduce-motion *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+
+.school-page.accessibility-grayscale {
+    filter: grayscale(1);
+}
+
+.school-page.accessibility-invert {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+.school-page.accessibility-invert img,
+.school-page.accessibility-invert video,
+.school-page.accessibility-invert svg {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+.school-page.accessibility-panel-on {
+    --acc-line: 1.6;
+    --acc-letter: 0em;
+}
+
+.school-page.accessibility-panel-on,
+.school-page.accessibility-panel-on p,
+.school-page.accessibility-panel-on li,
+.school-page.accessibility-panel-on a,
+.school-page.accessibility-panel-on button,
+.school-page.accessibility-panel-on h1,
+.school-page.accessibility-panel-on h2,
+.school-page.accessibility-panel-on h3 {
+    line-height: var(--acc-line) !important;
+    letter-spacing: var(--acc-letter) !important;
+}
+
+.acc-toggle-btn {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 80;
+    height: 52px;
+    width: 52px;
+    border-radius: 999px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #1d4ed8;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.acc-toggle-btn:hover {
+    transform: translateY(-2px);
+}
+
+.acc-panel {
+    position: fixed;
+    right: 18px;
+    top: 12px;
+    z-index: 85;
+    width: min(420px, calc(100vw - 24px));
+    max-height: calc(100vh - 24px);
+    overflow: hidden;
+    border-radius: 16px;
+    border: 1px solid #d1d5db;
+    background: #f3f4f6;
+    transform: translateX(120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 260ms ease, opacity 260ms ease;
+}
+
+.acc-panel.open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.acc-panel-header {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #d1d5db;
+    padding: 10px 10px 12px;
+    background: #eceff3;
+}
+
+.acc-panel-header h3 {
+    margin: 0;
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.acc-icon-btn {
+    display: inline-flex;
+    height: 40px;
+    width: 40px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    color: #3b82f6;
+    background: transparent;
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.acc-icon-btn:hover {
+    background: #e5e7eb;
+    transform: scale(1.05);
+}
+
+#accessibilityClose {
+    color: #dc2626;
+}
+
+.acc-list {
+    max-height: calc(100vh - 105px);
+    overflow: auto;
+    padding: 8px;
+}
+
+.acc-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 7px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    background: #f8fafc;
+    color: #111827;
+    font-size: 1.05rem;
+    font-weight: 500;
+    padding: 10px 12px;
+    text-align: left;
+    transition: all 180ms ease;
+}
+
+.acc-item:hover {
+    background: #ffffff;
+    border-color: #93c5fd;
+    transform: translateX(2px);
+}
+
+.acc-item.is-active {
+    background: #e0ecff;
+    border-color: #60a5fa;
+    color: #1e3a8a;
+}

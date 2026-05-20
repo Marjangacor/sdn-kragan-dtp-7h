@@ -1,0 +1,19 @@
+/* Main CSS Entry Point - Importing all modular CSS files */
+
+/* Global theme, variables, and typography */
+@import './global.css';
+
+/* Accessibility features panel */
+@import './accessibility.css';
+
+/* Logo styles */
+@import './logo.css';
+
+/* Navbar & header */
+@import './navbar.css';
+
+/* Hero section */
+@import './hero.css';
+
+/* All other component and page-specific styles */
+/* Keep the rest of the original app.css content below */

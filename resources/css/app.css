@@ -1,5 +1,12 @@
 @import 'tailwindcss';
 
+/* Import modular CSS files */
+@import './global.css';
+@import './accessibility.css';
+@import './logo.css';
+@import './navbar.css';
+@import './hero.css';
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
@@ -23,271 +30,7 @@
     --kragan-cream: #fff8e8;
 }
 
-.school-page {
-    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
-    color: #0f172a;
-    font-size: 18px;
-    line-height: 1.65;
-}
-
-.school-page.accessibility-underline a,
-.school-page.accessibility-underline span,
-.school-page.accessibility-underline p,
-.school-page.accessibility-underline li {
-    text-decoration: underline !important;
-    text-underline-offset: 4px;
-}
-
-.school-page.accessibility-big-cursor,
-.school-page.accessibility-big-cursor * {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 24 24'%3E%3Cpath fill='%230f172a' d='M3 2l7.4 18l2.3-6.8l6.8-2.3z'/%3E%3C/svg%3E") 2 2, auto !important;
-}
-
-.school-page.accessibility-reduce-motion *,
-.school-page.accessibility-reduce-motion *::before,
-.school-page.accessibility-reduce-motion *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-}
-
-.school-page.accessibility-grayscale {
-    filter: grayscale(1);
-}
-
-.school-page.accessibility-invert {
-    filter: invert(1) hue-rotate(180deg);
-}
-
-.school-page.accessibility-invert img,
-.school-page.accessibility-invert video,
-.school-page.accessibility-invert svg {
-    filter: invert(1) hue-rotate(180deg);
-}
-
-.school-page.accessibility-panel-on {
-    --acc-line: 1.6;
-    --acc-letter: 0em;
-}
-
-.school-page.accessibility-panel-on,
-.school-page.accessibility-panel-on p,
-.school-page.accessibility-panel-on li,
-.school-page.accessibility-panel-on a,
-.school-page.accessibility-panel-on button,
-.school-page.accessibility-panel-on h1,
-.school-page.accessibility-panel-on h2,
-.school-page.accessibility-panel-on h3 {
-    line-height: var(--acc-line) !important;
-    letter-spacing: var(--acc-letter) !important;
-}
-
-.acc-toggle-btn {
-    position: fixed;
-    right: 18px;
-    bottom: 18px;
-    z-index: 80;
-    height: 52px;
-    width: 52px;
-    border-radius: 999px;
-    border: 1px solid #cbd5e1;
-    background: #ffffff;
-    color: #1d4ed8;
-    transition: transform 180ms ease, box-shadow 180ms ease;
-}
-
-.acc-toggle-btn:hover {
-    transform: translateY(-2px);
-}
-
-.acc-panel {
-    position: fixed;
-    right: 18px;
-    top: 12px;
-    z-index: 85;
-    width: min(420px, calc(100vw - 24px));
-    max-height: calc(100vh - 24px);
-    overflow: hidden;
-    border-radius: 16px;
-    border: 1px solid #d1d5db;
-    background: #f3f4f6;
-    transform: translateX(120%);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 260ms ease, opacity 260ms ease;
-}
-
-.acc-panel.open {
-    transform: translateX(0);
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.acc-panel-header {
-    display: grid;
-    grid-template-columns: 44px 1fr 44px;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 1px solid #d1d5db;
-    padding: 10px 10px 12px;
-    background: #eceff3;
-}
-
-.acc-panel-header h3 {
-    margin: 0;
-    text-align: center;
-    font-size: 1.9rem;
-    font-weight: 700;
-    color: #1f2937;
-}
-
-.acc-icon-btn {
-    display: inline-flex;
-    height: 40px;
-    width: 40px;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 10px;
-    color: #3b82f6;
-    background: transparent;
-    transition: background-color 180ms ease, transform 180ms ease;
-}
-
-.acc-icon-btn:hover {
-    background: #e5e7eb;
-    transform: scale(1.05);
-}
-
-#accessibilityClose {
-    color: #dc2626;
-}
-
-.acc-list {
-    max-height: calc(100vh - 105px);
-    overflow: auto;
-    padding: 8px;
-}
-
-.acc-item {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 7px;
-    border: 1px solid #d1d5db;
-    border-radius: 7px;
-    background: #f8fafc;
-    color: #111827;
-    font-size: 1.05rem;
-    font-weight: 500;
-    padding: 10px 12px;
-    text-align: left;
-    transition: all 180ms ease;
-}
-
-.acc-item:hover {
-    background: #ffffff;
-    border-color: #93c5fd;
-    transform: translateX(2px);
-}
-
-.acc-item.is-active {
-    background: #e0ecff;
-    border-color: #60a5fa;
-    color: #1e3a8a;
-}
-
-.acc-item-icon {
-    display: inline-flex;
-    min-width: 22px;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #6b7280;
-}
-
-.acc-item-icon svg {
-    width: 1.05rem;
-    height: 1.05rem;
-    display: block;
-}
-
-.reading-guide {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: 79;
-    height: 42px;
-    pointer-events: none;
-    opacity: 0;
-    background:
-        linear-gradient(to bottom, rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0.06)),
-        linear-gradient(to right, transparent, rgba(255, 255, 255, 0.55), transparent);
-    border-top: 1px solid rgba(255, 255, 255, 0.6);
-    border-bottom: 1px solid rgba(15, 23, 42, 0.15);
-    transition: opacity 180ms ease;
-}
-
-.reading-guide.active {
-    opacity: 1;
-}
-
-.school-page h1 {
-    font-size: clamp(2.4rem, 4.2vw, 4.15rem);
-    line-height: 1.15;
-}
-
-.school-page h2 {
-    font-size: clamp(1.9rem, 3vw, 3rem);
-    line-height: 1.22;
-}
-
-.school-page h3 {
-    font-size: clamp(1.24rem, 1.9vw, 1.68rem);
-    line-height: 1.35;
-}
-
-.school-page p,
-.school-page li,
-.school-page .text-sm,
-.school-page .text-xs {
-    font-size: 1.08rem;
-    line-height: 1.62;
-}
-
-.school-page .nav-list,
-.school-page .nav-chip,
-.school-page #mobileMenu a {
-    font-size: 1rem;
-}
-
-.school-page .hero-pill {
-    font-size: 1.02rem;
-    letter-spacing: 0.02em;
-}
-
-.school-page .hero-cta,
-.school-page .ripple-btn,
-.school-page button {
-    font-size: 1.08rem;
-}
-
-.school-page .stat-number {
-    font-size: 2.35rem;
-}
-
-.school-page .stat-label {
-    font-size: 1.02rem;
-}
-
-.school-page footer p,
-.school-page footer li,
-.school-page footer a {
-    font-size: 1rem;
-}
+/* All modular styles are imported above; additional styles below */
 
 .site-header {
     transition: box-shadow 220ms ease, background-color 220ms ease;
@@ -361,7 +104,7 @@
 }
 
 .app-navbar .navbar-inner {
-    min-height: 78px;
+    min-height: 64px;
 }
 
 .brand-badge {
@@ -489,13 +232,13 @@
 }
 
 .school-logo-img--small {
-    width: min(4.25rem, 12vw);
-    height: min(4.25rem, 12vw);
-    max-height: 4.25rem;
+    width: min(3.25rem, 10vw);
+    height: min(3.25rem, 10vw);
+    max-height: 3.25rem;
 }
 
 .school-logo-img--hero {
-    width: min(70%, 400px);
+    width: min(60%, 300px);
     aspect-ratio: 1 / 1;
     filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.28));
     border-radius: 0;
@@ -550,7 +293,7 @@
 }
 
 .site-header .brand-title {
-    font-size: 1.45rem !important;
+    font-size: 1.15rem !important;
     line-height: 1.08 !important;
     font-weight: 700;
 }
@@ -920,17 +663,17 @@ form .top-login-btn {
 
 .hero-title {
     max-width: 41rem;
-    font-size: clamp(3.05rem, 5.3vw, 5rem);
+    font-size: clamp(2.25rem, 3.8vw, 3.5rem);
     font-weight: 700;
-    line-height: 1.06;
+    line-height: 1.1;
     letter-spacing: -0.02em;
     color: #f8fafc;
 }
 
 .hero-description {
     max-width: 38rem;
-    font-size: 1.08rem;
-    line-height: 1.55;
+    font-size: 0.95rem;
+    line-height: 1.5;
     color: rgba(239, 246, 255, 0.96);
 }
 
@@ -988,8 +731,8 @@ form .top-login-btn {
     border-radius: 9999px;
     background: rgba(255, 250, 241, 0.16);
     border: 1px solid rgba(255, 246, 226, 0.42);
-    padding: 0.65rem 1.35rem;
-    font-size: 1.02rem;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.85rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: rgba(255, 247, 227, 0.98);
@@ -1078,8 +821,8 @@ form .top-login-btn {
 
 .stat-card-lg {
     border-radius: 1rem;
-    padding: 1.15rem 1.2rem;
-    min-height: 7.05rem;
+    padding: 0.85rem 1rem;
+    min-height: 5.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1105,8 +848,8 @@ form .top-login-btn {
 }
 
 .stat-label {
-    margin-top: 0.5rem;
-    font-size: 0.78rem;
+    margin-top: 0.25rem;
+    font-size: 0.7rem;
     letter-spacing: 0.07em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.86);
